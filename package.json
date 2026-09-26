@@ -4,9 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "npm run images:manifest",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "images:manifest": "tsx scripts/build-image-manifest.ts",
+    "content:check": "tsx scripts/content-check.ts"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -28,6 +31,7 @@
     "postcss": "^8",
     "sharp": "^0.35.4",
     "tailwindcss": "^3.4.1",
+    "tsx": "^4.23.15",
     "typescript": "^5"
   }
 }
