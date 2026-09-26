@@ -6,7 +6,7 @@ Source of truth for every portfolio prompt. If a prompt and this brief disagree,
 
 ## 1. What this site is
 
-The personal portfolio of **Lenny Kidavi** (also known online as Lenny Navwani): Computer Science student at CUEA in Nairobi, independent developer who ships real products for real businesses, two-time hackathon placer with SmartChama, working toward Machine Learning Engineering.
+The personal portfolio of **Lenny Kidavi** (also known online as Lenny Navwani): Computer Science student at CUEA in Nairobi, independent developer who ships real products for real businesses, hackathon winner (Red, White & Build, 2026) and runner-up (Beorchild), working toward Machine Learning Engineering.
 
 - **Primary job:** show freelance clients and collaborators that Lenny designs and builds complete products, with live links as evidence.
 - **Secondary job:** show recruiters, and later master's admissions (MIT, CMU and similar), technical depth and a clear direction toward ML.
@@ -135,8 +135,8 @@ Confirmed:
 - **Oppolia Woodworths Kenya** — client website for a luxury fitted-cabinetry and interiors company. Live: https://www.oppoliakenya.co.ke
 - **Sucre Bushworks** — website for camping gear, Kenyan campsites and guided trips, with a WhatsApp inquiry basket. Live: https://sucre-bushworks.vercel.app
 - **Gikuyu Translator** — AI translation from English and Kiswahili into Gikuyu. Live: https://gikuyu-translate.vercel.app. Repo: github.com/chillyreward/New-translator.
-- **Hackathon 1** — winner, U.S. Embassy hackathon, with SmartChama (2024 per CV).
-- **Hackathon 2** — second place, African hackathon associated with BioChild, with SmartChama.
+- **Hackathon 1** — **Winner**, Red, White & Build US–Kenya Hackathon (AI & Tech), U.S. Embassy Kenya, with SmartChama. Prize ceremony 19 February 2026, $1,000 prize. In person, Nairobi. Team: Lenny Kidavi, Rachael, Shilla, Nanjoli. (Note: the old CV's "US Embassy Hackathon 2024" is wrong and must not be reused.)
+- **Hackathon 2** — **Second place**, Beorchild hackathon, with SmartChama. Online. No certificate or photos.
 
 TODO(lenny):
 - SmartChama: which URL is canonical (smartchama.tech vs smart-chama10.vercel.app); full stack; Lenny's exact role; how to credit its relationship to NeuroGrowth.
@@ -144,7 +144,7 @@ TODO(lenny):
 - NeuroGrowth: live link, role, permission to publish.
 - Allenet Bakers: live link (allenetbakers.com?) once launched; publish after launch only.
 - Oppolia, Sucre Bushworks: role, stack, year, repo (or private), permission to publish.
-- Hackathons: official names, organisers, dates, award titles, certificates, photos.
+- Hackathons: teammates' surnames (optional); Beorchild official spelling, date and team; whether 'The Credit Passport' (shown on screen when presenting at Red, White & Build) is a SmartChama feature.
 - Skills: sort every technology into the three SkillGroups.
 - Keep or drop X (x.com/Lenny_kidavi).
 - Epigraph texts (§8).
@@ -159,8 +159,9 @@ TODO(lenny):
 
 - Real screenshots and photos only. No stock photos, no AI-generated people, no fabricated certificates.
 - Source images arrive in `public/images/_inbox/` (see PROMPT 00) and are then placed by slug:
-  `public/images/portrait/`, `public/images/projects/<slug>/`, `public/images/hackathons/<slug>/`.
+  `public/images/portrait/`, `public/images/projects/<slug>/`, `public/images/hackathons/<id>/`.
 - Slugs: `smart-chama`, `saka`, `oppolia`, `sucre-bushworks`, `gikuyu-translator`, `neuro-growth`, `allenet-bakers`.
+- Hackathon folder IDs: `red-white-build`, `beorchild`.
 - All images through `next/image` with explicit `width`/`height` or `fill` + `sizes`; aspect ratio always preserved; real `alt` text.
 - Portrait gets a monochrome treatment; project screenshots are shown as-is.
 
