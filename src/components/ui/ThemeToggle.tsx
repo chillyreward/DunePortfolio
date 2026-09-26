@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { useTheme } from 'next-themes';
-import { Moon, Sun } from 'lucide-react';
+import { RealmGlyph } from '@/components/realm/RealmGlyph';
 import { cn } from '@/lib/cn';
 
 export type ThemeToggleProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
@@ -34,7 +34,7 @@ export function ThemeToggle({ className, ...props }: ThemeToggleProps) {
   }
 
   const isDark = resolvedTheme === 'dark';
-  const label = isDark ? 'Switch to light mode' : 'Switch to dark mode';
+  const label = isDark ? 'Switch to light mode (Arrakis)' : 'Switch to dark mode (Giedi Prime)';
 
   return (
     <button
@@ -47,7 +47,11 @@ export function ThemeToggle({ className, ...props }: ThemeToggleProps) {
       )}
       {...props}
     >
-      {isDark ? <Sun size={20} aria-hidden="true" /> : <Moon size={20} aria-hidden="true" />}
+      {isDark ? (
+        <RealmGlyph realm="arrakis" size={20} />
+      ) : (
+        <RealmGlyph realm="harkonnen" size={20} />
+      )}
     </button>
   );
 }

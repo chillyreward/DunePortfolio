@@ -4,10 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "npm run images:manifest",
+    "prebuild": "npm run tokens:build && npm run tokens:contrast && npm run images:manifest",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "tokens:build": "tsx scripts/build-tokens.ts",
+    "tokens:contrast": "tsx scripts/check-contrast.ts",
     "images:manifest": "tsx scripts/build-image-manifest.ts",
     "content:check": "tsx scripts/content-check.ts"
   },

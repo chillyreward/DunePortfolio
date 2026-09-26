@@ -2,47 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root,
-[data-theme="arrakis"] {
-  --bg: 217 203 176;
-  --surface: 239 231 216;
-  --ink: 35 29 20;
-  --ink-2: 87 78 64;
-  --accent: 30 69 200;
-  --accent-ink: 255 255 255;
-  --spice: 200 128 26;
-  --line: 35 29 20;
-  --line-alpha: 0.18;
-  color-scheme: light;
-}
-
-[data-theme="giedi"] {
-  --bg: 0 0 0;
-  --surface: 22 22 22;
-  --ink: 242 242 242;
-  --ink-2: 163 163 163;
-  --accent: 127 151 255;
-  --accent-ink: 0 0 0;
-  --spice: 200 128 26;
-  --line: 255 255 255;
-  --line-alpha: 0.14;
-  color-scheme: dark;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) {
-    --bg: 0 0 0;
-    --surface: 22 22 22;
-    --ink: 242 242 242;
-    --ink-2: 163 163 163;
-    --accent: 127 151 255;
-    --accent-ink: 0 0 0;
-    --spice: 200 128 26;
-    --line: 255 255 255;
-    --line-alpha: 0.14;
-    color-scheme: dark;
-  }
-}
+@import './tokens.generated.css';
 
 @layer base {
   html {

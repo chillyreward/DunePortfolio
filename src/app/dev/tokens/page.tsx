@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
 import { ThemeToggle } from '@/components/ui/ThemeToggle';
 import { Button } from '@/components/ui/Button';
 import { TextLink } from '@/components/ui/TextLink';
@@ -6,6 +7,7 @@ import { Epigraph } from '@/components/ui/Epigraph';
 import { Wordmark } from '@/components/ui/Wordmark';
 import { Container } from '@/components/ui/Container';
 import { Section } from '@/components/ui/Section';
+import { Realm, RealmMarker, ImperialRule, RealmGlyph } from '@/components/realm';
 import { ThemeSync } from './ThemeSync';
 
 export const metadata = {
@@ -22,7 +24,43 @@ const TOKENS = [
   { name: '--accent', class: 'bg-accent', hexArrakis: '#1E45C8', hexGiedi: '#7F97FF' },
   { name: '--accent-ink', class: 'bg-accent-ink', hexArrakis: '#FFFFFF', hexGiedi: '#000000', border: true },
   { name: '--spice', class: 'bg-spice', hexArrakis: '#C8801A', hexGiedi: '#C8801A' },
+  { name: '--mark', class: 'bg-mark', hexArrakis: '#1E45C8', hexGiedi: '#7F97FF' },
   { name: '--line', class: 'bg-line', hexArrakis: '18% alpha', hexGiedi: '14% alpha', border: true },
+];
+
+const REALMS_SHOWCASE = [
+  {
+    name: 'arrakis' as const,
+    title: 'Arrakis',
+    role: 'Home hero, about teaser, contact, footer',
+    description: 'The world everything happens on. Base sand ground, Ibad-blue mark.',
+    bgHex: '#D9CBB0',
+    markHex: '#1E45C8',
+  },
+  {
+    name: 'fremen' as const,
+    title: 'Fremen',
+    role: 'Hackathons (home section and about page)',
+    description: 'Building a lot from very little, under pressure. Stillsuit grey ground, sand gold mark.',
+    bgHex: '#2A2D2E',
+    markHex: '#DAA520',
+  },
+  {
+    name: 'atreides' as const,
+    title: 'Atreides',
+    role: 'Own products (SmartChama, Saka)',
+    description: 'Loyalty, self-determination, green-and-black banners. Deep forest slate ground, hawk gold mark.',
+    bgHex: '#141C18',
+    markHex: '#C5A059',
+  },
+  {
+    name: 'corrino' as const,
+    title: 'Corrino',
+    role: 'Client work (Oppolia, Sucre Bushworks)',
+    description: 'Imperial craft, commission, golden age of the Imperium. Imperial parchment ground, imperial gold mark.',
+    bgHex: '#F5F0E6',
+    markHex: '#A67608',
+  },
 ];
 
 function ThemePanel({
@@ -49,7 +87,7 @@ function ThemePanel({
       {/* Colour Swatches */}
       <div>
         <h3 className="t-h3 mb-4">Colour Tokens</h3>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {TOKENS.map((token) => (
             <div
               key={token.name}
@@ -154,26 +192,139 @@ export default function DevTokensPage() {
     <main id="main">
       <ThemeSync />
       <Section spacing="tight">
-        <Container className="flex flex-col gap-12">
-          {/* 1. ThemeToggle Header */}
+        <Container className="flex flex-col gap-16">
+          {/* 1. Header */}
           <header className="flex flex-wrap items-center justify-between gap-4 border-b border-line pb-6">
             <div>
-              <h1 className="t-h1">Design Tokens</h1>
-              <p className="t-meta mt-1">Dev-only verification page for tokens, font, and primitives</p>
+              <p className="text-xs uppercase tracking-widest text-accent font-medium">Design System</p>
+              <h1 className="t-h1 mt-1">Design Tokens</h1>
+              <p className="t-meta mt-1">Dev-only verification page for tokens, font, primitives, and realms</p>
             </div>
-            <div className="flex items-center gap-3">
-              <span className="t-meta">Theme Toggle:</span>
-              <ThemeToggle />
+            <div className="flex items-center gap-6">
+              <Link
+                href="/dev/content"
+                className="text-sm font-medium text-ink-2 hover:text-ink underline underline-offset-4"
+              >
+                Go to /dev/content →
+              </Link>
+              <div className="flex items-center gap-3">
+                <span className="t-meta">Theme Toggle:</span>
+                <ThemeToggle />
+              </div>
             </div>
           </header>
 
-          {/* 2. Two side-by-side panels */}
+          {/* 2. Realms of Dune Showcase */}
+          <section className="flex flex-col gap-8">
+            <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-line pb-4">
+              <div>
+                <h2 className="t-h2">Realms of Dune</h2>
+                <p className="t-meta mt-1">
+                  Four worlds from Frank Herbert&apos;s canon with dedicated grounds, markers, and canonical glyphs.
+                </p>
+              </div>
+              <span className="text-xs font-semibold px-2.5 py-1 bg-surface border border-line rounded text-accent">
+                WCAG 2.1 Contrast Gate: 26/26 PASSED
+              </span>
+            </div>
+
+            {/* Glyph Row */}
+            <div className="p-6 rounded border border-line bg-surface/40 flex flex-wrap items-center justify-around gap-6">
+              <div className="flex flex-col items-center gap-2">
+                <RealmGlyph realm="arrakis" size={28} className="text-ink" />
+                <span className="text-[11px] font-bold uppercase tracking-wider text-ink">Arrakis</span>
+                <span className="text-[10px] text-ink-2">Desert Sun</span>
+              </div>
+              <div className="flex flex-col items-center gap-2">
+                <RealmGlyph realm="fremen" size={28} className="text-ink" />
+                <span className="text-[11px] font-bold uppercase tracking-wider text-ink">Fremen</span>
+                <span className="text-[10px] text-ink-2">Crysknife</span>
+              </div>
+              <div className="flex flex-col items-center gap-2">
+                <RealmGlyph realm="atreides" size={28} className="text-ink" />
+                <span className="text-[11px] font-bold uppercase tracking-wider text-ink">Atreides</span>
+                <span className="text-[10px] text-ink-2">Hawk Chevron</span>
+              </div>
+              <div className="flex flex-col items-center gap-2">
+                <RealmGlyph realm="corrino" size={28} className="text-ink" />
+                <span className="text-[11px] font-bold uppercase tracking-wider text-ink">Corrino</span>
+                <span className="text-[10px] text-ink-2">Imperial Crown</span>
+              </div>
+              <div className="flex flex-col items-center gap-2">
+                <RealmGlyph realm="harkonnen" size={28} className="text-ink" />
+                <span className="text-[11px] font-bold uppercase tracking-wider text-ink">Harkonnen</span>
+                <span className="text-[10px] text-ink-2">Black Sun Aperture</span>
+              </div>
+            </div>
+
+            {/* 4 Realm Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {REALMS_SHOWCASE.map((realm) => (
+                <Realm
+                  key={realm.name}
+                  name={realm.name}
+                  className="p-8 rounded border border-line flex flex-col justify-between gap-6 shadow-sm"
+                >
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between border-b border-line pb-3">
+                      <RealmMarker realm={realm.name} />
+                      <span className="text-[11px] text-ink-2 font-mono">{realm.bgHex}</span>
+                    </div>
+
+                    <div>
+                      <h3 className="text-2xl font-bold uppercase tracking-tight">{realm.title}</h3>
+                      <p className="text-xs text-mark font-medium mt-0.5">{realm.role}</p>
+                      <p className="text-sm text-ink-2 mt-2 leading-relaxed">{realm.description}</p>
+                    </div>
+
+                    <div className="p-4 bg-surface rounded border border-line space-y-3">
+                      <div className="flex items-center justify-between text-xs">
+                        <span className="font-semibold text-ink">Sample Heading</span>
+                        <span className="text-mark font-medium">--mark</span>
+                      </div>
+                      <p className="text-xs text-ink-2 leading-relaxed">
+                        Sample body text showing typography rendering against this realm&apos;s surface ground.
+                      </p>
+                      <div className="flex items-center gap-3 pt-1">
+                        <span className="text-xs font-semibold px-2 py-0.5 rounded bg-bg text-mark border border-line">
+                          Badge
+                        </span>
+                        <a href="#test" className="text-xs text-mark underline hover:opacity-80">
+                          Realm link →
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="pt-4 border-t border-line flex items-center justify-between text-[11px] text-ink-2">
+                    <span>Ground: {realm.bgHex}</span>
+                    <span>Marker: {realm.markHex}</span>
+                  </div>
+                </Realm>
+              ))}
+            </div>
+
+            {/* Imperial Rules showcase */}
+            <div className="p-6 rounded border border-line bg-surface/30 space-y-4">
+              <h3 className="t-h3">Imperial Rules (Realm Dividers)</h3>
+              <p className="t-body text-sm text-ink-2">
+                Decorative dividers separating site realms, with centered glyph or diamond pip:
+              </p>
+              <ImperialRule realm="arrakis" />
+              <ImperialRule realm="fremen" />
+              <ImperialRule realm="atreides" />
+              <ImperialRule realm="corrino" />
+              <ImperialRule />
+            </div>
+          </section>
+
+          {/* 3. Base Modes (Arrakis / Giedi side-by-side) */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
             <ThemePanel theme="arrakis" title="Arrakis (Light Mode)" />
             <ThemePanel theme="giedi" title="Giedi (Dark Mode)" />
           </div>
 
-          {/* 3. Wordmark unfitted and fitted */}
+          {/* 4. Wordmark unfitted and fitted */}
           <div className="border border-line rounded p-6 md:p-8 bg-surface/50 flex flex-col gap-6">
             <h2 className="t-h2">Wordmark Component</h2>
 
@@ -192,7 +343,7 @@ export default function DevTokensPage() {
             </div>
           </div>
 
-          {/* 4. Tab Order & Focus Ring Check */}
+          {/* 5. Tab Order & Focus Ring Check */}
           <div className="border border-line rounded p-6 md:p-8 flex flex-col gap-6">
             <h2 className="t-h2">Tab Order &amp; Focus Ring Check</h2>
             <p className="t-body">

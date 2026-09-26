@@ -35,6 +35,17 @@ Rules that keep it disciplined:
 - No all-caps labels, no eyebrow text above every heading, no `01 / 02` numbering unless the content really is a sequence (the hackathon timeline is), no `→` glued onto link text, no gradients, no glow, no drop shadows.
 - Emptiness is a feature: generous section spacing, lots of sand.
 
+### Realms of Dune (Design Subsystem)
+
+The site is one desert with four realms and a night mode. Each realm belongs to one world or house from Frank Herbert's Dune, expressed through background ground colour, an original geometric glyph, and a margin marker:
+
+| Realm | Lives on | Why | Treatment |
+|---|---|---|---|
+| **Arrakis** | Home hero, about teaser, contact, footer | The world everything happens on | Base sand page (`#D9CBB0`). No band. |
+| **Fremen** | Hackathons (home section and about page) | Building a lot from very little, under pressure | Full-bleed stillsuit-grey band (`#2A2D2E`), sand-gold marker (`--mark: #DAA520`). |
+| **Atreides** | Own products (SmartChama, Saka) | Loyalty, self-determination, green-and-black banners | Deep forest slate ground (`#141C18`), warm hawk-gold marker (`--mark: #C5A059`). |
+| **Corrino** | Client work (Oppolia, Sucre Bushworks) | Imperial craft, commission, golden age of the Imperium | Pale imperial parchment (`#F5F0E6`), regal violet-slate ink (`#1C1824`), imperial gold marker (`--mark: #B8860B`). |
+
 ## 3. Modes
 
 | Mode | Name in code | Feel |
@@ -42,7 +53,12 @@ Rules that keep it disciplined:
 | Light (default) | `arrakis` | Sand page, shadow-brown ink, Ibad-blue accent |
 | Dark | `giedi` | Pure black and white, like the black-sun arena in Part Two. Lifted blue accent |
 
-Default follows the system preference; the user can override with a toggle (moon icon). Stored in localStorage via `next-themes`, applied as `data-theme` on `<html>`.
+Default follows the system preference; the user can override with a toggle. Stored in localStorage via `next-themes`, applied as `data-theme` on `<html>`.
+
+### 3B. Realms interaction with Modes
+
+In `arrakis` mode (default), each realm expresses its full atmospheric palette (sand, stillsuit grey, deep forest slate, imperial parchment).
+In `giedi` mode (Harkonnen black sun), realms adapt into high-contrast monochrome values with desaturated accents while maintaining subtle tonal distinctions and canonical glyphs.
 
 ## 4. Tokens
 
@@ -57,6 +73,7 @@ Default follows the system preference; the user can override with a toggle (moon
 | `--accent` | `#1E45C8` Ibad blue | `#7F97FF` | Links, focus ring, primary button, the one accent per view (4.8:1 / 7.8:1) |
 | `--accent-ink` | `#FFFFFF` | `#000000` | Text on accent fill |
 | `--spice` | `#C8801A` | `#C8801A` | **Never text.** Only image duotones, texture, tiny decorative marks |
+| `--mark` | `#1E45C8` | `#7F97FF` | Realm margin marker and glyph accent (overridden per realm) |
 | `--line` | `rgb(35 29 20 / 0.18)` | `rgb(255 255 255 / 0.14)` | Dividers, input borders |
 | `--focus` | `--accent` | `--accent` | 2px outline, 3px offset, on every focusable element |
 
@@ -89,6 +106,10 @@ Uppercase is used **only** for the wordmark and H1s. Line length ≤ 70ch for bo
 | Component | Spec |
 |---|---|
 | `Container`, `Section`, `Grid` | Layout primitives from §4. |
+| `Realm` | Scoped container applying `data-realm` and realm color token overrides. |
+| `RealmGlyph` | Pure geometric SVG glyphs for Arrakis, Fremen, Atreides, Corrino, Harkonnen. |
+| `RealmMarker` | Margin marker showing realm glyph and letterspaced uppercase name in `--mark` colour. |
+| `ImperialRule` | Decorative divider rule with subtle realm geometry. |
 | `Wordmark` | Real text (not an image) sized by its container; used in hero and footer. |
 | `HeroHaze` | Client component wrapping the hero wordmark with the SVG heat-haze filter (`feTurbulence` + `feDisplacementMap`, displacement scale 28 → 0). |
 | `Portrait` | Monochrome portrait placed behind/inside the wordmark (`mix-blend-mode: multiply` in `arrakis`, `screen` in `giedi`). |
@@ -99,19 +120,19 @@ Uppercase is used **only** for the wordmark and H1s. Line length ≤ 70ch for bo
 | `HackathonTimeline` | Chronological list (real sequence, so numbering is allowed): event, organiser, project, placement, date, certificate thumbnail. |
 | `SkillGroups` | Three honest groups: "Shipped with", "Used in coursework and experiments", "Currently learning". |
 | `Epigraph` | Quote + attribution. Renders nothing if the quote text is empty. |
-| `ThemeToggle` | Moon icon button, `aria-label` describes the action ("Switch to dark mode"). |
+| `ThemeToggle` | Destination RealmGlyph button (Harkonnen in Arrakis, Arrakis in Giedi), `aria-label` describes action. |
 | `ContactForm` | Name, email, message; server action; Resend. Built in the contact prompt. |
 
 ## 6. Pages
 
-| Route | Sections |
+| Route | Sections & Realms |
 |---|---|
-| `/` | Hero (wordmark + portrait + one-line intro + CV) · Selected work (3–4 ProjectRows) · Hackathons (timeline) · About teaser + epigraph · Contact |
-| `/work` | Page H1 · all projects as ProjectRows, filterable by type (client site, own product) |
-| `/work/[slug]` | CaseStudyLayout, statically generated (`generateStaticParams`) |
-| `/about` | Story · education · SkillGroups · hackathons (compact) · epigraph · CV download |
+| `/` | Hero (Arrakis) · Selected work: Products (Atreides) & Client work (Corrino) · Hackathons (Fremen) · About teaser + epigraph (Arrakis) · Contact (Arrakis) |
+| `/work` | Page H1 · all projects as ProjectRows in their respective realm (Atreides / Corrino) |
+| `/work/[slug]` | CaseStudyLayout in the project's realm (Atreides for products, Corrino for client work) |
+| `/about` | Story · education · SkillGroups (Arrakis) · Hackathons (Fremen) · epigraph · CV download |
 | `/cv` | Print-optimised CV rendered from the same content files; source of the downloadable PDF |
-| `not-found` | Branded 404 with an epigraph slot |
+| `not-found` | Branded 404 with an epigraph slot (Arrakis) |
 
 ## 7. Content rules
 
