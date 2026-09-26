@@ -1,3 +1,154 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root,
+[data-theme="arrakis"] {
+  --bg: 217 203 176;
+  --surface: 239 231 216;
+  --ink: 35 29 20;
+  --ink-2: 87 78 64;
+  --accent: 30 69 200;
+  --accent-ink: 255 255 255;
+  --spice: 200 128 26;
+  --line: 35 29 20;
+  --line-alpha: 0.18;
+  color-scheme: light;
+}
+
+[data-theme="giedi"] {
+  --bg: 0 0 0;
+  --surface: 22 22 22;
+  --ink: 242 242 242;
+  --ink-2: 163 163 163;
+  --accent: 127 151 255;
+  --accent-ink: 0 0 0;
+  --spice: 200 128 26;
+  --line: 255 255 255;
+  --line-alpha: 0.14;
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --bg: 0 0 0;
+    --surface: 22 22 22;
+    --ink: 242 242 242;
+    --ink-2: 163 163 163;
+    --accent: 127 151 255;
+    --accent-ink: 0 0 0;
+    --spice: 200 128 26;
+    --line: 255 255 255;
+    --line-alpha: 0.14;
+    color-scheme: dark;
+  }
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-bg text-ink font-sans;
+    font-size: 17px;
+    font-stretch: 100%;
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0;
+  }
+
+  ::selection {
+    background-color: rgb(var(--accent));
+    color: rgb(var(--accent-ink));
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--accent));
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .t-wordmark {
+    font-size: clamp(72px, 17vw, 280px);
+    font-stretch: 125%;
+    font-weight: 800;
+    line-height: 0.85;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+  }
+
+  .t-h1 {
+    font-size: clamp(44px, 7vw, 104px);
+    font-stretch: 125%;
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    text-wrap: balance;
+  }
+
+  .t-h2 {
+    font-size: clamp(32px, 4.4vw, 60px);
+    font-stretch: 112%;
+    font-weight: 600;
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+
+  .t-h3 {
+    font-size: 22px;
+    font-stretch: 100%;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  .t-body {
+    font-size: 17px;
+    font-stretch: 100%;
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0;
+    max-width: 70ch;
+  }
+
+  .t-small {
+    font-size: 15px;
+    font-stretch: 100%;
+    font-weight: 400;
+    line-height: 1.55;
+    letter-spacing: 0;
+  }
+
+  .t-meta {
+    font-size: 13px;
+    font-stretch: 100%;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: 0.01em;
+    color: rgb(var(--ink-2));
+  }
+
+  .t-epigraph {
+    font-size: clamp(20px, 2vw, 26px);
+    font-stretch: 87%;
+    font-weight: 300;
+    line-height: 1.4;
+    letter-spacing: 0;
+    max-width: 36ch;
+  }
+}
