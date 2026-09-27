@@ -28,6 +28,8 @@ const rawProfile: Profile = {
     // TODO(lenny): confirm whether to keep or drop X profile
     x: 'https://x.com/Lenny_kidavi',
   },
+  availability: 'Available for freelance projects', // TODO(lenny): confirm wording (e.g. add internships?)
+  cvPath: null, // TODO(lenny): CV PDF arrives in PROMPT 07
   portrait: img('/images/portrait/portrait.webp', 'Lenny Kidavi monochrome portrait'),
   portraitAbout: img('/images/portrait/portrait-about.webp', 'Lenny Kidavi'),
   portraitCutout: img('/images/portrait/portrait-cutout.webp', 'Lenny Kidavi transparent cutout'),

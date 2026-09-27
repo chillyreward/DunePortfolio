@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from 'next';
 import { archivo } from './fonts';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
+import { SiteHeader } from '@/components/site/SiteHeader';
+import { SiteFooter } from '@/components/site/SiteFooter';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -38,13 +40,21 @@ export default function RootLayout({
   return (
     <html lang="en" className={archivo.variable} suppressHydrationWarning>
       <body className="min-h-dvh bg-bg text-ink font-sans">
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-accent focus:text-accent-ink focus:rounded"
-        >
-          Skip to content
-        </a>
-        <ThemeProvider>{children}</ThemeProvider>
+        <div id="top" className="flex flex-col min-h-dvh">
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-accent focus:text-accent-ink focus:rounded-sm"
+          >
+            Skip to content
+          </a>
+          <ThemeProvider>
+            <SiteHeader />
+            <main id="main" tabIndex={-1} className="outline-none flex-1">
+              {children}
+            </main>
+            <SiteFooter />
+          </ThemeProvider>
+        </div>
       </body>
     </html>
   );

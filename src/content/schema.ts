@@ -103,8 +103,18 @@ export const ProfileSchema = z.object({
     fiverr: z.string().url(),
     x: z.string().url().nullable(),
   }),
+  availability: z.string(),
+  cvPath: z.string().nullable(),
   portrait: ImageRefSchema,
   portraitAbout: ImageRefSchema,
   portraitCutout: ImageRefSchema,
 });
 export type Profile = z.infer<typeof ProfileSchema>;
+
+export const NavItemSchema = z.object({
+  label: z.string(),
+  href: z.string(),
+  match: z.enum(['prefix', 'exact', 'none']),
+});
+export type NavItem = z.infer<typeof NavItemSchema>;
+
