@@ -11,6 +11,7 @@ export const rawHomePage: HomePage = {
     heading: 'Selected Work',
     lead: 'A selection of web products, client platforms, and hackathon prototypes built for production.',
     projectSlugs: ['smart-chama', 'saka', 'oppolia'],
+    allLink: 'All work',
   },
   hackathons: {
     heading: 'Hackathons',

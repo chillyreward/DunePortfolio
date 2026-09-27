@@ -220,10 +220,10 @@ export function getProjectBySlug(slug: string): Project | undefined {
 }
 
 export function getPublishedProjects(): Project[] {
-  return projects.filter((p) => p.publish);
+  return getProjects();
 }
 
 export function getFeaturedProjects(): Project[] {
-  return projects.filter((p) => p.publish && p.featured);
+  return getProjects().filter((p) => p.featured);
 }
 

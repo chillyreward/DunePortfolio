@@ -1,17 +1,15 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { projects, getProjectBySlug } from '@/content/projects';
+import { getProjects, getProjectBySlug, isVisible } from '@/content/projects';
 import { CaseStudyLayout } from '@/components/work/CaseStudyLayout';
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return projects
-    .filter((p) => p.publish && p.permission)
-    .map((p) => ({
-      slug: p.slug,
-    }));
+  return getProjects().map((p) => ({
+    slug: p.slug,
+  }));
 }
 
 interface CaseStudyPageProps {
@@ -23,7 +21,7 @@ interface CaseStudyPageProps {
 export function generateMetadata({ params }: CaseStudyPageProps): Metadata {
   const project = getProjectBySlug(params.slug);
 
-  if (!project || !project.publish || !project.permission) {
+  if (!project || !isVisible(project)) {
     return {
       title: 'Project Not Found',
     };
@@ -50,12 +48,12 @@ export function generateMetadata({ params }: CaseStudyPageProps): Metadata {
 export default function CaseStudyPage({ params }: CaseStudyPageProps) {
   const project = getProjectBySlug(params.slug);
 
-  if (!project || !project.publish || !project.permission) {
+  if (!project || !isVisible(project)) {
     notFound();
   }
 
-  // Find next permitted project in sequence
-  const permittedProjects = projects.filter((p) => p.publish && p.permission);
+  // Find next visible project in sequence
+  const permittedProjects = getProjects();
   const currentIndex = permittedProjects.findIndex((p) => p.slug === params.slug);
   const nextProject =
     currentIndex >= 0 && currentIndex + 1 < permittedProjects.length

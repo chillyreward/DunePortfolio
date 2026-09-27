@@ -130,6 +130,7 @@ export const HomePageSchema = z.object({
     heading: z.string(),
     lead: z.string(),
     projectSlugs: z.array(ProjectSlugSchema),
+    allLink: z.string(),
   }),
   hackathons: z.object({
     heading: z.string(),

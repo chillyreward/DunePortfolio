@@ -10,7 +10,7 @@ import { ProjectRow } from '@/components/work/ProjectRow';
 import { HackathonTimeline } from '@/components/hackathons/HackathonTimeline';
 import { ContactForm } from '@/components/contact/ContactForm';
 import { profile } from '@/content/profile';
-import { projects } from '@/content/projects';
+import { getProjectBySlug, isVisible } from '@/content/projects';
 import { skillGroups } from '@/content/skills';
 import { homePage } from '@/content/home';
 import { contact } from '@/content/contact';
@@ -20,8 +20,8 @@ import { ArrowUpRight } from 'lucide-react';
 
 export default function HomePage() {
   const selectedProjects = homePage.selectedWork.projectSlugs
-    .map((slug) => projects.find((p) => p.slug === slug))
-    .filter((p): p is NonNullable<typeof p> => Boolean(p));
+    .map((slug) => getProjectBySlug(slug))
+    .filter((p): p is NonNullable<typeof p> => p !== undefined && isVisible(p));
 
   const homeEpigraph = getEpigraph('home-about');
   const siteUrl = getSiteUrl();
@@ -73,8 +73,7 @@ export default function HomePage() {
             </div>
             <div>
               <Button href="/work" variant="ghost" className="text-[15px]">
-                <span>All Projects</span>
-                <span aria-hidden="true" className="ml-1">({projects.length}) →</span>
+                {homePage.selectedWork.allLink}
               </Button>
             </div>
           </div>
@@ -94,7 +93,7 @@ export default function HomePage() {
           {/* Bottom link to all work */}
           <div className="pt-12 text-center">
             <Button href="/work" variant="ghost">
-              View All {projects.length} Projects & Experiments →
+              {homePage.selectedWork.allLink}
             </Button>
           </div>
         </Container>
