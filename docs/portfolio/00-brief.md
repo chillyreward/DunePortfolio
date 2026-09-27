@@ -122,6 +122,7 @@ Uppercase is used **only** for the wordmark and H1s. Line length ≤ 70ch for bo
 | `Epigraph` | Quote + attribution. Renders nothing if the quote text is empty. |
 | `ThemeToggle` | Destination RealmGlyph button (Harkonnen in Arrakis, Arrakis in Giedi), `aria-label` describes action. |
 | `ContactForm` | Name, email, message; server action; Resend. Built in the contact prompt. |
+| `PhotoGallery` | Client thumbnail grid with accessible native dialog lightbox modal, counter, captions, and keyboard navigation. |
 
 ## 6. Pages
 
@@ -195,3 +196,29 @@ TODO(lenny):
 - Metadata: `metadataBase` set in the root layout from `NEXT_PUBLIC_SITE_URL` (never let canonical/OG URLs resolve to localhost).
 - Casing: see the naming rule in PROMPT 00 Step 4.
 - Accessibility floor: visible focus everywhere, keyboard-operable menu and toggle, `prefers-reduced-motion` respected, contrast per §4, one `<h1>` per page, 44px minimum touch targets.
+
+## 11. Operations
+
+### Environment Variables
+
+| Variable | Required | Description |
+|---|---|---|
+| `NEXT_PUBLIC_SITE_URL` | Yes | Base canonical domain of the portfolio (e.g. `https://lennydev.vercel.app`). |
+| `RESEND_API_KEY` | Production | API key for transactional emails via Resend. |
+| `CONTACT_TO` | Yes | Destination inbox for contact form submissions (defaults to `lennykidavik@gmail.com`). |
+| `CONTACT_FROM` | Yes | Verified or sandbox sender address (e.g. `Lenny Kidavi Portfolio <onboarding@resend.dev>`). Note: until Lenny verifies his own domain in Resend, the `onboarding@resend.dev` sender can only deliver to the email address his Resend account was registered with, so he must sign up to Resend with `lennykidavik@gmail.com`. |
+| `CONTACT_DRY_RUN` | Dev/Tests | When set to `1`, form submissions log summaries to console and return success without calling Resend. |
+| `UPSTASH_REDIS_REST_URL` | Optional | Upstash Redis REST URL for contact form sliding-window rate limiting. |
+| `UPSTASH_REDIS_REST_TOKEN` | Optional | Upstash Redis REST Token for contact form sliding-window rate limiting. |
+
+### Operational Scripts
+
+- `npm run dev`: Start Next.js development server with turbopack.
+- `npm run build`: Execute prebuild gates (tokens, contrast, image manifest) and compile production build.
+- `npm run start`: Launch optimized production server.
+- `npm run lint`: Execute ESLint across the codebase.
+- `npm run tokens:build`: Compile CSS variable declarations from typed design tokens.
+- `npm run tokens:contrast`: Automated WCAG 2.1 contrast compliance gate verifying all text and marker pairs.
+- `npm run images:manifest`: Rebuild image dimensions and metadata manifest from disk.
+- `npm run content:check`: Content validator checking open TODOs and asset disk presence (`--strict` fails on open items).
+

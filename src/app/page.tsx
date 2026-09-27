@@ -1,15 +1,18 @@
 import React from 'react';
 import Image from 'next/image';
 import { Container } from '@/components/ui/Container';
+import { Grid } from '@/components/ui/Grid';
 import { Button } from '@/components/ui/Button';
 import { Realm } from '@/components/realm/Realm';
 import { RealmMarker } from '@/components/realm/RealmMarker';
 import { Hero } from '@/components/home/Hero';
 import { ProjectRow } from '@/components/work/ProjectRow';
 import { HackathonTimeline } from '@/components/hackathons/HackathonTimeline';
+import { ContactForm } from '@/components/contact/ContactForm';
 import { profile } from '@/content/profile';
 import { projects } from '@/content/projects';
 import { homePage } from '@/content/home';
+import { contact } from '@/content/contact';
 import { getEpigraph } from '@/content/epigraphs';
 import { ArrowUpRight } from 'lucide-react';
 
@@ -151,83 +154,100 @@ export default function HomePage() {
       {/* 5. Contact Section (Arrakis) */}
       <Realm name="arrakis" id="contact" className="py-20 md:py-32">
         <Container>
-          <div className="max-w-3xl">
-            <span className="t-meta text-accent uppercase tracking-widest text-xs font-mono mb-3 block">
-              Direct Contact
-            </span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-ink tracking-tight mb-6">
-              Let&apos;s build something together.
-            </h2>
-            <p className="t-lead text-ink-2 mb-10">
-              {homePage.contact.lead}
-            </p>
+          <Grid className="gap-12 lg:gap-16 items-start">
+            {/* Cols 1–5: Direct contact info & channels */}
+            <div className="col-span-4 md:col-span-5 space-y-8">
+              <div>
+                <span className="t-meta text-accent uppercase tracking-widest text-xs font-mono mb-3 block">
+                  Direct Contact
+                </span>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-ink tracking-tight mb-4">
+                  Let&apos;s build something together.
+                </h2>
+                <p className="t-lead text-ink-2 text-base md:text-lg">
+                  {homePage.contact.lead}
+                </p>
+                {profile.availability && (
+                  <div className="mt-4 inline-flex items-center gap-2 px-3 py-1 rounded-[2px] bg-surface/60 border border-line text-xs font-mono text-ink">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500" aria-hidden="true" />
+                    <span>{profile.availability}</span>
+                  </div>
+                )}
+              </div>
 
-            {/* Direct Email Display */}
-            <div className="p-8 rounded-lg border border-line bg-surface/30 mb-8">
-              <p className="t-meta text-xs uppercase tracking-wider text-ink-2 mb-2 font-mono">Direct Email</p>
-              <a
-                href={`mailto:${profile.contact.email}`}
-                className="text-2xl sm:text-3xl md:text-4xl font-bold text-accent hover:underline underline-offset-4 decoration-2 block truncate"
-              >
-                {profile.contact.email}
-              </a>
+              {/* Direct Email Display */}
+              <div className="p-6 rounded-[2px] border border-line bg-surface/30">
+                <p className="t-meta text-xs uppercase tracking-wider text-ink-2 mb-1.5 font-mono">Direct Email</p>
+                <a
+                  href={`mailto:${profile.contact.email}`}
+                  className="text-xl sm:text-2xl font-bold text-accent hover:underline underline-offset-4 decoration-2 block truncate"
+                >
+                  {profile.contact.email}
+                </a>
+              </div>
+
+              {/* Quick Links / Channels */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <a
+                  href={profile.contact.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-4 rounded-[2px] border border-line hover:border-accent bg-surface/20 flex items-center justify-between group transition-colors"
+                >
+                  <div>
+                    <span className="text-[11px] font-mono text-ink-2 block">Quick Chat</span>
+                    <span className="text-sm font-semibold text-ink group-hover:text-accent transition-colors">WhatsApp</span>
+                  </div>
+                  <ArrowUpRight className="w-4 h-4 text-ink-2 group-hover:text-accent transition-colors" aria-hidden="true" />
+                </a>
+
+                <a
+                  href={profile.contact.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-4 rounded-[2px] border border-line hover:border-accent bg-surface/20 flex items-center justify-between group transition-colors"
+                >
+                  <div>
+                    <span className="text-[11px] font-mono text-ink-2 block">Network</span>
+                    <span className="text-sm font-semibold text-ink group-hover:text-accent transition-colors">LinkedIn</span>
+                  </div>
+                  <ArrowUpRight className="w-4 h-4 text-ink-2 group-hover:text-accent transition-colors" aria-hidden="true" />
+                </a>
+
+                <a
+                  href={profile.contact.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-4 rounded-[2px] border border-line hover:border-accent bg-surface/20 flex items-center justify-between group transition-colors"
+                >
+                  <div>
+                    <span className="text-[11px] font-mono text-ink-2 block">Code</span>
+                    <span className="text-sm font-semibold text-ink group-hover:text-accent transition-colors">GitHub</span>
+                  </div>
+                  <ArrowUpRight className="w-4 h-4 text-ink-2 group-hover:text-accent transition-colors" aria-hidden="true" />
+                </a>
+
+                <a
+                  href={profile.contact.fiverr}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-4 rounded-[2px] border border-line hover:border-accent bg-surface/20 flex items-center justify-between group transition-colors"
+                >
+                  <div>
+                    <span className="text-[11px] font-mono text-ink-2 block">Reviews</span>
+                    <span className="text-sm font-semibold text-ink group-hover:text-accent transition-colors">Fiverr</span>
+                  </div>
+                  <ArrowUpRight className="w-4 h-4 text-ink-2 group-hover:text-accent transition-colors" aria-hidden="true" />
+                </a>
+              </div>
             </div>
 
-            {/* Quick Links / Channels */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <a
-                href={profile.contact.whatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-5 rounded border border-line hover:border-accent bg-surface/20 flex items-center justify-between group transition-colors"
-              >
-                <div>
-                  <span className="text-xs font-mono text-ink-2 block">Quick Chat</span>
-                  <span className="font-semibold text-ink group-hover:text-accent transition-colors">WhatsApp</span>
-                </div>
-                <ArrowUpRight className="w-5 h-5 text-ink-2 group-hover:text-accent transition-colors" aria-hidden="true" />
-              </a>
-
-              <a
-                href={profile.contact.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-5 rounded border border-line hover:border-accent bg-surface/20 flex items-center justify-between group transition-colors"
-              >
-                <div>
-                  <span className="text-xs font-mono text-ink-2 block">Professional Network</span>
-                  <span className="font-semibold text-ink group-hover:text-accent transition-colors">LinkedIn</span>
-                </div>
-                <ArrowUpRight className="w-5 h-5 text-ink-2 group-hover:text-accent transition-colors" aria-hidden="true" />
-              </a>
-
-              <a
-                href={profile.contact.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-5 rounded border border-line hover:border-accent bg-surface/20 flex items-center justify-between group transition-colors"
-              >
-                <div>
-                  <span className="text-xs font-mono text-ink-2 block">Open Source Code</span>
-                  <span className="font-semibold text-ink group-hover:text-accent transition-colors">GitHub</span>
-                </div>
-                <ArrowUpRight className="w-5 h-5 text-ink-2 group-hover:text-accent transition-colors" aria-hidden="true" />
-              </a>
-
-              <a
-                href={profile.contact.fiverr}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-5 rounded border border-line hover:border-accent bg-surface/20 flex items-center justify-between group transition-colors"
-              >
-                <div>
-                  <span className="text-xs font-mono text-ink-2 block">Freelance Client Reviews</span>
-                  <span className="font-semibold text-ink group-hover:text-accent transition-colors">Fiverr Profile</span>
-                </div>
-                <ArrowUpRight className="w-5 h-5 text-ink-2 group-hover:text-accent transition-colors" aria-hidden="true" />
-              </a>
+            {/* Cols 7–12: Contact form */}
+            <div className="col-span-4 md:col-start-7 md:col-span-6 space-y-6 pt-8 md:pt-0 border-t md:border-t-0 border-line">
+              <h3 className="t-h3 text-ink">{contact.formHeading}</h3>
+              <ContactForm {...contact} fallbackEmail={profile.contact.email} />
             </div>
-          </div>
+          </Grid>
         </Container>
       </Realm>
     </div>
