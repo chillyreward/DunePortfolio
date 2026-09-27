@@ -31,7 +31,7 @@ export function NavLinks({ items, className }: NavLinksProps) {
                 href={item.href}
                 aria-current={active ? 'page' : undefined}
                 className={cn(
-                  'text-[15px] font-medium text-ink transition-colors',
+                  'inline-flex items-center min-h-11 text-[15px] font-medium text-ink transition-colors',
                   'focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-[3px] rounded-sm',
                   active
                     ? 'underline decoration-1 underline-offset-[6px]'

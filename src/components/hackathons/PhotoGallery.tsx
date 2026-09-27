@@ -90,12 +90,10 @@ export function PhotoGallery({ photos, heading, className }: PhotoGalleryProps) 
     <div className={cn('space-y-6', className)}>
       {heading && (
         <div className="flex items-center justify-between">
-          <h4 className="text-sm font-mono uppercase tracking-widest text-ink font-semibold">
+          <h3 className="t-h3 text-ink">
             {heading}
-          </h4>
-          <span className="text-xs font-mono text-ink-2">
-            {photos.length} photos
-          </span>
+          </h3>
+          <span className="t-meta">{photos.length}</span>
         </div>
       )}
 
@@ -110,7 +108,7 @@ export function PhotoGallery({ photos, heading, className }: PhotoGalleryProps) 
             type="button"
             onClick={() => openLightbox(idx)}
             aria-label={`View photo ${idx + 1} of ${photos.length}: ${photo.alt}`}
-            className="group relative aspect-[4/3] w-full rounded-[2px] overflow-hidden border border-line bg-surface/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent hover:border-mark transition-all"
+            className="group relative aspect-[4/3] w-full rounded overflow-hidden bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
           >
             <Image
               src={photo.src}
@@ -120,9 +118,6 @@ export function PhotoGallery({ photos, heading, className }: PhotoGalleryProps) 
               className="object-cover group-hover:scale-105 transition-transform duration-300"
             />
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
-            <div className="absolute bottom-1 right-1 px-1.5 py-0.5 rounded-[2px] bg-black/75 text-[10px] font-mono text-white/90 opacity-0 group-hover:opacity-100 transition-opacity">
-              {idx + 1}/{photos.length}
-            </div>
           </button>
         ))}
       </div>
@@ -140,20 +135,20 @@ export function PhotoGallery({ photos, heading, className }: PhotoGalleryProps) 
           }
         }}
         aria-label="Hackathon photo lightbox"
-        className="backdrop:bg-black/90 backdrop:backdrop-blur-sm p-0 bg-transparent text-ink max-w-[95vw] md:max-w-4xl w-full m-auto rounded-[2px] outline-none shadow-2xl open:flex open:flex-col"
+        className="backdrop:bg-black/90 p-0 bg-transparent text-ink max-w-[95vw] md:max-w-4xl w-full m-auto rounded outline-none open:flex open:flex-col"
       >
         {currentPhoto && (
           <div className="relative bg-bg border border-line rounded-[2px] overflow-hidden flex flex-col max-h-[90vh]">
             {/* Header / Top bar */}
             <div className="flex items-center justify-between px-4 py-3 border-b border-line bg-surface/60">
-              <span className="text-xs font-mono font-medium text-ink">
+              <span className="t-meta">
                 Photo {selectedIndex! + 1} of {photos.length}
               </span>
               <button
                 type="button"
                 onClick={closeLightbox}
                 aria-label="Close lightbox"
-                className="p-1.5 rounded-[2px] text-ink hover:bg-surface border border-line/60 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                className="w-11 h-11 inline-flex items-center justify-center rounded text-ink hover:bg-surface border border-line/60 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               >
                 <X className="w-4 h-4" aria-hidden="true" />
               </button>
@@ -177,7 +172,7 @@ export function PhotoGallery({ photos, heading, className }: PhotoGalleryProps) 
                 type="button"
                 onClick={showPrev}
                 aria-label="Previous photo"
-                className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-[2px] bg-black/60 hover:bg-black/85 text-white border border-white/20 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-11 h-11 inline-flex items-center justify-center rounded bg-black/60 hover:bg-black/85 text-white border border-white/20 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               >
                 <ChevronLeft className="w-5 h-5" aria-hidden="true" />
               </button>
@@ -186,7 +181,7 @@ export function PhotoGallery({ photos, heading, className }: PhotoGalleryProps) 
                 type="button"
                 onClick={showNext}
                 aria-label="Next photo"
-                className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-[2px] bg-black/60 hover:bg-black/85 text-white border border-white/20 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-11 h-11 inline-flex items-center justify-center rounded bg-black/60 hover:bg-black/85 text-white border border-white/20 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               >
                 <ChevronRight className="w-5 h-5" aria-hidden="true" />
               </button>
@@ -194,7 +189,7 @@ export function PhotoGallery({ photos, heading, className }: PhotoGalleryProps) 
 
             {/* Caption bar */}
             <div className="px-4 py-3 border-t border-line bg-surface/60">
-              <p className="text-xs sm:text-sm text-ink-2 font-mono text-center">
+              <p className="t-small text-ink-2 text-center">
                 {currentPhoto.alt}
               </p>
             </div>

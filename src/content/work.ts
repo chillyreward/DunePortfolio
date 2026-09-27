@@ -5,7 +5,9 @@ export const workContent = {
   filters: [
     { label: 'All', value: 'all' },
     { label: 'Products', value: 'product' },
-    { label: 'Client Work', value: 'client' },
+    { label: 'Client work', value: 'client' },
     { label: 'Experiments', value: 'experiment' },
   ] as const,
+  filterLabel: 'Filter projects by type',
+  resultsLabel: 'projects shown',
 };

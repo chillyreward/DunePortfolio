@@ -10,6 +10,12 @@ export const aboutContent = {
   hackathonsHeading: 'Hackathons & Competitions',
   hackathonsLead:
     'High-velocity prototype sprints and verified competition outcomes.',
+  skillsLead: 'Grouped by how much I have actually used each tool.',
+  periodLabel: 'Years',
+  graduationLabel: 'Expected graduation',
+  galleryHeading: 'Red, White & Build',
+  contactCta: 'Get in touch',
+  cvCta: 'Download CV',
   closingHeading: 'Looking Forward',
   closingText:
     'Focused on completing my degree at CUEA, expanding engineering depth in machine learning systems, and collaborating with teams building high-impact products.',

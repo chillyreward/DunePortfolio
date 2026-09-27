@@ -177,47 +177,24 @@ export function ShaiHulud() {
       {showToast && (
         <div
           role="status"
-          className="fixed bottom-6 right-6 z-[10000] max-w-md bg-[#2A2D2E] text-[#EBE6DC] border border-[#DAA520] p-5 shadow-2xl rounded-[2px] space-y-3 font-mono text-xs animate-in fade-in slide-in-from-bottom-4 duration-300"
+          data-realm="fremen"
+          className="fixed bottom-6 right-6 left-6 sm:left-auto z-[10000] max-w-md bg-bg text-ink border border-line p-5 rounded space-y-3"
         >
-          <div className="flex items-start justify-between gap-3">
-            <div className="flex items-center gap-2 text-[#DAA520] font-bold uppercase tracking-wider text-[11px]">
-              <span className="inline-block w-2 h-2 rounded-full bg-[#DAA520] animate-ping" />
-              <span>{easterEgg.title}</span>
-            </div>
+          <p className="t-meta text-mark">{easterEgg.title}</p>
+          <p className="t-epigraph">{easterEgg.quote}</p>
+          <p className="t-meta">{easterEgg.attribution}</p>
+          <div className="flex items-center justify-end gap-3 pt-2 border-t border-line">
             <button
               type="button"
               onClick={() => setShowToast(false)}
-              className="text-[#AAAFB2] hover:text-[#EBE6DC] text-base leading-none p-1 focus:outline-none focus:ring-1 focus:ring-[#DAA520]"
-              aria-label={easterEgg.dismiss}
-            >
-              ×
-            </button>
-          </div>
-
-          <p className="text-sm font-sans italic text-[#EBE6DC] leading-snug">
-            &ldquo;{easterEgg.quote}&rdquo;
-          </p>
-
-          <p className="text-[11px] text-[#AAAFB2]">
-            {easterEgg.attribution}
-          </p>
-
-          <div className="flex items-center justify-end gap-3 pt-2 border-t border-[#454A4D]">
-            <button
-              type="button"
-              onClick={() => {
-                setShowToast(false);
-              }}
-              className="px-3 py-1.5 text-xs text-[#AAAFB2] hover:text-[#EBE6DC] transition-colors focus:outline-none focus:ring-1 focus:ring-[#DAA520]"
+              className="t-small min-h-11 px-3 text-ink-2 hover:text-ink transition-colors"
             >
               {easterEgg.dismiss}
             </button>
             <button
               type="button"
-              onClick={() => {
-                triggerWorm();
-              }}
-              className="px-3 py-1.5 text-xs font-semibold bg-[#DAA520] text-[#1C1824] hover:bg-[#E5B535] transition-colors rounded-[2px] focus:outline-none focus:ring-2 focus:ring-[#DAA520]"
+              onClick={() => triggerWorm()}
+              className="t-small min-h-11 px-4 font-medium bg-accent text-accent-ink hover:bg-accent/90 transition-colors rounded"
             >
               {easterEgg.replay}
             </button>

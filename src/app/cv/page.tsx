@@ -36,12 +36,12 @@ export default function CvPage() {
     <Realm name="corrino" className="min-h-screen py-10 md:py-16">
       <Container>
         {/* Top actions: Download & Print (hidden on print) */}
-        <div className="max-w-[820px] mx-auto flex items-center justify-between pb-8 print:hidden">
+        <div className="max-w-[820px] mx-auto flex flex-wrap items-center justify-between gap-4 pb-8 print:hidden">
           <div className="flex items-center gap-3">
-            <span className="text-xs font-mono uppercase tracking-widest text-ink font-semibold">
+            <span className="text-[15px] font-semibold text-ink">
               Curriculum Vitae
             </span>
-            <span className="text-xs font-mono text-ink-2">
+            <span className="text-xs text-ink-2">
               (A4 Print Optimised)
             </span>
           </div>
@@ -71,7 +71,7 @@ export default function CvPage() {
               {profile.positioning}
             </p>
 
-            <div className="pt-2 text-xs font-mono text-ink-2 flex flex-wrap gap-x-3 gap-y-1 items-center">
+            <div className="pt-2 text-xs text-ink-2 flex flex-wrap gap-x-3 gap-y-1 items-center">
               <span>{profile.education.location}</span>
               <span aria-hidden="true">·</span>
               <a href={`mailto:${profile.contact.email}`} className="text-ink hover:underline">
@@ -94,7 +94,7 @@ export default function CvPage() {
 
           {/* 2. Summary */}
           <section className="cv-entry space-y-2">
-            <h2 className="text-xs font-mono uppercase tracking-widest text-ink font-bold cv-heading">
+            <h2 className="text-[15px] font-semibold text-ink cv-heading">
               Summary
             </h2>
             <p className="text-sm text-ink-2 leading-relaxed">
@@ -106,7 +106,7 @@ export default function CvPage() {
 
           {/* 3. Education */}
           <section className="cv-entry space-y-3">
-            <h2 className="text-xs font-mono uppercase tracking-widest text-ink font-bold cv-heading">
+            <h2 className="text-[15px] font-semibold text-ink cv-heading">
               {cv.headings.education}
             </h2>
             <div className="space-y-1">
@@ -114,14 +114,14 @@ export default function CvPage() {
                 <span className="font-semibold text-ink text-sm">
                   {profile.education.institution}
                 </span>
-                <span className="text-xs font-mono text-ink-2">
+                <span className="text-xs text-ink-2">
                   {profile.education.period} (expected)
                 </span>
               </div>
               <p className="text-sm text-ink-2 font-medium">
                 {profile.education.degree}
               </p>
-              <p className="text-xs font-mono text-ink-2">
+              <p className="text-xs text-ink-2">
                 {profile.education.location}
               </p>
             </div>
@@ -131,7 +131,7 @@ export default function CvPage() {
 
           {/* 4. Projects */}
           <section className="space-y-6 print:space-y-2">
-            <h2 className="text-xs font-mono uppercase tracking-widest text-ink font-bold cv-heading">
+            <h2 className="text-[15px] font-semibold text-ink cv-heading">
               {cv.headings.projects}
             </h2>
 
@@ -145,7 +145,7 @@ export default function CvPage() {
                     <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
                       <h3 className="text-sm font-bold text-ink">
                         {p.title}{' '}
-                        <span className="text-xs font-mono font-normal text-ink-2">
+                        <span className="text-xs font-normal text-ink-2">
                           ({typeLabel}{p.year ? ` · ${p.year}` : ''})
                         </span>
                       </h3>
@@ -154,7 +154,7 @@ export default function CvPage() {
                           href={p.liveUrl!}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-xs font-mono text-accent hover:underline"
+                          className="text-xs text-accent hover:underline"
                         >
                           {liveHost}
                         </a>
@@ -165,7 +165,7 @@ export default function CvPage() {
                       {p.summary}
                     </p>
 
-                    <div className="text-[11px] font-mono text-ink-2 space-y-0.5 pt-1 print:pt-0">
+                    <div className="text-[11px] text-ink-2 space-y-0.5 pt-1 print:pt-0">
                       {p.role && <p><span className="text-ink font-medium">Role:</span> {p.role}</p>}
                       {p.stack && p.stack.length > 0 && (
                         <p><span className="text-ink font-medium">Stack:</span> {p.stack.join(', ')}</p>
@@ -181,7 +181,7 @@ export default function CvPage() {
 
           {/* 5. Hackathons */}
           <section className="space-y-6 print:space-y-2">
-            <h2 className="text-xs font-mono uppercase tracking-widest text-ink font-bold cv-heading">
+            <h2 className="text-[15px] font-semibold text-ink cv-heading">
               {cv.headings.hackathons}
             </h2>
 
@@ -192,17 +192,17 @@ export default function CvPage() {
                     <h3 className="text-sm font-bold text-ink">
                       {h.placement} — {h.name}
                     </h3>
-                    <span className="text-xs font-mono text-ink-2">
+                    <span className="text-xs text-ink-2">
                       {h.date} · {h.location}
                     </span>
                   </div>
-                  <p className="text-xs font-mono text-ink-2">
+                  <p className="text-xs text-ink-2">
                     Organized by {h.organizer}{h.prize ? ` · Prize: ${h.prize}` : ''}
                   </p>
                   <p className="text-xs md:text-sm text-ink-2 leading-relaxed">
                     {h.summary}
                   </p>
-                  <p className="text-[11px] font-mono text-ink-2 pt-0.5 print:pt-0">
+                  <p className="text-[11px] text-ink-2 pt-0.5 print:pt-0">
                     <span className="text-ink font-medium">Built:</span> {h.project}
                     {h.team && h.team.length > 0 && ` · Team: ${h.team.join(', ')}`}
                   </p>
@@ -215,21 +215,21 @@ export default function CvPage() {
 
           {/* 6. Skills */}
           <section className="cv-entry space-y-3">
-            <h2 className="text-xs font-mono uppercase tracking-widest text-ink font-bold cv-heading">
+            <h2 className="text-[15px] font-semibold text-ink cv-heading">
               {cv.headings.skills}
             </h2>
 
             <div className="text-xs space-y-1.5">
               {shippedSkills.length > 0 && (
                 <p>
-                  <span className="font-bold text-ink font-mono">{cv.skillLabels.shipped}:</span>{' '}
-                  <span className="text-ink-2 font-mono">{shippedSkills.join(', ')}</span>
+                  <span className="font-bold text-ink">{cv.skillLabels.shipped}:</span>{' '}
+                  <span className="text-ink-2">{shippedSkills.join(', ')}</span>
                 </p>
               )}
               {learningSkills.length > 0 && (
                 <p>
-                  <span className="font-bold text-ink font-mono">{cv.skillLabels.learning}:</span>{' '}
-                  <span className="text-ink-2 font-mono">{learningSkills.join(', ')}</span>
+                  <span className="font-bold text-ink">{cv.skillLabels.learning}:</span>{' '}
+                  <span className="text-ink-2">{learningSkills.join(', ')}</span>
                 </p>
               )}
             </div>
@@ -239,10 +239,10 @@ export default function CvPage() {
 
           {/* 7. Links */}
           <section className="cv-entry space-y-2">
-            <h2 className="text-xs font-mono uppercase tracking-widest text-ink font-bold cv-heading">
+            <h2 className="text-[15px] font-semibold text-ink cv-heading">
               {cv.headings.links}
             </h2>
-            <div className="text-xs font-mono text-ink-2 flex flex-wrap gap-x-4 gap-y-1">
+            <div className="text-xs text-ink-2 flex flex-wrap gap-x-4 gap-y-1">
               <span>
                 Portfolio: <a href="https://lennydev.vercel.app" className="text-ink hover:underline">lennydev.vercel.app</a>
               </span>

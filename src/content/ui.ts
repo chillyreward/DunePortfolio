@@ -1,0 +1,37 @@
+import type { ProjectType } from './schema';
+
+// Shared interface labels. Page-specific copy lives in its own content file.
+export const ui = {
+  projectTypes: {
+    product: 'Product',
+    client: 'Client work',
+    experiment: 'Experiment',
+  } satisfies Record<ProjectType, string>,
+  project: {
+    role: 'Role',
+    team: 'Team',
+    stack: 'Stack',
+    year: 'Year',
+    caseStudy: 'Read case study',
+    visit: 'Visit site',
+    source: 'Source code',
+    allWork: 'All work',
+    next: 'Next project',
+    overview: 'Overview',
+    features: 'Key features',
+    story: 'Story',
+    gallery: 'Screens',
+  },
+  hackathon: {
+    prize: 'Prize',
+    project: 'Project',
+    team: 'Team',
+    organiser: 'Organised by',
+  },
+  footer: {
+    contact: 'Get in touch',
+    elsewhere: 'Elsewhere',
+    site: 'Site',
+    backToTop: 'Back to top',
+  },
+};

@@ -140,10 +140,10 @@ export function ContactForm({
           tabIndex={-1}
           className="p-4 rounded-[2px] border border-line bg-surface/70 text-ink outline-none focus-visible:ring-2 focus-visible:ring-accent space-y-2"
         >
-          <p className="text-xs font-mono font-bold uppercase tracking-wider text-ink flex items-center gap-1.5">
+          <p className="t-small font-semibold text-ink flex items-center gap-1.5">
             <span
               aria-hidden="true"
-              className="inline-flex items-center justify-center w-4 h-4 rounded-full border border-ink text-[10px]"
+              className="inline-flex items-center justify-center w-4 h-4 rounded border border-ink text-[10px]"
             >
               !
             </span>
@@ -151,7 +151,7 @@ export function ContactForm({
           </p>
 
           {hasFieldErrors && (
-            <ul className="text-xs font-mono space-y-1 pl-5 list-disc text-ink-2">
+            <ul className="t-small space-y-1 pl-5 list-disc text-ink-2">
               {state.fieldErrors?.name && (
                 <li>
                   <a href="#field-name" className="underline hover:text-ink">
@@ -188,7 +188,7 @@ export function ContactForm({
               Direct email:{' '}
               <a
                 href={`mailto:${fallbackEmail}`}
-                className="text-accent underline font-mono"
+                className="text-accent underline"
               >
                 {fallbackEmail}
               </a>
@@ -218,11 +218,11 @@ export function ContactForm({
         {state.fieldErrors?.name && (
           <p
             id="field-name-error"
-            className="t-small text-ink text-xs font-mono mt-1.5 flex items-center gap-1.5"
+            className="t-small text-ink mt-1.5 flex items-center gap-1.5"
           >
             <span
               aria-hidden="true"
-              className="inline-flex items-center justify-center w-3.5 h-3.5 rounded-full border border-ink text-[9px] font-bold"
+              className="inline-flex items-center justify-center w-3.5 h-3.5 rounded border border-ink text-[9px] font-bold"
             >
               !
             </span>
@@ -255,11 +255,11 @@ export function ContactForm({
         {state.fieldErrors?.email && (
           <p
             id="field-email-error"
-            className="t-small text-ink text-xs font-mono mt-1.5 flex items-center gap-1.5"
+            className="t-small text-ink mt-1.5 flex items-center gap-1.5"
           >
             <span
               aria-hidden="true"
-              className="inline-flex items-center justify-center w-3.5 h-3.5 rounded-full border border-ink text-[9px] font-bold"
+              className="inline-flex items-center justify-center w-3.5 h-3.5 rounded border border-ink text-[9px] font-bold"
             >
               !
             </span>
@@ -307,11 +307,11 @@ export function ContactForm({
         {state.fieldErrors?.topic && (
           <p
             id="field-topic-error"
-            className="t-small text-ink text-xs font-mono mt-1.5 flex items-center gap-1.5"
+            className="t-small text-ink mt-1.5 flex items-center gap-1.5"
           >
             <span
               aria-hidden="true"
-              className="inline-flex items-center justify-center w-3.5 h-3.5 rounded-full border border-ink text-[9px] font-bold"
+              className="inline-flex items-center justify-center w-3.5 h-3.5 rounded border border-ink text-[9px] font-bold"
             >
               !
             </span>
@@ -343,11 +343,11 @@ export function ContactForm({
         {state.fieldErrors?.message && (
           <p
             id="field-message-error"
-            className="t-small text-ink text-xs font-mono mt-1.5 flex items-center gap-1.5"
+            className="t-small text-ink mt-1.5 flex items-center gap-1.5"
           >
             <span
               aria-hidden="true"
-              className="inline-flex items-center justify-center w-3.5 h-3.5 rounded-full border border-ink text-[9px] font-bold"
+              className="inline-flex items-center justify-center w-3.5 h-3.5 rounded border border-ink text-[9px] font-bold"
             >
               !
             </span>

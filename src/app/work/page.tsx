@@ -22,10 +22,10 @@ export default function WorkPage() {
         {/* Header */}
         <div className="pb-8 border-b border-line">
           <RealmMarker realm="atreides" className="mb-4" />
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-ink tracking-tight mb-4">
+          <h1 className="t-h1 text-ink mb-4">
             {workContent.heading}
           </h1>
-          <p className="t-lead text-ink-2 max-w-2xl">
+          <p className="t-body text-ink-2">
             {workContent.lead}
           </p>
         </div>

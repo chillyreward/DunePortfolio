@@ -16,7 +16,8 @@ import { homePage } from '@/content/home';
 import { contact } from '@/content/contact';
 import { getEpigraph } from '@/content/epigraphs';
 import { getSiteUrl } from '@/lib/site-url';
-import { ArrowUpRight } from 'lucide-react';
+import { Epigraph } from '@/components/ui/Epigraph';
+import { TextLink } from '@/components/ui/TextLink';
 
 export default function HomePage() {
   const selectedProjects = homePage.selectedWork.projectSlugs
@@ -24,6 +25,12 @@ export default function HomePage() {
     .filter((p): p is NonNullable<typeof p> => p !== undefined && isVisible(p));
 
   const homeEpigraph = getEpigraph('home-about');
+  const socials = [
+    { label: homePage.contact.socials.linkedin, href: profile.contact.linkedin },
+    { label: homePage.contact.socials.github, href: profile.contact.github },
+    { label: homePage.contact.socials.fiverr, href: profile.contact.fiverr },
+    ...(profile.contact.x ? [{ label: homePage.contact.socials.x, href: profile.contact.x }] : []),
+  ];
   const siteUrl = getSiteUrl();
   const allSkills = skillGroups.flatMap((g) => g.skills);
   const sameAs = [
@@ -119,160 +126,76 @@ export default function HomePage() {
       </Realm>
 
       {/* 4. About Teaser (Arrakis) */}
-      <Realm name="arrakis" className="py-20 md:py-28 border-b border-line">
+      <Realm name="arrakis" className="py-24 md:py-36 border-b border-line">
         <Container>
-          {/* Optional Dune Epigraph Slot */}
           {homeEpigraph && (
-            <div className="mb-16 py-8 border-y border-line/60">
-              <blockquote className="t-lead italic text-ink max-w-2xl">
-                “{homeEpigraph.quote}”
-                <cite className="block t-meta text-xs uppercase tracking-wider text-ink-2 not-italic mt-3">
-                  — {homeEpigraph.attribution}
-                </cite>
-              </blockquote>
-            </div>
+            <Epigraph
+              text={homeEpigraph.quote}
+              attribution={homeEpigraph.attribution}
+              className="max-w-2xl mb-20"
+            />
           )}
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            {/* Left: About Portrait */}
-            <div className="lg:col-span-5 relative">
-              <div className="relative aspect-square w-full max-w-md mx-auto rounded overflow-hidden border border-line bg-surface/30">
+            <div className="lg:col-span-5">
+              <div className="relative aspect-square w-full max-w-md overflow-hidden rounded bg-surface">
                 <Image
                   src={profile.portraitAbout.src}
                   alt={profile.portraitAbout.alt}
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
-                  className="object-cover"
+                  className="object-cover grayscale"
                 />
               </div>
             </div>
 
-            {/* Right: Teaser content */}
             <div className="lg:col-span-7">
-              <span className="t-meta text-accent uppercase tracking-widest text-xs font-mono mb-2 block">
-                Background & Education
-              </span>
               <h2 className="t-h2 text-ink mb-6">{homePage.aboutTeaser.heading}</h2>
-              <div className="space-y-4 t-body text-ink-2 mb-8 leading-relaxed">
-                <p>
-                  I am a Computer Science student at Catholic University of Eastern Africa (CUEA) in Nairobi,
-                  focused on practical full-stack product engineering and advancing into applied machine learning.
-                </p>
-                <p>
-                  From winning the U.S. Embassy Kenya Hackathon with SmartChama to shipping production client platforms
-                  and trade marketplaces, I prioritize robust architectures, typed systems, and measurable real-world utility.
-                </p>
-              </div>
-
-              <div className="flex flex-wrap items-center gap-4">
-                <Button href="/about" variant="primary">
-                  {homePage.aboutTeaser.cta} →
-                </Button>
-                {profile.cvPath && (
-                  <Button href={profile.cvPath} download variant="ghost">
-                    Download CV
-                  </Button>
-                )}
-              </div>
+              <p className="t-body text-ink mb-4">{homePage.hero.tagline}</p>
+              <p className="t-meta mb-8">
+                {profile.education.degree}, {profile.education.institution}, {profile.education.period}
+              </p>
+              <Button href="/about" variant="ghost">
+                {homePage.aboutTeaser.cta}
+              </Button>
             </div>
           </div>
         </Container>
       </Realm>
 
-      {/* 5. Contact Section (Arrakis) */}
-      <Realm name="arrakis" id="contact" className="py-20 md:py-32">
+      {/* 5. Contact (Arrakis) */}
+      <Realm name="arrakis" id="contact" className="py-24 md:py-36">
         <Container>
-          <Grid className="gap-12 lg:gap-16 items-start">
-            {/* Cols 1–5: Direct contact info & channels */}
-            <div className="col-span-4 md:col-span-5 space-y-8">
-              <div>
-                <span className="t-meta text-accent uppercase tracking-widest text-xs font-mono mb-3 block">
-                  Direct Contact
-                </span>
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-ink tracking-tight mb-4">
-                  Let&apos;s build something together.
-                </h2>
-                <p className="t-lead text-ink-2 text-base md:text-lg">
-                  {homePage.contact.lead}
-                </p>
-                {profile.availability && (
-                  <div className="mt-4 inline-flex items-center gap-2 px-3 py-1 rounded-[2px] bg-surface/60 border border-line text-xs font-mono text-ink">
-                    <span className="w-2 h-2 rounded-full bg-emerald-500" aria-hidden="true" />
-                    <span>{profile.availability}</span>
-                  </div>
-                )}
-              </div>
+          <Grid className="gap-16 lg:gap-16 items-start">
+            <div className="col-span-4 md:col-span-6">
+              <h2 className="t-h2 text-ink mb-4">{homePage.contact.heading}</h2>
+              <p className="t-body text-ink-2 mb-10">{profile.availability}</p>
 
-              {/* Direct Email Display */}
-              <div className="p-6 rounded-[2px] border border-line bg-surface/30">
-                <p className="t-meta text-xs uppercase tracking-wider text-ink-2 mb-1.5 font-mono">Direct Email</p>
-                <a
-                  href={`mailto:${profile.contact.email}`}
-                  className="text-xl sm:text-2xl font-bold text-accent hover:underline underline-offset-4 decoration-2 block truncate"
-                >
-                  {profile.contact.email}
-                </a>
-              </div>
+              <a
+                href={`mailto:${profile.contact.email}`}
+                className="block text-accent font-semibold underline underline-offset-[6px] decoration-1 hover:decoration-2 break-all mb-8"
+                style={{ fontSize: 'clamp(22px, 3vw, 40px)', lineHeight: 1.15 }}
+              >
+                {profile.contact.email}
+              </a>
 
-              {/* Quick Links / Channels */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <a
-                  href={profile.contact.whatsapp}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-4 rounded-[2px] border border-line hover:border-accent bg-surface/20 flex items-center justify-between group transition-colors"
-                >
-                  <div>
-                    <span className="text-[11px] font-mono text-ink-2 block">Quick Chat</span>
-                    <span className="text-sm font-semibold text-ink group-hover:text-accent transition-colors">WhatsApp</span>
-                  </div>
-                  <ArrowUpRight className="w-4 h-4 text-ink-2 group-hover:text-accent transition-colors" aria-hidden="true" />
-                </a>
+              <Button href={profile.contact.whatsapp} variant="ghost" className="mb-10">
+                {homePage.contact.whatsapp}
+              </Button>
 
-                <a
-                  href={profile.contact.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-4 rounded-[2px] border border-line hover:border-accent bg-surface/20 flex items-center justify-between group transition-colors"
-                >
-                  <div>
-                    <span className="text-[11px] font-mono text-ink-2 block">Network</span>
-                    <span className="text-sm font-semibold text-ink group-hover:text-accent transition-colors">LinkedIn</span>
-                  </div>
-                  <ArrowUpRight className="w-4 h-4 text-ink-2 group-hover:text-accent transition-colors" aria-hidden="true" />
-                </a>
-
-                <a
-                  href={profile.contact.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-4 rounded-[2px] border border-line hover:border-accent bg-surface/20 flex items-center justify-between group transition-colors"
-                >
-                  <div>
-                    <span className="text-[11px] font-mono text-ink-2 block">Code</span>
-                    <span className="text-sm font-semibold text-ink group-hover:text-accent transition-colors">GitHub</span>
-                  </div>
-                  <ArrowUpRight className="w-4 h-4 text-ink-2 group-hover:text-accent transition-colors" aria-hidden="true" />
-                </a>
-
-                <a
-                  href={profile.contact.fiverr}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-4 rounded-[2px] border border-line hover:border-accent bg-surface/20 flex items-center justify-between group transition-colors"
-                >
-                  <div>
-                    <span className="text-[11px] font-mono text-ink-2 block">Reviews</span>
-                    <span className="text-sm font-semibold text-ink group-hover:text-accent transition-colors">Fiverr</span>
-                  </div>
-                  <ArrowUpRight className="w-4 h-4 text-ink-2 group-hover:text-accent transition-colors" aria-hidden="true" />
-                </a>
-              </div>
+              <ul className="flex flex-wrap gap-x-8">
+                {socials.map((s) => (
+                  <li key={s.href}>
+                    <TextLink href={s.href} className="t-small inline-flex items-center min-h-11">
+                      {s.label}
+                    </TextLink>
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            {/* Cols 7–12: Contact form */}
-            <div className="col-span-4 md:col-start-7 md:col-span-6 space-y-6 pt-8 md:pt-0 border-t md:border-t-0 border-line">
-              <h3 className="t-h3 text-ink">{contact.formHeading}</h3>
+            <div className="col-span-4 md:col-start-8 md:col-span-5">
+              <h3 className="t-h3 text-ink mb-6">{contact.formHeading}</h3>
               <ContactForm {...contact} fallbackEmail={profile.contact.email} />
             </div>
           </Grid>

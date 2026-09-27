@@ -146,7 +146,13 @@ export const HomePageSchema = z.object({
   }),
   contact: z.object({
     heading: z.string(),
-    lead: z.string(),
+    whatsapp: z.string(),
+    socials: z.object({
+      linkedin: z.string(),
+      github: z.string(),
+      fiverr: z.string(),
+      x: z.string(),
+    }),
   }),
 });
 export type HomePage = z.infer<typeof HomePageSchema>;

@@ -32,7 +32,7 @@ Rules that keep it disciplined:
 - **One memorable thing:** the hero wordmark. Everything else is quiet.
 - **One typeface:** Archivo (variable, with a width axis). Width does the expressive work. No second family, no monospace labels.
 - **One signature motion:** on first load the hero wordmark resolves out of a heat-haze distortion (~1.4s, once). Disabled under `prefers-reduced-motion` and on coarse pointers (simple opacity fade instead). Nothing else animates on its own; only user-triggered transitions (hover, focus, open/close).
-- No all-caps labels, no eyebrow text above every heading, no `01 / 02` numbering unless the content really is a sequence (the hackathon timeline is), no `→` glued onto link text, no gradients, no glow, no drop shadows.
+- No all-caps labels, no eyebrow text above every heading, no `01 / 02` numbering unless the content really is a sequence (the hackathon timeline is), no `→` glued onto link text, no gradients, no glow, no drop shadows. (One exception: in `giedi` only, a soft radial rim light sits behind the hero portrait cutout so the black blazer separates from the black page.)
 - Emptiness is a feature: generous section spacing, lots of sand.
 
 ### Realms of Dune (Design Subsystem)

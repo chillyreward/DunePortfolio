@@ -1,122 +1,97 @@
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { hackathons } from '@/content/hackathons';
+import { ui } from '@/content/ui';
+import { TextLink } from '@/components/ui/TextLink';
 import { cn } from '@/lib/cn';
-import { Trophy, Award } from 'lucide-react';
 
 export interface HackathonTimelineProps {
   variant?: 'compact' | 'full';
   className?: string;
 }
 
+function yearOf(date: string): string {
+  return date.match(/\d{4}/)?.[0] ?? date;
+}
+
 export function HackathonTimeline({ variant = 'compact', className }: HackathonTimelineProps) {
   return (
-    <div className={cn('space-y-12', className)}>
+    <ol className={cn('border-b border-line', className)}>
       {hackathons.map((h) => {
-        const isWinner = h.placement.toLowerCase().includes('winner') || h.placement.toLowerCase().includes('first');
-        const hasPhotos = h.photos && h.photos.length > 0;
-        const mainPhoto = hasPhotos ? h.photos[4] || h.photos[0] : null; // photo-05 is award ceremony
+        // The first photo is the lead image (the winner's cheque for Red, White & Build).
+        const leadPhoto = variant === 'compact' ? h.photos[0] : undefined;
 
         return (
-          <div
-            key={h.id}
-            className="border border-line/60 rounded-lg p-6 sm:p-8 bg-surface/20 hover:border-line transition-colors"
-          >
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-              {/* Content side */}
-              <div className={cn(hasPhotos && variant === 'compact' ? 'lg:col-span-7' : 'lg:col-span-12')}>
-                {/* Meta header */}
-                <div className="flex flex-wrap items-center gap-3 mb-3">
-                  <span
-                    className={cn(
-                      'inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-mono font-medium',
-                      isWinner
-                        ? 'bg-mark/15 text-mark border border-mark/30'
-                        : 'bg-ink/5 text-ink-2 border border-line'
-                    )}
-                  >
-                    {isWinner ? <Trophy className="w-3.5 h-3.5" aria-hidden="true" /> : <Award className="w-3.5 h-3.5" aria-hidden="true" />}
-                    <span>{h.placement}</span>
-                  </span>
+          <li key={h.id} className="border-t border-line py-10 md:py-14">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start">
+              <p className="md:col-span-2 t-h2 text-ink">{yearOf(h.date)}</p>
 
-                  {h.prize && (
-                    <span className="text-xs font-mono text-ink font-semibold px-2 py-0.5 rounded bg-surface border border-line">
-                      Prize: {h.prize}
-                    </span>
-                  )}
+              <div className={cn('md:col-span-10', leadPhoto && 'lg:col-span-6')}>
+                <p className="t-meta mb-2">{h.placement}</p>
+                <h3 className="t-h3 text-ink mb-4">{h.name}</h3>
+                <p className="t-body text-ink-2 mb-6">{h.summary}</p>
 
-                  <span className="text-xs font-mono text-ink-2 ml-auto">
-                    {h.date} · {h.location}
-                  </span>
-                </div>
-
-                {/* Hackathon title & organizer */}
-                <h3 className="t-h3 text-ink mb-1">{h.name}</h3>
-                <p className="t-meta text-ink-2 font-mono text-xs mb-4">Organized by {h.organizer}</p>
-
-                {/* Summary */}
-                <p className="text-sm md:text-base text-ink-2 leading-relaxed mb-6">{h.summary}</p>
-
-                {/* Built Project Info */}
-                <div className="flex flex-wrap items-center gap-4 text-xs font-mono pt-4 border-t border-line/50">
-                  <span className="text-ink-2">Built Project:</span>
-                  {h.projectSlug ? (
-                    <Link
-                      href={`/work/${h.projectSlug}`}
-                      className="font-medium text-mark hover:underline underline-offset-4 decoration-1"
-                    >
-                      {h.project} →
-                    </Link>
-                  ) : (
-                    <span className="font-medium text-ink">{h.project}</span>
-                  )}
-                  {h.team && h.team.length > 0 && (
-                    <span className="text-ink-2 ml-auto">
-                      Team: {h.team.join(', ')}
-                    </span>
-                  )}
-                </div>
-
-                {/* Certificate thumbnail in full variant */}
-                {variant === 'full' && h.certificate && (
-                  <div className="mt-4 pt-4 border-t border-line/40 flex items-center gap-4">
-                    <div className="relative w-24 h-16 rounded-[2px] overflow-hidden border border-line bg-surface flex-shrink-0">
-                      <Image
-                        src={h.certificate.src}
-                        alt={h.certificate.alt}
-                        fill
-                        className="object-cover"
-                        sizes="96px"
-                      />
-                    </div>
-                    <div>
-                      <p className="text-xs font-mono font-medium text-ink">Official Certificate</p>
-                      <p className="text-[11px] font-mono text-ink-2">{h.certificate.alt}</p>
-                    </div>
+                <dl className="grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-4">
+                  <div>
+                    <dt className="t-meta">{ui.hackathon.organiser}</dt>
+                    <dd className="t-small text-ink">{h.organizer}</dd>
                   </div>
+                  <div>
+                    <dt className="t-meta">{ui.hackathon.project}</dt>
+                    <dd className="t-small">
+                      {h.projectSlug ? (
+                        <TextLink href={`/work/${h.projectSlug}`}>{h.project}</TextLink>
+                      ) : (
+                        <span className="text-ink">{h.project}</span>
+                      )}
+                    </dd>
+                  </div>
+                  {h.prize && (
+                    <div>
+                      <dt className="t-meta">{ui.hackathon.prize}</dt>
+                      <dd className="t-small text-ink">{h.prize}</dd>
+                    </div>
+                  )}
+                  <div>
+                    <dt className="t-meta">{h.date}</dt>
+                    <dd className="t-small text-ink">{h.location}</dd>
+                  </div>
+                  {h.team && h.team.length > 0 && (
+                    <div className="col-span-2 sm:col-span-4">
+                      <dt className="t-meta">{ui.hackathon.team}</dt>
+                      <dd className="t-small text-ink">{h.team.join(', ')}</dd>
+                    </div>
+                  )}
+                </dl>
+
+                {variant === 'full' && h.certificate && (
+                  <figure className="mt-8 max-w-xs">
+                    <div className="relative aspect-[4/3] w-full overflow-hidden rounded bg-surface">
+                      <Image src={h.certificate.src} alt={h.certificate.alt} fill sizes="320px" className="object-cover" />
+                    </div>
+                    <figcaption className="t-meta mt-2">{h.certificate.alt}</figcaption>
+                  </figure>
                 )}
               </div>
 
-              {/* Award / Cheque Photo in compact mode */}
-              {hasPhotos && variant === 'compact' && mainPhoto && (
-                <div className="lg:col-span-5 relative w-full aspect-[4/3] rounded overflow-hidden border border-line bg-surface/50">
-                  <Image
-                    src={mainPhoto.src}
-                    alt={mainPhoto.alt}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 38vw"
-                    className="object-cover"
-                  />
-                  <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent p-3">
-                    <p className="text-[11px] text-white/90 font-mono truncate">{mainPhoto.alt}</p>
+              {leadPhoto && (
+                <figure className="md:col-span-10 md:col-start-3 lg:col-span-4 lg:col-start-auto">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded bg-surface">
+                    <Image
+                      src={leadPhoto.src}
+                      alt={leadPhoto.alt}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 30vw"
+                      className="object-cover"
+                    />
                   </div>
-                </div>
+                  <figcaption className="t-meta mt-2">{leadPhoto.alt}</figcaption>
+                </figure>
               )}
             </div>
-          </div>
+          </li>
         );
       })}
-    </div>
+    </ol>
   );
 }

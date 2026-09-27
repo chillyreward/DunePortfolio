@@ -23,11 +23,12 @@ export const rawHomePage: HomePage = {
   aboutTeaser: {
     heading: 'About',
     lead: 'Developer background, technical studies, and product engineering in Nairobi.',
-    cta: 'Read full background',
+    cta: 'More about me',
   },
   contact: {
-    heading: 'Contact',
-    lead: 'Available for internships, freelance client projects, and full-time software engineering roles.',
+    heading: 'Work with me',
+    whatsapp: 'WhatsApp',
+    socials: { linkedin: 'LinkedIn', github: 'GitHub', fiverr: 'Fiverr', x: 'X' },
   },
 };
 

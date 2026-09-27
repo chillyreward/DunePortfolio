@@ -21,7 +21,7 @@ export function SiteHeader() {
         {/* Left: Brand / Home Link */}
         <Link
           href="/"
-          className="text-base font-bold text-ink rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-[3px]"
+          className="inline-flex items-center min-h-11 text-base font-bold text-ink rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-[3px]"
           style={{ fontStretch: '125%' }}
         >
           {profile.name}

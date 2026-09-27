@@ -38,9 +38,13 @@ export function Hero() {
           />
         </div>
 
-        <HeroHaze className="absolute inset-x-0 bottom-[47%] md:bottom-[29%] z-10 pointer-events-none mix-blend-multiply dark:mix-blend-difference">
+        <HeroHaze className="absolute inset-x-0 bottom-[47%] md:bottom-[25%] z-10 pointer-events-none mix-blend-multiply dark:mix-blend-difference">
           <Container>
-            <h1 id="hero-title" className="t-wordmark text-ink text-center whitespace-nowrap select-none">
+            <h1
+              id="hero-title"
+              className="t-wordmark text-ink text-center whitespace-nowrap select-none"
+              style={{ fontSize: 'clamp(56px, 19vw, 280px)' }}
+            >
               <span aria-hidden="true">{hero.wordmark}</span>
               <span className="sr-only">{hero.srName}</span>
             </h1>

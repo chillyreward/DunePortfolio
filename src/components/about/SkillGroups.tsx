@@ -12,23 +12,11 @@ export function SkillGroups({ className }: SkillGroupsProps) {
       {skillGroups.map((group) => (
         <div
           key={group.id}
-          className="flex flex-col border-t border-line/60 pt-6"
+          className="flex flex-col border-t border-line pt-6"
         >
           <h3 className="t-h3 text-ink mb-2">{group.title}</h3>
-          <p className="text-xs md:text-sm text-ink-2 leading-relaxed mb-6 font-sans">
-            {group.description}
-          </p>
-
-          <ul className="flex flex-wrap gap-2 mt-auto" role="list">
-            {group.skills.map((skill) => (
-              <li
-                key={skill}
-                className="inline-flex items-center text-xs font-mono font-medium px-2.5 py-1 rounded-[2px] bg-surface/50 border border-line text-ink"
-              >
-                {skill}
-              </li>
-            ))}
-          </ul>
+          <p className="t-small text-ink-2 mb-4">{group.description}</p>
+          <p className="t-body text-ink">{group.skills.join(', ')}</p>
         </div>
       ))}
     </div>
