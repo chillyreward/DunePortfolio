@@ -1,7 +1,14 @@
 import type { ProjectType } from './schema';
+import type { RealmName } from '@/design/tokens';
 
 // Shared interface labels. Page-specific copy lives in its own content file.
 export const ui = {
+  realms: {
+    arrakis: 'Arrakis',
+    fremen: 'Fremen',
+    atreides: 'House Atreides',
+    corrino: 'House Corrino',
+  } satisfies Record<RealmName, string>,
   projectTypes: {
     product: 'Product',
     client: 'Client work',

@@ -8,12 +8,17 @@ export interface RealmGlyphProps {
   className?: string;
 }
 
+// Original geometric glyphs (brief §3B). No house crests or film marks.
 export function RealmGlyph({ realm, size = 24, className = '' }: RealmGlyphProps) {
   const commonProps = {
     width: size,
     height: size,
     viewBox: '0 0 24 24',
     fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 1.75,
+    strokeLinecap: 'round' as const,
+    strokeLinejoin: 'round' as const,
     xmlns: 'http://www.w3.org/2000/svg',
     className: `inline-block shrink-0 ${className}`.trim(),
     'aria-hidden': true,
@@ -21,72 +26,48 @@ export function RealmGlyph({ realm, size = 24, className = '' }: RealmGlyphProps
 
   switch (realm) {
     case 'arrakis':
-      // Sun over horizon with descending heat rays (the desert noon)
+      // Two moons: a large moon and a smaller one above it
       return (
-        <svg {...commonProps} stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round">
-          {/* Sun arc */}
-          <path d="M4 12a8 8 0 0 1 16 0" />
-          {/* Horizon */}
-          <path d="M2 12h20" />
-          {/* Vertical heat rays */}
-          <path d="M7 16v4" />
-          <path d="M12 15v6" />
-          <path d="M17 16v4" />
+        <svg {...commonProps}>
+          <circle cx="9" cy="15" r="6.5" />
+          <circle cx="19" cy="5" r="2.5" />
         </svg>
       );
 
     case 'fremen':
-      // Crysknife blade curved silhouette with base water droplet dot
+      // Eye with a filled pupil
       return (
-        <svg {...commonProps} stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round">
-          {/* Crysknife blade curved spine and tapered point */}
-          <path d="M12 2c2 4 4 8 4 12a4 4 0 0 1-4 4 4 4 0 0 1-4-4c0-4 2-8 4-12z" />
-          {/* Center rib line */}
-          <path d="M12 2v16" />
-          {/* Water droplet at base */}
-          <circle cx="12" cy="21" r="1" fill="currentColor" stroke="none" />
+        <svg {...commonProps}>
+          <path d="M2 12c2.8-4.7 6.1-7 10-7s7.2 2.3 10 7c-2.8 4.7-6.1 7-10 7s-7.2-2.3-10-7z" />
+          <circle cx="12" cy="12" r="3" fill="currentColor" stroke="none" />
         </svg>
       );
 
     case 'atreides':
-      // Upward angular hawk-wing double chevron
+      // Three Caladan waves
       return (
-        <svg {...commonProps} stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round">
-          {/* Upper chevron */}
-          <path d="M4 11 12 4l8 7" />
-          {/* Lower chevron */}
-          <path d="M5 17l7-6 7 6" />
-          {/* Vertical axis pin */}
-          <path d="M12 2v3" />
+        <svg {...commonProps}>
+          <path d="M2 7c2.5-2 5-2 7.5 0s5 2 7.5 0 3.5-1.5 5 0" />
+          <path d="M2 12c2.5-2 5-2 7.5 0s5 2 7.5 0 3.5-1.5 5 0" />
+          <path d="M2 17c2.5-2 5-2 7.5 0s5 2 7.5 0 3.5-1.5 5 0" />
         </svg>
       );
 
     case 'corrino':
-      // Imperial lion-sun crown over seal
+      // Diamond seal: outer diamond with a filled inner diamond
       return (
-        <svg {...commonProps} stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round">
-          {/* Five crown rays */}
-          <path d="M5 11l-1-5 4 2 4-6 4 6 4-2-1 5" />
-          {/* Base imperial orb */}
-          <circle cx="12" cy="16" r="4.5" />
-          {/* Inner core */}
-          <circle cx="12" cy="16" r="1.5" fill="currentColor" stroke="none" />
+        <svg {...commonProps}>
+          <path d="M12 2 22 12 12 22 2 12z" />
+          <path d="M12 8 16 12 12 16 8 12z" fill="currentColor" stroke="none" />
         </svg>
       );
 
     case 'harkonnen':
-      // Heavy brutalist octagonal gear/aperture (Giedi Prime black sun)
+      // Black sun: filled disc inside a thin ring
       return (
-        <svg {...commonProps} stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round">
-          {/* Octagon perimeter */}
-          <polygon points="7,2 17,2 22,7 22,17 17,22 7,22 2,17 2,7" />
-          {/* Hollow central aperture */}
-          <circle cx="12" cy="12" r="4" />
-          {/* Radial brutalist cross-notches */}
-          <path d="M12 2v3" />
-          <path d="M12 19v3" />
-          <path d="M2 12h3" />
-          <path d="M19 12h3" />
+        <svg {...commonProps}>
+          <circle cx="12" cy="12" r="10" />
+          <circle cx="12" cy="12" r="6" fill="currentColor" stroke="none" />
         </svg>
       );
   }

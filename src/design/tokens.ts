@@ -79,34 +79,36 @@ export const realmTokens: Record<'fremen' | 'atreides' | 'corrino', RealmTokenVa
   },
 };
 
+// Harkonnen rule: in giedi every realm is pure black and white. Realms keep only a
+// small tonal step in lightness so bands still read as separate grounds.
 export const giediRealmTokens: Record<'fremen' | 'atreides' | 'corrino', RealmTokenValues> = {
   fremen: {
-    bg: '13 13 13', // #0D0D0D
-    surface: '24 24 24', // #181818
-    ink: '240 240 240', // #F0F0F0
-    ink2: '160 160 160', // #A0A0A0
+    bg: '17 17 17', // #111111
+    surface: '28 28 28', // #1C1C1C
+    ink: '242 242 242', // #F2F2F2
+    ink2: '163 163 163', // #A3A3A3
     mark: '200 200 200', // #C8C8C8
-    line: '240 240 240',
+    line: '255 255 255',
     lineAlpha: '0.14',
     colorScheme: 'dark',
   },
   atreides: {
-    bg: '10 15 12', // #0A0F0C
-    surface: '20 26 22', // #141A16
-    ink: '240 240 240', // #F0F0F0
-    ink2: '155 165 158', // #9BA59E
+    bg: '10 10 10', // #0A0A0A
+    surface: '22 22 22', // #161616
+    ink: '242 242 242', // #F2F2F2
+    ink2: '163 163 163', // #A3A3A3
     mark: '190 190 190', // #BEBEBE
-    line: '240 240 240',
+    line: '255 255 255',
     lineAlpha: '0.14',
     colorScheme: 'dark',
   },
   corrino: {
-    bg: '18 16 20', // #121014
-    surface: '28 25 32', // #1C1920
-    ink: '240 238 242', // #F0EEF2
-    ink2: '160 155 168', // #A09BA8
-    mark: '210 205 195', // #D2CDC3
-    line: '240 238 242',
+    bg: '24 24 24', // #181818
+    surface: '34 34 34', // #222222
+    ink: '242 242 242', // #F2F2F2
+    ink2: '163 163 163', // #A3A3A3
+    mark: '210 210 210', // #D2D2D2
+    line: '255 255 255',
     lineAlpha: '0.14',
     colorScheme: 'dark',
   },

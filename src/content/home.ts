@@ -11,9 +11,10 @@ export const rawHomePage: HomePage = {
       'Computer Science student at Catholic University of Eastern Africa in Nairobi, designing and building web products and exploring machine learning.',
   },
   selectedWork: {
-    heading: 'Selected Work',
+    heading: 'Selected work',
     lead: 'A selection of web products, client platforms, and hackathon prototypes built for production.',
-    projectSlugs: ['smart-chama', 'saka', 'oppolia'],
+    projectSlugs: ['smart-chama', 'saka', 'gikuyu-translator', 'oppolia'],
+    clientHeading: 'Client work',
     allLink: 'All work',
   },
   hackathons: {

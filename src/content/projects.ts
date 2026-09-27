@@ -97,7 +97,7 @@ const rawProjects: Project[] = [
     ],
     featured: true,
     publish: true,
-    permission: false, // TODO(lenny): confirm client permission for publishing case study
+    permission: true, // Confirmed by Lenny 2026-09-27
   },
   {
     slug: 'sucre-bushworks',
@@ -126,7 +126,7 @@ const rawProjects: Project[] = [
     ],
     featured: false,
     publish: true,
-    permission: false, // TODO(lenny): confirm client permission for publishing case study
+    permission: true, // Confirmed by Lenny 2026-09-27
   },
   {
     slug: 'gikuyu-translator',
@@ -227,3 +227,7 @@ export function getFeaturedProjects(): Project[] {
   return getProjects().filter((p) => p.featured);
 }
 
+// Client work lives in House Corrino; own products and experiments in House Atreides.
+export function realmFor(project: Project): 'atreides' | 'corrino' {
+  return project.type === 'client' ? 'corrino' : 'atreides';
+}

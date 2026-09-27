@@ -10,7 +10,7 @@ import { ProjectRow } from '@/components/work/ProjectRow';
 import { HackathonTimeline } from '@/components/hackathons/HackathonTimeline';
 import { ContactForm } from '@/components/contact/ContactForm';
 import { profile } from '@/content/profile';
-import { getProjectBySlug, isVisible } from '@/content/projects';
+import { getProjectBySlug, isVisible, realmFor } from '@/content/projects';
 import { skillGroups } from '@/content/skills';
 import { homePage } from '@/content/home';
 import { contact } from '@/content/contact';
@@ -24,6 +24,8 @@ export default function HomePage() {
     .map((slug) => getProjectBySlug(slug))
     .filter((p): p is NonNullable<typeof p> => p !== undefined && isVisible(p));
 
+  const productProjects = selectedProjects.filter((p) => realmFor(p) === 'atreides');
+  const clientProjects = selectedProjects.filter((p) => realmFor(p) === 'corrino');
   const homeEpigraph = getEpigraph('home-about');
   const socials = [
     { label: homePage.contact.socials.linkedin, href: profile.contact.linkedin },
@@ -66,43 +68,40 @@ export default function HomePage() {
         <Hero />
       </Realm>
 
-      {/* 2. Selected Work Section (Atreides Realm Band) */}
-      <Realm name="atreides" id="work" className="py-20 md:py-28 border-b border-line">
+      {/* 2. Selected work: own products (Atreides) */}
+      <Realm name="atreides" id="work" className="py-24 md:py-36">
         <Container>
-          {/* Section Header */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-line">
-            <div>
-              <RealmMarker realm="atreides" className="mb-4" />
-              <h2 className="t-h2 text-ink">{homePage.selectedWork.heading}</h2>
-              <p className="t-body text-ink-2 max-w-xl mt-2">
-                {homePage.selectedWork.lead}
-              </p>
-            </div>
-            <div>
-              <Button href="/work" variant="ghost" className="text-[15px]">
-                {homePage.selectedWork.allLink}
-              </Button>
-            </div>
+          <div className="pb-4">
+            <RealmMarker realm="atreides" className="mb-4" />
+            <h2 className="t-h2 text-ink">{homePage.selectedWork.heading}</h2>
+            <p className="t-body text-ink-2 mt-3">{homePage.selectedWork.lead}</p>
           </div>
+          {productProjects.map((project, idx) => (
+            <ProjectRow key={project.slug} project={project} index={idx} />
+          ))}
+        </Container>
+      </Realm>
 
-          {/* Project Rows */}
-          <div className="flex flex-col">
-            {selectedProjects.map((project, idx) => (
-              <ProjectRow
-                key={project.slug}
-                project={project}
-                index={idx}
-                featured={idx === 0}
-              />
+      {/* 2b. Selected work: client work (Corrino) */}
+      {clientProjects.length > 0 && (
+        <Realm name="corrino" className="py-24 md:py-36">
+          <Container>
+            <div className="pb-4">
+              <RealmMarker realm="corrino" className="mb-4" />
+              <h2 className="t-h2 text-ink">{homePage.selectedWork.clientHeading}</h2>
+            </div>
+            {clientProjects.map((project, idx) => (
+              <ProjectRow key={project.slug} project={project} index={idx} />
             ))}
-          </div>
+          </Container>
+        </Realm>
+      )}
 
-          {/* Bottom link to all work */}
-          <div className="pt-12 text-center">
-            <Button href="/work" variant="ghost">
-              {homePage.selectedWork.allLink}
-            </Button>
-          </div>
+      <Realm name="arrakis" className="py-12 border-y border-line">
+        <Container className="flex justify-center">
+          <Button href="/work" variant="ghost">
+            {homePage.selectedWork.allLink}
+          </Button>
         </Container>
       </Realm>
 

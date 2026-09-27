@@ -1,6 +1,7 @@
 import React from 'react';
 import { cn } from '@/lib/cn';
-import { RealmGlyph, type RealmGlyphType } from './RealmGlyph';
+import { RealmGlyph } from './RealmGlyph';
+import { ui } from '@/content/ui';
 import type { RealmName } from '@/design/tokens';
 
 export interface RealmMarkerProps {
@@ -11,17 +12,12 @@ export interface RealmMarkerProps {
 
 export function RealmMarker({ realm, className, showLabel = true }: RealmMarkerProps) {
   return (
-    <div
-      className={cn('inline-flex items-center gap-1.5 text-mark select-none cursor-default print:hidden', className)}
-      aria-label={`Realm: ${realm}`}
-      data-realm-marker="true"
+    <p
+      className={cn('inline-flex items-center gap-2 text-mark select-none print:hidden', className)}
+      data-realm-marker={realm}
     >
-      <RealmGlyph realm={realm as RealmGlyphType} size={14} className="text-mark" />
-      {showLabel && (
-        <span className="text-[10px] font-bold uppercase tracking-widest font-sans text-mark">
-          {realm}
-        </span>
-      )}
-    </div>
+      <RealmGlyph realm={realm} size={16} />
+      {showLabel && <span className="t-meta text-mark">{ui.realms[realm]}</span>}
+    </p>
   );
 }

@@ -63,3 +63,15 @@ Visibility bug found: the homepage and `/work` bypassed `isVisible()`, so client
 - Availability confirmed by Lenny: "Available for freelance projects and internships".
 
 Audit after section 2 (excluding `src/app/dev` and OG images): monospace 0, stray uppercase 1 (RealmMarker, fixed in section 3), pill radius 0, arrows 0.
+
+### 3. Realms
+- `RealmGlyph` redrawn to §3B: arrakis two moons, fremen eye with filled pupil, atreides three Caladan waves, corrino diamond seal (filled inner diamond), harkonnen black sun (filled disc in a ring). Chevron, crysknife, crown and gear removed.
+- `RealmMarker`: sentence-case labels from `ui.realms` ("Arrakis", "Fremen", "House Atreides", "House Corrino") in `.t-meta`, no uppercase/letterspacing. Still an inline row at all widths (the 1440 vertical rail from the design-review checklist is not built yet).
+- Harkonnen rule: `giediRealmTokens` are now pure greys (fremen #111111, atreides #0A0A0A, corrino #181818; ink #F2F2F2, ink-2 #A3A3A3). The `[data-theme="giedi"] [data-realm]` override was already present with enough specificity; the green/violet tints came from the token values. `tokens:build` + `tokens:contrast`: all 26 checks pass.
+- `realmFor(project)` in `projects.ts`: client → corrino, product/experiment → atreides.
+- Home: selected work split into a House Atreides band (SmartChama, Saka, Gikuyu Translator) and a House Corrino band (Oppolia); "All work" below. Featured slugs per PROMPT-12: smart-chama, saka, gikuyu-translator, oppolia.
+- `/work`: H1 on arrakis, then an Atreides band ("Products and experiments") and a Corrino band ("Client work"). The type filter was removed (bands do the grouping); `WorkFilter.tsx` deleted.
+- Case studies render in `realmFor(project)` (Corrino for Oppolia and Sucre Bushworks).
+- Corrino bands open with a 4px gold double rule (`border-double border-mark`) via `Realm`.
+- Oppolia and Sucre Bushworks: `permission: true` (confirmed by Lenny 2026-09-27); their case studies now build.
+- Homepage realm order: hero arrakis (no marker), selected work atreides + corrino, hackathons fremen, about arrakis, contact arrakis (no marker).

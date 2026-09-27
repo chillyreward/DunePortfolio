@@ -7,6 +7,7 @@ import { TextLink } from '@/components/ui/TextLink';
 import { Realm } from '@/components/realm/Realm';
 import { RealmMarker } from '@/components/realm/RealmMarker';
 import { ui } from '@/content/ui';
+import { realmFor } from '@/content/projects';
 import { ExternalLink } from 'lucide-react';
 
 export interface CaseStudyLayoutProps {
@@ -15,10 +16,12 @@ export interface CaseStudyLayoutProps {
 }
 
 export function CaseStudyLayout({ project, nextProject }: CaseStudyLayoutProps) {
+  const realm = realmFor(project);
+
   return (
     <article className="flex flex-col w-full">
       {/* 1. Opening band */}
-      <Realm name="atreides" className="py-12 md:py-20 border-b border-line">
+      <Realm name={realm} className="py-12 md:py-20 border-b border-line">
         <Container>
           <div className="mb-8">
             <TextLink href="/work" className="t-small inline-flex items-center min-h-11">
@@ -28,7 +31,7 @@ export function CaseStudyLayout({ project, nextProject }: CaseStudyLayoutProps) 
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-12">
             <div className="lg:col-span-8">
-              <RealmMarker realm="atreides" className="mb-4" />
+              <RealmMarker realm={realm} className="mb-4" />
               <p className="t-meta mb-3">
                 {ui.projectTypes[project.type]}
                 {project.year && <> · {project.year}</>}
@@ -158,7 +161,7 @@ export function CaseStudyLayout({ project, nextProject }: CaseStudyLayoutProps) 
       </Realm>
 
       {/* 3. Next project */}
-      <Realm name="atreides" className="py-16 md:py-24">
+      <Realm name={realm} className="py-16 md:py-24">
         <Container>
           {nextProject ? (
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">

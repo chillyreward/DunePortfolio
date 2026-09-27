@@ -81,34 +81,34 @@
 
 /* Realms in Giedi (dark mode / black sun) */
 [data-theme="giedi"] [data-realm="fremen"] {
-  --bg: 13 13 13;
-  --surface: 24 24 24;
-  --ink: 240 240 240;
-  --ink-2: 160 160 160;
+  --bg: 17 17 17;
+  --surface: 28 28 28;
+  --ink: 242 242 242;
+  --ink-2: 163 163 163;
   --mark: 200 200 200;
-  --line: 240 240 240;
+  --line: 255 255 255;
   --line-alpha: 0.14;
   color-scheme: dark;
 }
 
 [data-theme="giedi"] [data-realm="atreides"] {
-  --bg: 10 15 12;
-  --surface: 20 26 22;
-  --ink: 240 240 240;
-  --ink-2: 155 165 158;
+  --bg: 10 10 10;
+  --surface: 22 22 22;
+  --ink: 242 242 242;
+  --ink-2: 163 163 163;
   --mark: 190 190 190;
-  --line: 240 240 240;
+  --line: 255 255 255;
   --line-alpha: 0.14;
   color-scheme: dark;
 }
 
 [data-theme="giedi"] [data-realm="corrino"] {
-  --bg: 18 16 20;
-  --surface: 28 25 32;
-  --ink: 240 238 242;
-  --ink-2: 160 155 168;
-  --mark: 210 205 195;
-  --line: 240 238 242;
+  --bg: 24 24 24;
+  --surface: 34 34 34;
+  --ink: 242 242 242;
+  --ink-2: 163 163 163;
+  --mark: 210 210 210;
+  --line: 255 255 255;
   --line-alpha: 0.14;
   color-scheme: dark;
 }

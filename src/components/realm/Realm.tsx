@@ -19,7 +19,12 @@ export function Realm({
   return (
     <Component
       data-realm={name}
-      className={cn('bg-bg text-ink transition-colors duration-300', className)}
+      className={cn(
+        'bg-bg text-ink transition-colors duration-300',
+        // House Corrino bands open with the imperial gold double rule.
+        name === 'corrino' && 'border-t-4 border-double border-mark',
+        className
+      )}
       {...props}
     >
       {children}
