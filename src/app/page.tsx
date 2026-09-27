@@ -11,6 +11,7 @@ import { HackathonTimeline } from '@/components/hackathons/HackathonTimeline';
 import { ContactForm } from '@/components/contact/ContactForm';
 import { profile } from '@/content/profile';
 import { projects } from '@/content/projects';
+import { skillGroups } from '@/content/skills';
 import { homePage } from '@/content/home';
 import { contact } from '@/content/contact';
 import { getEpigraph } from '@/content/epigraphs';
@@ -23,8 +24,37 @@ export default function HomePage() {
 
   const homeEpigraph = getEpigraph('home-about');
 
+  const rawUrl = process.env.NEXT_PUBLIC_SITE_URL;
+  const siteUrl = rawUrl && !rawUrl.includes('localhost') ? rawUrl : 'https://lennydev.vercel.app';
+  const allSkills = skillGroups.flatMap((g) => g.skills);
+  const sameAs = [
+    profile.contact.github,
+    profile.contact.linkedin,
+    profile.contact.fiverr,
+    profile.contact.x,
+  ].filter(Boolean);
+
+  const personJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: profile.name,
+    alternateName: profile.alias,
+    jobTitle: profile.title,
+    url: siteUrl,
+    sameAs,
+    knowsAbout: allSkills,
+    alumniOf: {
+      '@type': 'EducationalOrganization',
+      name: profile.education.institution,
+    },
+  };
+
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+      />
       {/* 1. Hero Section (Arrakis) */}
       <Realm name="arrakis">
         <Hero />

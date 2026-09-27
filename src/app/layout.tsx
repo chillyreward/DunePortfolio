@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from 'next';
 import { archivo } from './fonts';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import dynamic from 'next/dynamic';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { SiteHeader } from '@/components/site/SiteHeader';
 import { SiteFooter } from '@/components/site/SiteFooter';
 import './globals.css';
@@ -61,6 +63,8 @@ export default function RootLayout({
             <SiteFooter />
             <ShaiHulud />
           </ThemeProvider>
+          <Analytics />
+          <SpeedInsights />
         </div>
       </body>
     </html>
