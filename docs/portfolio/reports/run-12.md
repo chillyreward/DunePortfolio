@@ -39,3 +39,11 @@ Visibility bug found: the homepage and `/work` bypassed `isVisible()`, so client
 - Homepage selected work filters its slugs through `isVisible()`.
 - `/work/[slug]` static params, metadata, 404 and "next project" all use `isVisible()`, so listings and case-study pages always agree.
 - "All Projects (7) →" / "View All 7 Projects & Experiments →" replaced by `homePage.selectedWork.allLink` ("All work").
+
+### 1. Hero
+- `h1` visible text is **KIDAVI** only, in `.t-wordmark`; full name "Lenny Kidavi, developer and product builder" in an `sr-only` span.
+- Portrait cutout centred and bottom-anchored: 78% of hero height on desktop; on mobile it fills a 58svh stage. Letters cross it at chest height (measured: no overlap with the face at 375/768/1024/1440/1920; no horizontal overflow).
+- Giedi: portrait `grayscale brightness-125 contrast-[1.15]` plus a radial rim light behind the figure (the one allowed gradient). Wordmark blends `multiply` in arrakis, `difference` in giedi.
+- Heat haze now wraps only the wordmark (brief §2), not the whole hero.
+- Removed the monospace uppercase eyebrow and the green pulsing "Available" pill. Top-left shows `profile.education.location` in `.t-meta`.
+- Buttons from `homePage.hero`: primary "View work", ghost "Download CV" (falls back to "Get in touch" if `cvPath` is unset).

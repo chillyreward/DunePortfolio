@@ -6,73 +6,68 @@ import { HeroHaze } from './HeroHaze';
 import { profile } from '@/content/profile';
 import { homePage } from '@/content/home';
 
+const { hero } = homePage;
+
 export function Hero() {
   return (
-    <section aria-label="Hero" className="relative w-full overflow-hidden border-b border-line">
-      <HeroHaze>
-        <div className="relative min-h-[calc(100dvh-72px)] min-h-[580px] max-h-[920px] flex flex-col justify-between pt-8 pb-12 sm:pb-16">
-          {/* Top meta tags */}
-          <Container className="w-full">
-            <div className="flex flex-wrap items-center justify-between gap-4">
-              <span className="t-meta text-ink-2 font-mono uppercase tracking-widest text-xs">
-                {profile.education.location} · {homePage.hero.role}
-              </span>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-line bg-surface/50 backdrop-blur-sm">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true" />
-                <span className="text-xs font-medium text-ink">{profile.availability}</span>
-              </div>
-            </div>
-          </Container>
+    <section
+      aria-labelledby="hero-title"
+      className="relative isolate w-full overflow-hidden border-b border-line flex flex-col md:block md:h-[calc(100svh-72px)] md:min-h-[640px] md:max-h-[1000px]"
+    >
+      {/* Location, top left */}
+      <Container className="relative z-20 w-full pt-6 md:pt-8">
+        <p className="t-meta">{profile.education.location}</p>
+      </Container>
 
-          {/* Center: Cutout portrait + Wordmark */}
-          <div className="relative flex-1 flex items-center justify-center my-4 overflow-hidden">
-            {/* Layer 0: Portrait cutout */}
-            <div className="absolute inset-0 flex items-end justify-center md:justify-end md:pr-16 lg:pr-32 pointer-events-none z-0">
-              <div className="relative w-[320px] sm:w-[420px] md:w-[480px] lg:w-[540px] h-[85%] max-h-[640px]">
-                <Image
-                  src={profile.portraitCutout.src}
-                  alt={profile.portraitCutout.alt}
-                  fill
-                  priority
-                  sizes="(max-width: 768px) 320px, (max-width: 1200px) 480px, 540px"
-                  className="object-contain object-bottom select-none"
-                />
-              </div>
-            </div>
-
-            {/* Layer 10: Giant display wordmark */}
-            <Container className="w-full relative z-10 pointer-events-none">
-              <h1
-                className="text-[14vw] sm:text-[13vw] md:text-[11vw] lg:text-[124px] font-black uppercase tracking-tight leading-[0.88] select-none text-ink mix-blend-multiply dark:mix-blend-difference"
-                style={{ fontStretch: '125%' }}
-              >
-                LENNY
-                <br />
-                KIDAVI
-              </h1>
-            </Container>
-          </div>
-
-          {/* Layer 20: Bottom summary & CTAs */}
-          <Container className="relative z-20 w-full">
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
-              <div className="md:col-span-8 lg:col-span-7">
-                <p className="t-lead text-ink max-w-xl">
-                  {homePage.hero.tagline}
-                </p>
-              </div>
-              <div className="md:col-span-4 lg:col-span-5 flex flex-wrap gap-4 md:justify-end">
-                <Button href="#work" variant="primary">
-                  Selected Work
-                </Button>
-                <Button href="#contact" variant="ghost">
-                  Contact
-                </Button>
-              </div>
-            </div>
-          </Container>
+      {/* Stage: portrait bottom-anchored, KIDAVI crossing it at chest height */}
+      <div className="relative h-[58svh] min-h-[360px] max-h-[560px] md:absolute md:inset-0 md:h-auto md:min-h-0 md:max-h-none">
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-full md:h-[78%] aspect-[843/1370] pointer-events-none">
+          {/* Giedi only: soft rim light so the black blazer separates from the black page */}
+          <div
+            aria-hidden="true"
+            className="hidden dark:block absolute -inset-x-[30%] inset-y-0"
+            style={{ background: 'radial-gradient(closest-side, rgb(var(--ink) / 0.10), transparent)' }}
+          />
+          <Image
+            src={profile.portraitCutout.src}
+            alt={profile.portraitCutout.alt}
+            fill
+            priority
+            sizes="(max-width: 768px) 60vw, 480px"
+            className="object-contain object-bottom select-none grayscale dark:brightness-125 dark:contrast-[1.15]"
+          />
         </div>
-      </HeroHaze>
+
+        <HeroHaze className="absolute inset-x-0 bottom-[47%] md:bottom-[29%] z-10 pointer-events-none mix-blend-multiply dark:mix-blend-difference">
+          <Container>
+            <h1 id="hero-title" className="t-wordmark text-ink text-center whitespace-nowrap select-none">
+              <span aria-hidden="true">{hero.wordmark}</span>
+              <span className="sr-only">{hero.srName}</span>
+            </h1>
+          </Container>
+        </HeroHaze>
+      </div>
+
+      {/* Intro and actions */}
+      <Container className="relative z-20 w-full pt-6 pb-10 md:absolute md:inset-x-0 md:bottom-0 md:pb-12">
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <p className="t-small text-ink max-w-[36ch] md:max-w-[30ch] lg:max-w-[34ch]">{hero.tagline}</p>
+          <div className="flex flex-wrap gap-3">
+            <Button href="#work" variant="primary">
+              {hero.primaryCta}
+            </Button>
+            {profile.cvPath ? (
+              <Button href={profile.cvPath} download variant="ghost">
+                {hero.cvCta}
+              </Button>
+            ) : (
+              <Button href="#contact" variant="ghost">
+                {hero.contactCta}
+              </Button>
+            )}
+          </div>
+        </div>
+      </Container>
     </section>
   );
 }

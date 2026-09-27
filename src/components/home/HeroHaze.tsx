@@ -4,9 +4,10 @@ import React, { useEffect, useRef, useState } from 'react';
 
 export interface HeroHazeProps {
   children: React.ReactNode;
+  className?: string;
 }
 
-export function HeroHaze({ children }: HeroHazeProps) {
+export function HeroHaze({ children, className }: HeroHazeProps) {
   const [filterActive, setFilterActive] = useState(true);
   const dispRef = useRef<SVGFEDisplacementMapElement | null>(null);
   const turbRef = useRef<SVGFETurbulenceElement | null>(null);
@@ -91,7 +92,7 @@ export function HeroHaze({ children }: HeroHazeProps) {
           filter: filterActive ? 'url(#hero-haze)' : 'none',
           willChange: filterActive ? 'filter' : 'auto',
         }}
-        className="w-full h-full relative"
+        className={className ?? 'w-full h-full relative'}
       >
         {children}
       </div>

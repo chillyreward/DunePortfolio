@@ -123,7 +123,10 @@ export type NavItem = z.infer<typeof NavItemSchema>;
 export const HomePageSchema = z.object({
   hero: z.object({
     wordmark: z.string(),
-    role: z.string(),
+    srName: z.string(),
+    primaryCta: z.string(),
+    cvCta: z.string(),
+    contactCta: z.string(),
     tagline: z.string(),
   }),
   selectedWork: z.object({

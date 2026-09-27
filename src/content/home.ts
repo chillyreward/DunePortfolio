@@ -2,8 +2,11 @@ import { HomePage, HomePageSchema } from './schema';
 
 export const rawHomePage: HomePage = {
   hero: {
-    wordmark: 'LENNY KIDAVI',
-    role: 'Full-Stack Developer & CS Student',
+    wordmark: 'KIDAVI',
+    srName: 'Lenny Kidavi, developer and product builder',
+    primaryCta: 'View work',
+    cvCta: 'Download CV',
+    contactCta: 'Get in touch',
     tagline:
       'Computer Science student at Catholic University of Eastern Africa in Nairobi, designing and building web products and exploring machine learning.',
   },
