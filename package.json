@@ -11,7 +11,9 @@
     "tokens:build": "tsx scripts/build-tokens.ts",
     "tokens:contrast": "tsx scripts/check-contrast.ts",
     "images:manifest": "tsx scripts/build-image-manifest.ts",
-    "content:check": "tsx scripts/content-check.ts"
+    "content:check": "tsx scripts/content-check.ts",
+    "cv:pdf": "npm run build && tsx scripts/build-cv-pdf.ts",
+    "cv:check": "tsx scripts/check-cv-pdf.ts"
   },
   "dependencies": {
     "@upstash/ratelimit": "^2.2.0",
@@ -29,10 +31,12 @@
   },
   "devDependencies": {
     "@types/node": "^20",
+    "@types/pdf-parse": "^1.1.5",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.2.35",
+    "pdf-parse": "^2.4.5",
     "playwright": "^1.63.0",
     "postcss": "^8",
     "sharp": "^0.35.4",

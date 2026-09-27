@@ -18,7 +18,7 @@ export function SiteFooter() {
   ];
 
   return (
-    <footer className="w-full border-t border-line pt-[clamp(64px,8vw,128px)] bg-bg text-ink">
+    <footer className="w-full border-t border-line pt-[clamp(64px,8vw,128px)] bg-bg text-ink print:hidden">
       <Container>
         <Grid className="gap-12 md:gap-8">
           {/* Cols 1–5: Get in touch */}

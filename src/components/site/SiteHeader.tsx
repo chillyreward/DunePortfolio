@@ -16,7 +16,7 @@ export function SiteHeader() {
   ];
 
   return (
-    <header className="w-full h-[72px]">
+    <header className="w-full h-[72px] print:hidden">
       <Container className="h-full flex items-center justify-between">
         {/* Left: Brand / Home Link */}
         <Link

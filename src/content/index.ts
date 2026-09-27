@@ -10,3 +10,4 @@ export * from './home';
 export * from './work';
 export * from './about';
 export * from './contact';
+export * from './cv';

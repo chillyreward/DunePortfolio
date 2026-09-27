@@ -200,6 +200,21 @@ const rawProjects: Project[] = [
 
 export const projects: Project[] = rawProjects.map((p) => ProjectSchema.parse(p));
 
+export function isVisible(
+  project: Project,
+  options?: { visibility?: 'production' | 'all' }
+): boolean {
+  const isProd = options?.visibility === 'production' || process.env.NODE_ENV === 'production';
+  if (isProd) {
+    return project.publish && (project.type !== 'client' || project.permission);
+  }
+  return project.publish;
+}
+
+export function getProjects(options?: { visibility?: 'production' | 'all' }): Project[] {
+  return projects.filter((p) => isVisible(p, options));
+}
+
 export function getProjectBySlug(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug);
 }
@@ -211,3 +226,4 @@ export function getPublishedProjects(): Project[] {
 export function getFeaturedProjects(): Project[] {
   return projects.filter((p) => p.publish && p.featured);
 }
+

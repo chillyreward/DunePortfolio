@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import crypto from 'node:crypto';
 import { images } from '../src/content/images.generated';
 import { profile } from '../src/content/profile';
 import { projects } from '../src/content/projects';
@@ -40,6 +41,22 @@ function scanTodos(dir: string): TodoItem[] {
   }
 
   return todos;
+}
+
+function computeCvContentHash(): string {
+  const files = [
+    'src/content/profile.ts',
+    'src/content/projects.ts',
+    'src/content/hackathons.ts',
+    'src/content/skills.ts',
+    'src/content/cv.ts',
+  ];
+
+  const concatenated = files
+    .map((f) => fs.readFileSync(path.resolve(f), 'utf-8'))
+    .join('\n');
+
+  return crypto.createHash('sha256').update(concatenated).digest('hex');
 }
 
 function main() {
@@ -83,8 +100,31 @@ function main() {
   }
   console.log();
 
-  if (isStrict && todos.length > 0) {
-    console.error(`--strict flag passed: FAILED with ${todos.length} open TODO(lenny) items.`);
+  // 4. Verify CV PDF freshness
+  let cvStale = false;
+  const cvMetaPath = path.resolve('src/content/cv.meta.json');
+  if (!fs.existsSync(cvMetaPath)) {
+    console.warn('WARNING: cv.meta.json not found. Run npm run cv:pdf');
+    cvStale = true;
+  } else {
+    try {
+      const meta = JSON.parse(fs.readFileSync(cvMetaPath, 'utf-8'));
+      const currentHash = computeCvContentHash();
+      if (meta.contentHash !== currentHash) {
+        console.warn('WARNING: CV is out of date: run npm run cv:pdf');
+        cvStale = true;
+      } else {
+        console.log('CV content hash verified current.');
+      }
+    } catch {
+      console.warn('WARNING: Could not parse cv.meta.json.');
+      cvStale = true;
+    }
+  }
+  console.log();
+
+  if (isStrict && (todos.length > 0 || cvStale)) {
+    console.error(`--strict flag passed: FAILED with ${todos.length} open TODO(lenny) items and cvStale=${cvStale}.`);
     process.exit(1);
   }
 

@@ -123,6 +123,7 @@ Uppercase is used **only** for the wordmark and H1s. Line length ≤ 70ch for bo
 | `ThemeToggle` | Destination RealmGlyph button (Harkonnen in Arrakis, Arrakis in Giedi), `aria-label` describes action. |
 | `ContactForm` | Name, email, message; server action; Resend. Built in the contact prompt. |
 | `PhotoGallery` | Client thumbnail grid with accessible native dialog lightbox modal, counter, captions, and keyboard navigation. |
+| `PrintButton` | Accessible client button triggering native `window.print()` on `/cv`. |
 
 ## 6. Pages
 
@@ -221,4 +222,6 @@ TODO(lenny):
 - `npm run tokens:contrast`: Automated WCAG 2.1 contrast compliance gate verifying all text and marker pairs.
 - `npm run images:manifest`: Rebuild image dimensions and metadata manifest from disk.
 - `npm run content:check`: Content validator checking open TODOs and asset disk presence (`--strict` fails on open items).
+- `npm run cv:pdf`: Compiles production build, starts local server, and renders `/cv` to `public/documents/lenny-kidavi-cv.pdf` via Playwright.
+- `npm run cv:check`: Extracts text and page count from generated CV PDF and enforces <=2 pages and facts assertions.
 
