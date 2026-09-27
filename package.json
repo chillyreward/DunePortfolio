@@ -14,7 +14,8 @@
     "content:check": "tsx scripts/content-check.ts",
     "cv:pdf": "npm run build && tsx scripts/build-cv-pdf.ts",
     "cv:check": "tsx scripts/check-cv-pdf.ts",
-    "postinstall": "tsx scripts/patch-vercel-og.ts"
+    "postinstall": "tsx scripts/patch-vercel-og.ts",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@upstash/ratelimit": "^2.2.0",
@@ -33,6 +34,8 @@
     "zod": "^4.6.5"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.63.0",
     "@types/node": "^20",
     "@types/pdf-parse": "^1.1.5",
     "@types/react": "^18",

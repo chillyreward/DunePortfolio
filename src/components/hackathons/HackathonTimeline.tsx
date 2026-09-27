@@ -32,7 +32,7 @@ export function HackathonTimeline({ variant = 'compact', className }: HackathonT
                     className={cn(
                       'inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-mono font-medium',
                       isWinner
-                        ? 'bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30'
+                        ? 'bg-mark/15 text-mark border border-mark/30'
                         : 'bg-ink/5 text-ink-2 border border-line'
                     )}
                   >
@@ -64,7 +64,7 @@ export function HackathonTimeline({ variant = 'compact', className }: HackathonT
                   {h.projectSlug ? (
                     <Link
                       href={`/work/${h.projectSlug}`}
-                      className="font-medium text-accent hover:underline underline-offset-4 decoration-1"
+                      className="font-medium text-mark hover:underline underline-offset-4 decoration-1"
                     >
                       {h.project} →
                     </Link>

@@ -104,6 +104,7 @@ export function MobileMenu({ items, email, whatsappHref, socials }: MobileMenuPr
         aria-haspopup="dialog"
         aria-expanded={isOpen}
         aria-controls="mobile-nav-dialog"
+        aria-label="Open menu"
         className="min-w-[44px] min-h-[44px] inline-flex items-center justify-center text-[15px] font-semibold text-ink px-2 rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-[3px]"
       >
         Menu
@@ -135,6 +136,7 @@ export function MobileMenu({ items, email, whatsappHref, socials }: MobileMenuPr
               ref={closeButtonRef}
               type="button"
               onClick={closeMenu}
+              aria-label="Close menu"
               className="min-w-[44px] min-h-[44px] inline-flex items-center justify-center text-[15px] font-semibold text-ink px-2 rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-[3px]"
             >
               Close

@@ -35,7 +35,7 @@ export function CaseStudyLayout({ project, nextProject }: CaseStudyLayoutProps) 
             <div className="lg:col-span-8">
               <RealmMarker realm="atreides" className="mb-4" />
               <div className="flex items-center gap-3 mb-3">
-                <span className="t-meta text-xs font-mono uppercase text-accent">{project.type}</span>
+                <span className="t-meta text-xs font-mono uppercase text-mark">{project.type}</span>
                 {project.year && (
                   <>
                     <span className="text-ink-2/40 text-xs">/</span>

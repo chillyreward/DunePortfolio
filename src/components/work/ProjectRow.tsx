@@ -35,7 +35,7 @@ export function ProjectRow({ project, index, featured = false }: ProjectRowProps
         >
           <div className="relative aspect-[16/10] w-full overflow-hidden">
             {hasCaseStudy ? (
-              <Link href={`/work/${project.slug}`} className="block w-full h-full relative focus:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+              <Link href={`/work/${project.slug}`} className="block w-full h-full relative focus:outline-none focus-visible:ring-2 focus-visible:ring-mark">
                 <Image
                   src={project.cover.src}
                   alt={project.cover.alt}
@@ -49,7 +49,7 @@ export function ProjectRow({ project, index, featured = false }: ProjectRowProps
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full h-full relative focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                className="block w-full h-full relative focus:outline-none focus-visible:ring-2 focus-visible:ring-mark"
               >
                 <Image
                   src={project.cover.src}
@@ -76,7 +76,7 @@ export function ProjectRow({ project, index, featured = false }: ProjectRowProps
           <div>
             {/* Type badge + year */}
             <div className="flex items-center gap-3 mb-4">
-              <span className="t-meta uppercase tracking-wider text-xs font-mono text-accent">
+              <span className="t-meta uppercase tracking-wider text-xs font-mono text-mark">
                 {project.type}
               </span>
               {project.year && (
@@ -88,13 +88,13 @@ export function ProjectRow({ project, index, featured = false }: ProjectRowProps
             </div>
 
             {/* Project title */}
-            <h3 className="t-h2 text-ink mb-3 group-hover:text-accent transition-colors">
+            <h2 className="t-h2 text-ink mb-3 group-hover:text-mark transition-colors">
               {hasCaseStudy ? (
                 <Link href={`/work/${project.slug}`}>{project.title}</Link>
               ) : (
                 project.title
               )}
-            </h3>
+            </h2>
 
             {/* Tagline */}
             <p className="text-base md:text-lg text-ink-2 mb-6 font-medium leading-relaxed">
@@ -143,7 +143,7 @@ export function ProjectRow({ project, index, featured = false }: ProjectRowProps
             {hasCaseStudy && (
               <Link
                 href={`/work/${project.slug}`}
-                className="t-body font-semibold text-accent hover:underline underline-offset-4 decoration-1 inline-flex items-center gap-1.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
+                className="t-body font-semibold text-mark hover:underline underline-offset-4 decoration-1 inline-flex items-center gap-1.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-mark"
               >
                 Read Case Study <span aria-hidden="true">→</span>
               </Link>
@@ -151,7 +151,7 @@ export function ProjectRow({ project, index, featured = false }: ProjectRowProps
             {project.liveUrl && (
               <TextLink
                 href={project.liveUrl}
-                className="t-body text-ink hover:text-accent inline-flex items-center gap-1"
+                className="t-body text-ink hover:text-mark inline-flex items-center gap-1"
               >
                 <span>Live Site</span>
                 <ExternalLink className="w-3.5 h-3.5 inline ml-0.5 opacity-70" aria-hidden="true" />

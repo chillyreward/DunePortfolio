@@ -63,8 +63,12 @@ export default function RootLayout({
             <SiteFooter />
             <ShaiHulud />
           </ThemeProvider>
-          <Analytics />
-          <SpeedInsights />
+          {process.env.VERCEL ? (
+            <>
+              <Analytics />
+              <SpeedInsights />
+            </>
+          ) : null}
         </div>
       </body>
     </html>
