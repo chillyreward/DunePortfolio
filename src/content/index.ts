@@ -6,3 +6,4 @@ export * from './hackathons';
 export * from './skills';
 export * from './epigraphs';
 export * from './navigation';
+export * from './home';

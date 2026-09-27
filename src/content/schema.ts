@@ -118,3 +118,30 @@ export const NavItemSchema = z.object({
 });
 export type NavItem = z.infer<typeof NavItemSchema>;
 
+export const HomePageSchema = z.object({
+  hero: z.object({
+    wordmark: z.string(),
+    role: z.string(),
+    tagline: z.string(),
+  }),
+  selectedWork: z.object({
+    heading: z.string(),
+    lead: z.string(),
+    projectSlugs: z.array(ProjectSlugSchema),
+  }),
+  hackathons: z.object({
+    heading: z.string(),
+    lead: z.string(),
+  }),
+  aboutTeaser: z.object({
+    heading: z.string(),
+    lead: z.string(),
+    cta: z.string(),
+  }),
+  contact: z.object({
+    heading: z.string(),
+    lead: z.string(),
+  }),
+});
+export type HomePage = z.infer<typeof HomePageSchema>;
+

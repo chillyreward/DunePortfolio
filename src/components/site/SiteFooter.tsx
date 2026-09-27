@@ -22,7 +22,7 @@ export function SiteFooter() {
       <Container>
         <Grid className="gap-12 md:gap-8">
           {/* Cols 1–5: Get in touch */}
-          <div className="col-span-12 md:col-span-5 flex flex-col gap-4">
+          <div className="col-span-4 md:col-span-5 flex flex-col gap-4">
             <h2 className="t-h3">Get in touch</h2>
             <p className="t-body text-ink-2">{profile.availability}</p>
             <div className="pt-2 flex flex-col gap-3">
@@ -41,7 +41,7 @@ export function SiteFooter() {
           </div>
 
           {/* Cols 7–9: Elsewhere */}
-          <div className="col-span-12 md:col-span-3 md:col-start-7 flex flex-col gap-4">
+          <div className="col-span-4 md:col-span-3 md:col-start-7 flex flex-col gap-4">
             <h2 className="t-meta">Elsewhere</h2>
             <ul className="flex flex-col gap-2.5">
               {socials.map((social) => (
@@ -55,7 +55,7 @@ export function SiteFooter() {
           </div>
 
           {/* Cols 10–12: Site Navigation */}
-          <div className="col-span-12 md:col-span-3 md:col-start-10 flex flex-col gap-4">
+          <div className="col-span-4 md:col-span-3 md:col-start-10 flex flex-col gap-4">
             <h2 className="t-meta">Site</h2>
             <ul className="flex flex-col gap-2.5">
               {primaryNav.map((item) => (
