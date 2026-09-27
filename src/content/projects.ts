@@ -18,6 +18,7 @@ const rawProjects: Project[] = [
       'Merry-Go-Round rotation schedule coordination',
       'Solidity/Ethereum smart-contract security layer',
     ],
+    story: null, // TODO(lenny): add case study story paragraphs
     stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Solidity', 'Ethereum'], // TODO(lenny): confirm full tech stack
     team: ['Lenny Kidavi', 'Rachael', 'Shilla', 'Nanjoli'],
     cover: img('/images/projects/smart-chama/cover.webp', 'SmartChama landing page and dashboard preview'),
@@ -46,6 +47,7 @@ const rawProjects: Project[] = [
       'Inquiry-first flow with direct communication via WhatsApp and phone',
       'Zero-commission structure with direct peer-to-peer M-Pesa payouts',
     ],
+    story: null, // TODO(lenny): add case study story paragraphs
     stack: [
       'Next.js 14',
       'Supabase',
@@ -84,6 +86,7 @@ const rawProjects: Project[] = [
       'Consultation scheduling and quote request inquiry pipeline',
       'Mobile-responsive Italian-inspired design aesthetic',
     ],
+    story: null, // TODO(lenny): add case study story paragraphs
     stack: ['Next.js', 'Tailwind CSS', 'TypeScript'], // TODO(lenny): confirm full client stack
     team: null,
     cover: img('/images/projects/oppolia/cover.webp', 'Oppolia Woodworths Kenya hero presentation'),
@@ -112,6 +115,7 @@ const rawProjects: Project[] = [
       'Direct WhatsApp inquiry basket for trip planning and gear rental',
       'Responsive wilderness-focused visual identity',
     ],
+    story: null, // TODO(lenny): add case study story paragraphs
     stack: ['Next.js', 'Tailwind CSS', 'TypeScript'], // TODO(lenny): confirm full client stack
     team: null,
     cover: img('/images/projects/sucre-bushworks/cover.webp', 'Sucre Bushworks outdoor adventure portal'),
@@ -139,6 +143,7 @@ const rawProjects: Project[] = [
       'Bilingual source translation into Gikuyu',
       'Interactive dictionary and phrase translation interface',
     ],
+    story: null, // TODO(lenny): add case study story paragraphs
     stack: ['Next.js', 'TypeScript', 'Tailwind CSS'], // TODO(lenny): confirm underlying model/API and TTS status
     team: null,
     cover: img('/images/projects/gikuyu-translator/cover.webp', 'Gikuyu Translator AI translation interface'),
@@ -162,6 +167,7 @@ const rawProjects: Project[] = [
     repoUrl: null, // TODO(lenny): repository link
     summary: 'Collaborative engineering and artificial intelligence venture.',
     highlights: [],
+    story: null, // TODO(lenny): add case study story paragraphs
     stack: [], // TODO(lenny): tech stack
     team: null,
     cover: img('/images/portrait/portrait.webp', 'NeuroGrowth placeholder'),
@@ -181,6 +187,7 @@ const rawProjects: Project[] = [
     repoUrl: null,
     summary: 'Web platform for Allenet Bakers commercial bakery.',
     highlights: [],
+    story: null, // TODO(lenny): add case study story paragraphs
     stack: [], // TODO(lenny): tech stack
     team: null,
     cover: img('/images/portrait/portrait.webp', 'Allenet Bakers placeholder'),

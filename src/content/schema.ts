@@ -33,6 +33,7 @@ export const ProjectSchema = z.object({
   repoUrl: z.string().nullable(),
   summary: z.string(),
   highlights: z.array(z.string()),
+  story: z.array(z.string().min(1)).nullable(),
   stack: z.array(z.string()),
   team: z.array(z.string()).nullable(),
   cover: ImageRefSchema,
