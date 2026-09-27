@@ -6,6 +6,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { SiteHeader } from '@/components/site/SiteHeader';
 import { SiteFooter } from '@/components/site/SiteFooter';
+import { getMetadataBase } from '@/lib/site-url';
 import './globals.css';
 
 const ShaiHulud = dynamic(
@@ -14,7 +15,7 @@ const ShaiHulud = dynamic(
 );
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://lennydev.vercel.app'),
+  metadataBase: getMetadataBase(),
   title: {
     default: 'Lenny Kidavi — developer and product builder',
     template: '%s — Lenny Kidavi',

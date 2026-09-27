@@ -15,6 +15,7 @@ import { skillGroups } from '@/content/skills';
 import { homePage } from '@/content/home';
 import { contact } from '@/content/contact';
 import { getEpigraph } from '@/content/epigraphs';
+import { getSiteUrl } from '@/lib/site-url';
 import { ArrowUpRight } from 'lucide-react';
 
 export default function HomePage() {
@@ -23,9 +24,7 @@ export default function HomePage() {
     .filter((p): p is NonNullable<typeof p> => Boolean(p));
 
   const homeEpigraph = getEpigraph('home-about');
-
-  const rawUrl = process.env.NEXT_PUBLIC_SITE_URL;
-  const siteUrl = rawUrl && !rawUrl.includes('localhost') ? rawUrl : 'https://lennydev.vercel.app';
+  const siteUrl = getSiteUrl();
   const allSkills = skillGroups.flatMap((g) => g.skills);
   const sameAs = [
     profile.contact.github,

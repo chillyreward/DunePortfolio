@@ -1,9 +1,9 @@
 import { MetadataRoute } from 'next';
 import { getProjects } from '@/content/projects';
+import { getSiteUrl } from '@/lib/site-url';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const rawUrl = process.env.NEXT_PUBLIC_SITE_URL;
-  const siteUrl = rawUrl && !rawUrl.includes('localhost') ? rawUrl : 'https://lennydev.vercel.app';
+  const siteUrl = getSiteUrl();
   const now = new Date();
 
   const staticRoutes: MetadataRoute.Sitemap = [
