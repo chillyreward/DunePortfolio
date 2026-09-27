@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <style>
+    :root {
+      --fremen-blue: #1E45C8;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --fremen-blue: #7F97FF;
+      }
+    }
+    .fremen-stroke {
+      stroke: var(--fremen-blue);
+      stroke-width: 2;
+    }
+    .fremen-fill {
+      fill: var(--fremen-blue);
+    }
+  </style>
+  <!-- Outer ring -->
+  <circle cx="16" cy="16" r="14" class="fremen-stroke" />
+  <!-- Inner ring -->
+  <circle cx="16" cy="16" r="9" class="fremen-stroke" />
+  <!-- Iris dot -->
+  <circle cx="16" cy="16" r="4" class="fremen-fill" />
+</svg>

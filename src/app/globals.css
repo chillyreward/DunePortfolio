@@ -172,3 +172,50 @@
   }
 }
 
+@keyframes sandTremor {
+  0% { transform: translate(0, 0); }
+  15% { transform: translate(-3px, 2px); }
+  30% { transform: translate(3px, -2px); }
+  45% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  75% { transform: translate(-1px, 1px); }
+  90% { transform: translate(1px, -1px); }
+  100% { transform: translate(0, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @keyframes sandTremor {
+    0% { opacity: 1; }
+    50% { opacity: 0.85; }
+    100% { opacity: 1; }
+  }
+}
+
+.animate-tremor {
+  animation: sandTremor 0.15s ease-in-out infinite;
+}
+
+@keyframes wormBreach {
+  0% {
+    transform: translate3d(-60%, 100%, 0) rotate(-20deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  50% {
+    transform: translate3d(0%, -20%, 0) rotate(5deg);
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(60%, 100%, 0) rotate(30deg);
+    opacity: 0;
+  }
+}
+
+.animate-worm {
+  animation: wormBreach 4s cubic-bezier(0.2, 0.8, 0.4, 1) forwards;
+}
+

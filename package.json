@@ -13,7 +13,8 @@
     "images:manifest": "tsx scripts/build-image-manifest.ts",
     "content:check": "tsx scripts/content-check.ts",
     "cv:pdf": "npm run build && tsx scripts/build-cv-pdf.ts",
-    "cv:check": "tsx scripts/check-cv-pdf.ts"
+    "cv:check": "tsx scripts/check-cv-pdf.ts",
+    "postinstall": "tsx scripts/patch-vercel-og.ts"
   },
   "dependencies": {
     "@upstash/ratelimit": "^2.2.0",

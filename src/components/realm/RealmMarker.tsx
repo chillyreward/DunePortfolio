@@ -12,8 +12,9 @@ export interface RealmMarkerProps {
 export function RealmMarker({ realm, className, showLabel = true }: RealmMarkerProps) {
   return (
     <div
-      className={cn('inline-flex items-center gap-1.5 text-mark select-none print:hidden', className)}
+      className={cn('inline-flex items-center gap-1.5 text-mark select-none cursor-default print:hidden', className)}
       aria-label={`Realm: ${realm}`}
+      data-realm-marker="true"
     >
       <RealmGlyph realm={realm as RealmGlyphType} size={14} className="text-mark" />
       {showLabel && (

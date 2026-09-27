@@ -1,9 +1,15 @@
 import type { Metadata, Viewport } from 'next';
 import { archivo } from './fonts';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
+import dynamic from 'next/dynamic';
 import { SiteHeader } from '@/components/site/SiteHeader';
 import { SiteFooter } from '@/components/site/SiteFooter';
 import './globals.css';
+
+const ShaiHulud = dynamic(
+  () => import('@/components/effects/ShaiHulud').then((mod) => mod.ShaiHulud),
+  { ssr: false }
+);
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://lennydev.vercel.app'),
@@ -53,6 +59,7 @@ export default function RootLayout({
               {children}
             </main>
             <SiteFooter />
+            <ShaiHulud />
           </ThemeProvider>
         </div>
       </body>
