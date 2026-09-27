@@ -8,3 +8,4 @@ export * from './epigraphs';
 export * from './navigation';
 export * from './home';
 export * from './work';
+export * from './about';

@@ -77,6 +77,25 @@ export function HackathonTimeline({ variant = 'compact', className }: HackathonT
                     </span>
                   )}
                 </div>
+
+                {/* Certificate thumbnail in full variant */}
+                {variant === 'full' && h.certificate && (
+                  <div className="mt-4 pt-4 border-t border-line/40 flex items-center gap-4">
+                    <div className="relative w-24 h-16 rounded-[2px] overflow-hidden border border-line bg-surface flex-shrink-0">
+                      <Image
+                        src={h.certificate.src}
+                        alt={h.certificate.alt}
+                        fill
+                        className="object-cover"
+                        sizes="96px"
+                      />
+                    </div>
+                    <div>
+                      <p className="text-xs font-mono font-medium text-ink">Official Certificate</p>
+                      <p className="text-[11px] font-mono text-ink-2">{h.certificate.alt}</p>
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* Award / Cheque Photo in compact mode */}

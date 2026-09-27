@@ -88,6 +88,7 @@ export const ProfileSchema = z.object({
   title: z.string(),
   positioning: z.string(),
   bio: z.array(z.string()),
+  bioStatus: z.enum(['draft', 'approved']),
   education: z.object({
     institution: z.string(),
     degree: z.string(),

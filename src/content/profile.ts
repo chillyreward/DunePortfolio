@@ -8,9 +8,12 @@ const rawProfile: Profile = {
   positioning:
     "I design and build products end to end, and I'm working toward machine learning engineering.",
   bio: [
-    'Computer Science student at the Catholic University of Eastern Africa (CUEA) in Nairobi, shipping real products for businesses and users across Kenya.',
-    'Hackathon winner (Red, White & Build 2026) and builder focused on clean interfaces, robust full-stack architecture, and machine learning systems.',
+    'Computer Science student at the Catholic University of Eastern Africa (CUEA) in Nairobi, focused on full-stack web products and advancing toward machine learning engineering.',
+    'Self-taught web foundations evolving into rigorous software engineering, systems design, and typed architectures.',
+    'Hackathon winner at the U.S. Embassy Kenya Red, White & Build 2026 hackathon with SmartChama, engineering digital savings group management and smart contract verification.',
+    'Practical builder shipping production platforms like Saka local trades marketplace and client web products across Nairobi.',
   ],
+  bioStatus: 'draft',
   education: {
     institution: 'Catholic University of Eastern Africa (CUEA)',
     degree: 'BSc Computer Science',

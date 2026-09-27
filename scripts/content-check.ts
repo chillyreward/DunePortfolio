@@ -57,7 +57,7 @@ function main() {
 
   // 2. Validate content arrays
   console.log('Content Summary:');
-  console.log(`  - Profile loaded: ${profile.name} (${profile.title})`);
+  console.log(`  - Profile loaded: ${profile.name} (${profile.title}) [bioStatus: ${profile.bioStatus}]`);
   console.log(`  - Projects loaded: ${projects.length} total (${projects.filter((p) => p.publish).length} published)`);
   console.log(`  - Hackathons loaded: ${hackathons.length}`);
   console.log(`  - Skill groups loaded: ${skillGroups.length}`);
