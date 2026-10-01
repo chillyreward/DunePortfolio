@@ -15,7 +15,9 @@ export interface ColorTokenValues {
 export type RealmTokenValues = Pick<
   ColorTokenValues,
   'bg' | 'surface' | 'ink' | 'ink2' | 'mark' | 'line' | 'lineAlpha' | 'colorScheme'
->;
+> &
+  // Dark realm bands swap Ibad blue for the lifted blue so links keep AA contrast.
+  Partial<Pick<ColorTokenValues, 'accent' | 'accentInk'>>;
 
 export const baseModes: Record<'arrakis' | 'giedi', ColorTokenValues> = {
   arrakis: {
@@ -53,6 +55,8 @@ export const realmTokens: Record<'fremen' | 'atreides' | 'corrino', RealmTokenVa
     ink: '235 230 220', // #EBE6DC
     ink2: '170 175 178', // #AAAFB2
     mark: '218 165 32', // #DAA520 sand gold
+    accent: '127 151 255', // #7F97FF lifted blue
+    accentInk: '0 0 0',
     line: '235 230 220',
     lineAlpha: '0.15',
     colorScheme: 'dark',
@@ -63,6 +67,8 @@ export const realmTokens: Record<'fremen' | 'atreides' | 'corrino', RealmTokenVa
     ink: '240 242 238', // #F0F2EE
     ink2: '160 172 165', // #A0ACA5
     mark: '197 160 89', // #C5A059 hawk gold
+    accent: '127 151 255', // #7F97FF lifted blue
+    accentInk: '0 0 0',
     line: '240 242 238',
     lineAlpha: '0.15',
     colorScheme: 'dark',

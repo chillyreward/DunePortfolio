@@ -142,6 +142,16 @@ function main() {
       minRatio: 3.0,
     },
 
+    {
+      scope: 'Realm: Fremen (Arrakis)',
+      pair: 'accent on bg',
+      fgName: 'accent',
+      fgRgb: parseRgb(realmTokens.fremen.accent ?? baseModes.arrakis.accent),
+      bgName: 'bg',
+      bgRgb: parseRgb(realmTokens.fremen.bg),
+      minRatio: 4.5,
+    },
+
     // Realm: Atreides (Arrakis)
     {
       scope: 'Realm: Atreides (Arrakis)',
@@ -171,6 +181,16 @@ function main() {
       minRatio: 3.0,
     },
 
+    {
+      scope: 'Realm: Atreides (Arrakis)',
+      pair: 'accent on bg',
+      fgName: 'accent',
+      fgRgb: parseRgb(realmTokens.atreides.accent ?? baseModes.arrakis.accent),
+      bgName: 'bg',
+      bgRgb: parseRgb(realmTokens.atreides.bg),
+      minRatio: 4.5,
+    },
+
     // Realm: Corrino (Arrakis)
     {
       scope: 'Realm: Corrino (Arrakis)',
@@ -198,6 +218,16 @@ function main() {
       bgName: 'bg',
       bgRgb: parseRgb(realmTokens.corrino.bg),
       minRatio: 3.0,
+    },
+
+    {
+      scope: 'Realm: Corrino (Arrakis)',
+      pair: 'accent on bg',
+      fgName: 'accent',
+      fgRgb: parseRgb(realmTokens.corrino.accent ?? baseModes.arrakis.accent),
+      bgName: 'bg',
+      bgRgb: parseRgb(realmTokens.corrino.bg),
+      minRatio: 4.5,
     },
 
     // Realm: Fremen (Giedi)

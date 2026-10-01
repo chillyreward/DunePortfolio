@@ -52,6 +52,8 @@
   --ink: 235 230 220;
   --ink-2: 170 175 178;
   --mark: 218 165 32;
+  --accent: 127 151 255;
+  --accent-ink: 0 0 0;
   --line: 235 230 220;
   --line-alpha: 0.15;
   color-scheme: dark;
@@ -63,6 +65,8 @@
   --ink: 240 242 238;
   --ink-2: 160 172 165;
   --mark: 197 160 89;
+  --accent: 127 151 255;
+  --accent-ink: 0 0 0;
   --line: 240 242 238;
   --line-alpha: 0.15;
   color-scheme: dark;
