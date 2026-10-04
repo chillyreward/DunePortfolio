@@ -1,6 +1,9 @@
+import fs from 'node:fs';
 import { defineConfig, devices } from '@playwright/test';
 
-const chromePath = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
+// Use the local Chrome on Windows when present; otherwise Playwright's bundled Chromium.
+const windowsChrome = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
+const chromePath = fs.existsSync(windowsChrome) ? windowsChrome : undefined;
 
 export default defineConfig({
   testDir: './tests',

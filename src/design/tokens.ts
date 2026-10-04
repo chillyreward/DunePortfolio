@@ -83,7 +83,7 @@ export const realmTokens: Record<'fremen' | 'atreides' | 'corrino', RealmTokenVa
     surface: '235 228 215', // #EBE4D7
     ink: '28 24 36', // #1C1824 regal violet-slate
     ink2: '90 82 100', // #5A5264
-    mark: '166 118 8', // #A67608 imperial gold (calibrated for >=3:1 contrast on parchment)
+    mark: '141 100 7', // #8D6407 imperial gold (>=4.5:1 on parchment: the marker label is 13px text)
     line: '28 24 36',
     lineAlpha: '0.15',
     colorScheme: 'light',
