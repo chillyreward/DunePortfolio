@@ -48,6 +48,9 @@ async function main() {
   assert(!fullText.includes('Talent Discovery'), 'Does NOT contain "Talent Discovery" (incorrect Saka description)');
   assert(!fullText.includes('Allenet'), 'Does NOT contain unlaunched "Allenet"');
   assert(!fullText.includes('NeuroGrowth'), 'Does NOT contain unconfirmed "NeuroGrowth"');
+  assert(!fullText.includes('714 301'), 'Does NOT print the phone number (WhatsApp link only, brief §7)');
+  assert(!fullText.includes('48+'), 'Does NOT contain unconfirmed "48+ estates"');
+  assert(!/seamless/i.test(fullText), 'Does NOT contain the banned word "seamless"');
 
   console.log();
   if (!passed) {

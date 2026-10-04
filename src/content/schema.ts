@@ -138,7 +138,6 @@ export const HomePageSchema = z.object({
   }),
   hackathons: z.object({
     heading: z.string(),
-    lead: z.string(),
   }),
   aboutTeaser: z.object({
     heading: z.string(),

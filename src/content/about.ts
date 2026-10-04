@@ -4,19 +4,17 @@ export const aboutContent = {
     'Computer Science student, product builder, and hackathon winner based in Nairobi, Kenya.',
   bioStatusNotice:
     'Draft biography awaiting final review by Lenny.',
-  storyHeading: 'Background & Approach',
-  educationHeading: 'Education & Academic Focus',
-  skillsHeading: 'Technical Toolkit & Skills',
-  hackathonsHeading: 'Hackathons & Competitions',
-  hackathonsLead:
-    'High-velocity prototype sprints and verified competition outcomes.',
+  storyHeading: 'Background',
+  educationHeading: 'Education',
+  skillsHeading: 'Skills',
+  hackathonsHeading: 'Hackathons',
   skillsLead: 'Grouped by how much I have actually used each tool.',
   periodLabel: 'Years',
   graduationLabel: 'Expected graduation',
   galleryHeading: 'Red, White & Build',
   contactCta: 'Get in touch',
   cvCta: 'Download CV',
-  closingHeading: 'Looking Forward',
+  closingHeading: "What's next",
   closingText:
-    'Focused on completing my degree at CUEA, expanding engineering depth in machine learning systems, and collaborating with teams building high-impact products.',
+    "I'm finishing my degree at CUEA and moving toward machine learning engineering. I'm available for freelance projects and internships.",
 };

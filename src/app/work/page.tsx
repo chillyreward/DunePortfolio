@@ -8,9 +8,8 @@ import { getProjects, realmFor } from '@/content/projects';
 import { workContent } from '@/content/work';
 
 export const metadata: Metadata = {
-  title: 'Work & Projects',
-  description:
-    'Web applications, client platforms, and software experiments designed and engineered by Lenny Kidavi in Nairobi, Kenya.',
+  title: workContent.heading,
+  description: workContent.lead,
 };
 
 export default function WorkPage() {

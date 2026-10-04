@@ -14,6 +14,7 @@ const config: Config = {
         "accent-ink": "rgb(var(--accent-ink) / <alpha-value>)",
         spice: "rgb(var(--spice) / <alpha-value>)",
         mark: "rgb(var(--mark) / <alpha-value>)",
+        wordmark: "rgb(var(--wordmark) / <alpha-value>)",
         line: "rgb(var(--line) / var(--line-alpha))",
       },
       fontFamily: {

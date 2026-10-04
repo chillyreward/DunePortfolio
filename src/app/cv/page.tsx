@@ -1,15 +1,18 @@
 import React from 'react';
 import { Metadata } from 'next';
+import Image from 'next/image';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import { Realm } from '@/components/realm/Realm';
-import { ImperialRule } from '@/components/realm/ImperialRule';
+import { RealmGlyph } from '@/components/realm/RealmGlyph';
 import { PrintButton } from '@/components/cv/PrintButton';
 import { profile } from '@/content/profile';
-import { getProjects } from '@/content/projects';
+import { getProjects, realmFor } from '@/content/projects';
 import { hackathons } from '@/content/hackathons';
 import { skillGroups } from '@/content/skills';
 import { cv } from '@/content/cv';
+import { ui } from '@/content/ui';
+import type { RealmName } from '@/design/tokens';
 import { Download } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -20,31 +23,44 @@ export const metadata: Metadata = {
   },
 };
 
+const host = (url: string) => url.replace(/^https?:\/\//, '').replace(/\/$/, '');
+
+// Section heading: realm glyph in that realm's mark colour, gold rule underneath.
+function CvHeading({ realm, children }: { realm: RealmName; children: React.ReactNode }) {
+  return (
+    <h2 className="cv-heading flex items-center gap-2 border-b border-mark/50 pb-1.5 text-[15px] font-semibold text-ink">
+      <span data-realm={realm} className="inline-flex">
+        <RealmGlyph realm={realm} size={14} className="text-mark" />
+      </span>
+      {children}
+    </h2>
+  );
+}
+
 export default function CvPage() {
   const visibleProjects = getProjects({ visibility: 'production' });
-
-  const shippedSkills =
-    skillGroups.find((g) => g.id === 'shipped')?.skills || [];
-  const learningSkills =
-    skillGroups.find((g) => g.id === 'learning')?.skills || [];
-
-  const githubHost = profile.contact.github.replace(/^https?:\/\//, '');
-  const linkedinHost = profile.contact.linkedin.replace(/^https?:\/\//, '');
-  const fiverrHost = profile.contact.fiverr.replace(/^https?:\/\//, '');
+  const contactLinks = [
+    { href: `mailto:${profile.contact.email}`, label: profile.contact.email },
+    { href: profile.contact.whatsapp, label: cv.whatsapp },
+    { href: profile.contact.github, label: host(profile.contact.github) },
+    { href: profile.contact.linkedin, label: host(profile.contact.linkedin) },
+  ];
+  const links = [
+    { label: cv.labels.portfolio, href: cv.portfolioUrl },
+    { label: cv.labels.github, href: profile.contact.github },
+    { label: cv.labels.linkedin, href: profile.contact.linkedin },
+    { label: cv.labels.fiverr, href: profile.contact.fiverr },
+  ];
 
   return (
     <Realm name="corrino" className="min-h-screen py-10 md:py-16">
       <Container>
         {/* Top actions: Download & Print (hidden on print) */}
         <div className="max-w-[820px] mx-auto flex flex-wrap items-center justify-between gap-4 pb-8 print:hidden">
-          <div className="flex items-center gap-3">
-            <span className="text-[15px] font-semibold text-ink">
-              Curriculum Vitae
-            </span>
-            <span className="text-xs text-ink-2">
-              (A4 Print Optimised)
-            </span>
-          </div>
+          <p className="flex items-baseline gap-3">
+            <span className="text-[15px] font-semibold text-ink">{cv.pageLabel}</span>
+            <span className="t-meta">{cv.pageNote}</span>
+          </p>
 
           <div className="flex items-center gap-3">
             <Button
@@ -60,203 +76,213 @@ export default function CvPage() {
           </div>
         </div>
 
-        {/* CV Document Container */}
-        <article className="max-w-[820px] mx-auto bg-surface/30 p-8 sm:p-12 md:p-16 border border-line rounded-[2px] space-y-8 print:space-y-3.5 font-sans">
-          {/* 1. Header */}
-          <header className="cv-entry space-y-3 print:space-y-1">
-            <h1 className="t-h2 cv-name text-ink font-bold tracking-tight">
-              {profile.name}
-            </h1>
-            <p className="text-base text-ink font-medium leading-snug">
-              {profile.positioning}
-            </p>
-
-            <div className="pt-2 text-xs text-ink-2 flex flex-wrap gap-x-3 gap-y-1 items-center">
-              <span>{profile.education.location}</span>
-              <span aria-hidden="true">·</span>
-              <a href={`mailto:${profile.contact.email}`} className="text-ink hover:underline">
-                {profile.contact.email}
-              </a>
-              <span aria-hidden="true">·</span>
-              <span>{cv.phoneDisplay}</span>
-              <span aria-hidden="true">·</span>
-              <a href={profile.contact.github} className="text-ink hover:underline">
-                {githubHost}
-              </a>
-              <span aria-hidden="true">·</span>
-              <a href={profile.contact.linkedin} className="text-ink hover:underline">
-                {linkedinHost}
-              </a>
+        {/* CV document */}
+        <article className="cv-sheet max-w-[820px] mx-auto bg-bg border border-line rounded-[2px] font-sans">
+          {/* 1. Header band: parchment surface, monochrome portrait */}
+          <header className="cv-entry cv-band flex items-start justify-between gap-6 bg-surface border-b-2 border-double border-mark p-8 sm:p-12 print:px-6 print:py-5">
+            <div className="min-w-0 space-y-3 print:space-y-1.5">
+              <h1 className="t-h2 cv-name text-ink">{profile.name}</h1>
+              <p className="text-base text-ink font-medium leading-snug max-w-[46ch]">{profile.positioning}</p>
+              <p className="text-xs text-ink-2">{profile.education.location}</p>
+              <ul className="flex flex-wrap gap-x-4 gap-y-1 text-xs">
+                {contactLinks.map((l) => (
+                  <li key={l.href}>
+                    <a href={l.href} className="text-accent underline underline-offset-2 decoration-1">
+                      {l.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="cv-portrait relative shrink-0 w-[88px] sm:w-[112px] aspect-[4/5] overflow-hidden rounded-[2px] border border-mark/40">
+              <Image
+                src={profile.portrait.src}
+                alt={profile.portrait.alt}
+                fill
+                sizes="112px"
+                loading="eager"
+                className="object-cover object-top grayscale"
+              />
             </div>
           </header>
 
-          <ImperialRule realm="corrino" className="opacity-60 print:hidden" />
+          <div className="space-y-8 p-8 sm:p-12 print:space-y-3 print:px-6 print:pt-4 print:pb-0">
+            {/* 2. Summary */}
+            <section className="cv-entry space-y-2">
+              <CvHeading realm="arrakis">{cv.headings.summary}</CvHeading>
+              <p className="text-sm text-ink-2 leading-relaxed">{cv.summary}</p>
+            </section>
 
-          {/* 2. Summary */}
-          <section className="cv-entry space-y-2">
-            <h2 className="text-[15px] font-semibold text-ink cv-heading">
-              Summary
-            </h2>
-            <p className="text-sm text-ink-2 leading-relaxed">
-              {cv.summary}
-            </p>
-          </section>
-
-          <ImperialRule realm="corrino" className="opacity-60 print:hidden" />
-
-          {/* 3. Education */}
-          <section className="cv-entry space-y-3">
-            <h2 className="text-[15px] font-semibold text-ink cv-heading">
-              {cv.headings.education}
-            </h2>
-            <div className="space-y-1">
-              <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-                <span className="font-semibold text-ink text-sm">
-                  {profile.education.institution}
-                </span>
-                <span className="text-xs text-ink-2">
-                  {profile.education.period} (expected)
-                </span>
-              </div>
-              <p className="text-sm text-ink-2 font-medium">
-                {profile.education.degree}
-              </p>
-              <p className="text-xs text-ink-2">
-                {profile.education.location}
-              </p>
-            </div>
-          </section>
-
-          <ImperialRule realm="corrino" className="opacity-60 print:hidden" />
-
-          {/* 4. Projects */}
-          <section className="space-y-6 print:space-y-2">
-            <h2 className="text-[15px] font-semibold text-ink cv-heading">
-              {cv.headings.projects}
-            </h2>
-
-            <div className="space-y-6 print:space-y-2">
-              {visibleProjects.map((p) => {
-                const liveHost = p.liveUrl ? p.liveUrl.replace(/^https?:\/\//, '') : null;
-                const typeLabel = p.type === 'product' ? 'Product' : 'Client Work';
-
-                return (
-                  <div key={p.slug} className="cv-entry space-y-1.5 print:space-y-0.5 border-b border-line/40 pb-5 print:pb-2 last:border-b-0 last:pb-0">
-                    <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-                      <h3 className="text-sm font-bold text-ink">
-                        {p.title}{' '}
-                        <span className="text-xs font-normal text-ink-2">
-                          ({typeLabel}{p.year ? ` · ${p.year}` : ''})
-                        </span>
-                      </h3>
-                      {liveHost && (
-                        <a
-                          href={p.liveUrl!}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-xs text-accent hover:underline"
-                        >
-                          {liveHost}
-                        </a>
-                      )}
-                    </div>
-
-                    <p className="text-xs md:text-sm text-ink-2 leading-relaxed">
-                      {p.summary}
-                    </p>
-
-                    <div className="text-[11px] text-ink-2 space-y-0.5 pt-1 print:pt-0">
-                      {p.role && <p><span className="text-ink font-medium">Role:</span> {p.role}</p>}
-                      {p.stack && p.stack.length > 0 && (
-                        <p><span className="text-ink font-medium">Stack:</span> {p.stack.join(', ')}</p>
-                      )}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </section>
-
-          <ImperialRule realm="corrino" className="opacity-60 print:hidden" />
-
-          {/* 5. Hackathons */}
-          <section className="space-y-6 print:space-y-2">
-            <h2 className="text-[15px] font-semibold text-ink cv-heading">
-              {cv.headings.hackathons}
-            </h2>
-
-            <div className="space-y-5 print:space-y-2">
-              {hackathons.map((h) => (
-                <div key={h.id} className="cv-entry space-y-1 print:space-y-0.5 border-b border-line/40 pb-4 print:pb-2 last:border-b-0 last:pb-0">
+            {/* 3. Experience */}
+            <section className="space-y-3 print:space-y-1.5">
+              <CvHeading realm="arrakis">{cv.headings.experience}</CvHeading>
+              {cv.experience.map((e) => (
+                <div key={e.role} className="cv-entry space-y-1.5 print:space-y-0.5">
                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
                     <h3 className="text-sm font-bold text-ink">
-                      {h.placement} — {h.name}
+                      {e.role}{' '}
+                      <span className="text-xs font-normal text-ink-2">
+                        {e.org} · {e.location}
+                      </span>
                     </h3>
-                    <span className="text-xs text-ink-2">
-                      {h.date} · {h.location}
-                    </span>
+                    <span className="text-xs text-ink-2">{e.period}</span>
                   </div>
-                  <p className="text-xs text-ink-2">
-                    Organized by {h.organizer}{h.prize ? ` · Prize: ${h.prize}` : ''}
-                  </p>
-                  <p className="text-xs md:text-sm text-ink-2 leading-relaxed">
-                    {h.summary}
-                  </p>
-                  <p className="text-[11px] text-ink-2 pt-0.5 print:pt-0">
-                    <span className="text-ink font-medium">Built:</span> {h.project}
-                    {h.team && h.team.length > 0 && ` · Team: ${h.team.join(', ')}`}
-                  </p>
+                  <ul className="list-disc pl-4 marker:text-mark space-y-1 print:space-y-0 text-xs md:text-sm text-ink-2 leading-relaxed">
+                    {e.points.map((pt) => (
+                      <li key={pt}>{pt}</li>
+                    ))}
+                  </ul>
                 </div>
               ))}
-            </div>
-          </section>
+            </section>
 
-          <ImperialRule realm="corrino" className="opacity-60 print:hidden" />
-
-          {/* 6. Skills */}
-          <section className="cv-entry space-y-3">
-            <h2 className="text-[15px] font-semibold text-ink cv-heading">
-              {cv.headings.skills}
-            </h2>
-
-            <div className="text-xs space-y-1.5">
-              {shippedSkills.length > 0 && (
-                <p>
-                  <span className="font-bold text-ink">{cv.skillLabels.shipped}:</span>{' '}
-                  <span className="text-ink-2">{shippedSkills.join(', ')}</span>
+            {/* 4. Education */}
+            <section className="cv-entry space-y-3 print:space-y-1">
+              <CvHeading realm="arrakis">{cv.headings.education}</CvHeading>
+              <div className="space-y-1 print:space-y-0">
+                <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+                  <span className="font-semibold text-ink text-sm">{profile.education.institution}</span>
+                  <span className="text-xs text-ink-2">
+                    {profile.education.period} ({cv.labels.expected})
+                  </span>
+                </div>
+                <p className="text-sm text-ink-2 font-medium">
+                  {profile.education.degree} · {profile.education.location}
                 </p>
-              )}
-              {learningSkills.length > 0 && (
-                <p>
-                  <span className="font-bold text-ink">{cv.skillLabels.learning}:</span>{' '}
-                  <span className="text-ink-2">{learningSkills.join(', ')}</span>
-                </p>
-              )}
-            </div>
-          </section>
+              </div>
+            </section>
 
-          <ImperialRule realm="corrino" className="opacity-60 print:hidden" />
+            {/* 5. Projects: screenshot thumbnail beside each */}
+            <section className="space-y-5 print:space-y-2">
+              <CvHeading realm="atreides">{cv.headings.projects}</CvHeading>
 
-          {/* 7. Links */}
-          <section className="cv-entry space-y-2">
-            <h2 className="text-[15px] font-semibold text-ink cv-heading">
-              {cv.headings.links}
-            </h2>
-            <div className="text-xs text-ink-2 flex flex-wrap gap-x-4 gap-y-1">
-              <span>
-                Portfolio: <a href="https://lennydev.vercel.app" className="text-ink hover:underline">lennydev.vercel.app</a>
-              </span>
-              <span>
-                Fiverr: <a href={profile.contact.fiverr} className="text-ink hover:underline">{fiverrHost}</a>
-              </span>
-              <span>
-                GitHub: <a href={profile.contact.github} className="text-ink hover:underline">{githubHost}</a>
-              </span>
-              <span>
-                LinkedIn: <a href={profile.contact.linkedin} className="text-ink hover:underline">{linkedinHost}</a>
-              </span>
-            </div>
-          </section>
+              <div className="space-y-5 print:space-y-2">
+                {visibleProjects.map((p) => {
+                  const realm = realmFor(p);
+                  return (
+                    <div
+                      key={p.slug}
+                      className="cv-entry grid grid-cols-[96px_1fr] sm:grid-cols-[136px_1fr] print:grid-cols-[30mm_1fr] gap-4 print:gap-3 border-b border-line pb-5 print:pb-2 last:border-b-0 last:pb-0"
+                    >
+                      <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[2px] border border-line bg-surface">
+                        <Image
+                          src={p.cover.src}
+                          alt={p.cover.alt}
+                          fill
+                          sizes="136px"
+                          loading="eager"
+                          className="object-cover object-top"
+                        />
+                      </div>
+                      <div className="min-w-0 space-y-1 print:space-y-0.5">
+                        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-x-3 gap-y-0.5">
+                          <h3 className="text-sm font-bold text-ink">
+                            {p.title}{' '}
+                            <span className="inline-flex items-center gap-1 text-xs font-normal text-ink-2">
+                              <span data-realm={realm} className="inline-flex">
+                                <RealmGlyph realm={realm} size={11} className="text-mark" />
+                              </span>
+                              {ui.projectTypes[p.type]}
+                              {p.year ? ` · ${p.year}` : ''}
+                            </span>
+                          </h3>
+                          {p.liveUrl && (
+                            <a
+                              href={p.liveUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-xs text-accent underline underline-offset-2 decoration-1 break-all"
+                            >
+                              {host(p.liveUrl)}
+                            </a>
+                          )}
+                        </div>
+                        <p className="text-xs md:text-sm text-ink-2 leading-relaxed">{p.summary}</p>
+                        <div className="text-[11px] text-ink-2 space-y-0.5 print:space-y-0">
+                          {p.role && (
+                            <p>
+                              <span className="text-ink font-medium">{cv.labels.role}:</span> {p.role}
+                            </p>
+                          )}
+                          {p.stack && p.stack.length > 0 && (
+                            <p>
+                              <span className="text-ink font-medium">{cv.labels.stack}:</span> {p.stack.join(', ')}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
+
+            {/* 6. Hackathons */}
+            <section className="space-y-4 print:space-y-1.5">
+              <CvHeading realm="fremen">{cv.headings.hackathons}</CvHeading>
+
+              <div className="space-y-4 print:space-y-1.5">
+                {hackathons.map((h) => (
+                  <div key={h.id} className="cv-entry space-y-1 print:space-y-0">
+                    <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+                      <h3 className="text-sm font-bold text-ink">
+                        {h.placement} · {h.name}
+                      </h3>
+                      <span className="text-xs text-ink-2">
+                        {h.date} · {h.location}
+                      </span>
+                    </div>
+                    <p className="text-xs md:text-sm text-ink-2 leading-relaxed">{h.summary}</p>
+                    <p className="text-[11px] text-ink-2">
+                      <span className="text-ink font-medium">{cv.labels.organiser}:</span> {h.organizer}
+                      {h.prize && (
+                        <>
+                          {' · '}
+                          <span className="text-ink font-medium">{cv.labels.prize}:</span> {h.prize}
+                        </>
+                      )}
+                      {h.team && h.team.length > 0 && (
+                        <>
+                          {' · '}
+                          <span className="text-ink font-medium">{cv.labels.team}:</span> {h.team.join(', ')}
+                        </>
+                      )}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* 7. Skills: the three honest groups */}
+            <section className="cv-entry space-y-3 print:space-y-1">
+              <CvHeading realm="arrakis">{cv.headings.skills}</CvHeading>
+              <div className="text-xs space-y-1.5 print:space-y-0.5">
+                {skillGroups
+                  .filter((g) => g.skills.length > 0)
+                  .map((g) => (
+                    <p key={g.id}>
+                      <span className="font-bold text-ink">{g.title}:</span>{' '}
+                      <span className="text-ink-2">{g.skills.join(', ')}</span>
+                    </p>
+                  ))}
+              </div>
+            </section>
+
+            {/* 8. Links */}
+            <section className="cv-entry space-y-2 print:space-y-1 pb-0">
+              <CvHeading realm="arrakis">{cv.headings.links}</CvHeading>
+              <ul className="text-xs text-ink-2 flex flex-wrap gap-x-5 gap-y-1">
+                {links.map((l) => (
+                  <li key={l.label}>
+                    {l.label}:{' '}
+                    <a href={l.href} className="text-accent underline underline-offset-2 decoration-1">
+                      {host(l.href)}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          </div>
         </article>
       </Container>
     </Realm>

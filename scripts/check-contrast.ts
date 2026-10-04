@@ -139,7 +139,7 @@ function main() {
       fgRgb: parseRgb(realmTokens.fremen.mark),
       bgName: 'bg',
       bgRgb: parseRgb(realmTokens.fremen.bg),
-      minRatio: 3.0,
+      minRatio: 4.5, // RealmMarker label is 13px text in --mark
     },
 
     {
@@ -178,7 +178,7 @@ function main() {
       fgRgb: parseRgb(realmTokens.atreides.mark),
       bgName: 'bg',
       bgRgb: parseRgb(realmTokens.atreides.bg),
-      minRatio: 3.0,
+      minRatio: 4.5, // RealmMarker label is 13px text in --mark
     },
 
     {
@@ -217,7 +217,7 @@ function main() {
       fgRgb: parseRgb(realmTokens.corrino.mark),
       bgName: 'bg',
       bgRgb: parseRgb(realmTokens.corrino.bg),
-      minRatio: 3.0,
+      minRatio: 4.5, // RealmMarker label is 13px text in --mark
     },
 
     {
@@ -256,7 +256,7 @@ function main() {
       fgRgb: parseRgb(giediRealmTokens.fremen.mark),
       bgName: 'bg',
       bgRgb: parseRgb(giediRealmTokens.fremen.bg),
-      minRatio: 3.0,
+      minRatio: 4.5, // RealmMarker label is 13px text in --mark
     },
 
     // Realm: Atreides (Giedi)
@@ -285,7 +285,7 @@ function main() {
       fgRgb: parseRgb(giediRealmTokens.atreides.mark),
       bgName: 'bg',
       bgRgb: parseRgb(giediRealmTokens.atreides.bg),
-      minRatio: 3.0,
+      minRatio: 4.5, // RealmMarker label is 13px text in --mark
     },
 
     // Realm: Corrino (Giedi)
@@ -314,7 +314,7 @@ function main() {
       fgRgb: parseRgb(giediRealmTokens.corrino.mark),
       bgName: 'bg',
       bgRgb: parseRgb(giediRealmTokens.corrino.bg),
-      minRatio: 3.0,
+      minRatio: 4.5, // RealmMarker label is 13px text in --mark
     },
   ];
 

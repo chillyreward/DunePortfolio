@@ -1,7 +1,7 @@
 export const workContent = {
-  heading: 'Work & Projects',
+  heading: 'Work',
   lead:
-    'Web applications, client platforms, and software experiments designed and engineered by Lenny Kidavi in Nairobi, Kenya.',
+    "Products I've built and sites I've shipped for clients.",
   ownHeading: 'Products and experiments',
   clientHeading: 'Client work',
 };

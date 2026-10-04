@@ -8,10 +8,9 @@ const rawProfile: Profile = {
   positioning:
     "I design and build products end to end, and I'm working toward machine learning engineering.",
   bio: [
-    'Computer Science student at the Catholic University of Eastern Africa (CUEA) in Nairobi, focused on full-stack web products and advancing toward machine learning engineering.',
-    'Self-taught web foundations evolving into rigorous software engineering, systems design, and typed architectures.',
-    'Hackathon winner at the U.S. Embassy Kenya Red, White & Build 2026 hackathon with SmartChama, engineering digital savings group management and smart contract verification.',
-    'Practical builder shipping production platforms like Saka local trades marketplace and client web products across Nairobi.',
+    "I study Computer Science at CUEA in Nairobi. I design and build products end to end, and I'm working toward machine learning engineering.",
+    'In February 2026 my team won the Red, White & Build US–Kenya Hackathon with SmartChama.',
+    "I'm the main founder of Saka, a marketplace for finding local tradespeople in Nairobi, and I build websites for clients.",
   ],
   bioStatus: 'draft',
   education: {
@@ -28,7 +27,7 @@ const rawProfile: Profile = {
     github: 'https://github.com/chillyreward',
     linkedin: 'https://www.linkedin.com/in/lenny-kidavi-4693ba355',
     fiverr: 'https://www.fiverr.com/lennynavwani',
-    // TODO(lenny): confirm whether to keep or drop X profile
+    // Keep X: confirmed by Lenny 2026-09-27 and 2026-10-04
     x: 'https://x.com/Lenny_kidavi',
   },
   availability: 'Available for freelance projects and internships',

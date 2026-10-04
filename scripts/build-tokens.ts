@@ -43,6 +43,18 @@ ${formatBlock('[data-theme="giedi"] [data-realm="fremen"]', giediRealmTokens.fre
 ${formatBlock('[data-theme="giedi"] [data-realm="atreides"]', giediRealmTokens.atreides)}
 
 ${formatBlock('[data-theme="giedi"] [data-realm="corrino"]', giediRealmTokens.corrino)}
+
+/* Print (CV PDF): always the light palette, whatever mode the reader is in */
+@media print {
+${[
+  formatBlock(':root,\n[data-theme]', baseModes.arrakis),
+  formatBlock('[data-realm="fremen"],\n[data-theme] [data-realm="fremen"]', realmTokens.fremen),
+  formatBlock('[data-realm="atreides"],\n[data-theme] [data-realm="atreides"]', realmTokens.atreides),
+  formatBlock('[data-realm="corrino"],\n[data-theme] [data-realm="corrino"]', realmTokens.corrino),
+]
+  .map((b) => b.replace(/^/gm, '  '))
+  .join('\n\n')}
+}
 `;
 
   const outputPath = path.resolve('src/app/tokens.generated.css');

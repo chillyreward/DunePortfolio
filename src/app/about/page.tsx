@@ -116,16 +116,13 @@ export default function AboutPage() {
       <Realm name="fremen" id="hackathons" className="py-20 md:py-28 border-b border-line">
         <Container>
           {/* Section Header */}
-          <div className="pb-12 border-b border-line">
+          <div className="pb-12">
             <RealmMarker realm="fremen" className="mb-4" />
             <h2 className="t-h2 text-ink">{aboutContent.hackathonsHeading}</h2>
-            <p className="t-body text-ink-2 max-w-2xl mt-2">
-              {aboutContent.hackathonsLead}
-            </p>
           </div>
 
           {/* Hackathon Timeline Full */}
-          <div className="pt-12">
+          <div>
             <HackathonTimeline variant="full" />
           </div>
 

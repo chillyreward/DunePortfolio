@@ -14,18 +14,18 @@ const rawHackathons: Hackathon[] = [
     location: 'Nairobi, Kenya',
     team: ['Lenny Kidavi', 'Rachael', 'Shilla', 'Nanjoli'], // TODO(lenny): teammates' surnames optional
     summary:
-      'First place at the U.S. Embassy Kenya AI & Tech hackathon with SmartChama, demonstrating digital savings group management, automated M-Pesa tracking, and smart contracts.',
+      'First place with SmartChama at the U.S. Embassy Kenya AI & Tech hackathon.',
     certificate: img(
       '/images/hackathons/red-white-build/certificate.webp',
       'Certificate of Achievement — Red, White & Build Hackathon Winner'
     ),
     photos: [
-      img('/images/hackathons/red-white-build/photo-01.webp', 'Lenny pitching SmartChama at hackathon finals'),
-      img('/images/hackathons/red-white-build/photo-02.webp', 'Stage presentation of SmartChama features'),
-      img('/images/hackathons/red-white-build/photo-03.webp', 'Team collaborating during the build sprint'),
-      img('/images/hackathons/red-white-build/photo-04.webp', 'SmartChama credit passport presentation'),
-      img('/images/hackathons/red-white-build/photo-05.webp', 'Award ceremony with U.S. Embassy officials'),
-      img('/images/hackathons/red-white-build/photo-06.webp', 'Winners celebration on stage'),
+      img('/images/hackathons/red-white-build/photo-01.webp', 'The winning team holding the $1,000 prize cheque'),
+      img('/images/hackathons/red-white-build/photo-02.webp', 'Certificate handover on stage'),
+      img('/images/hackathons/red-white-build/photo-03.webp', 'Presenting the Credit Passport slide'),
+      img('/images/hackathons/red-white-build/photo-04.webp', 'Team members in the audience'),
+      img('/images/hackathons/red-white-build/photo-05.webp', 'Participants at the ceremony'),
+      img('/images/hackathons/red-white-build/photo-06.webp', 'Participants after the event'),
     ],
   },
   {
@@ -36,9 +36,9 @@ const rawHackathons: Hackathon[] = [
     projectSlug: 'smart-chama',
     placement: 'Second place',
     prize: null, // TODO(lenny): confirm prize if any
-    date: '2025', // TODO(lenny): confirm exact date
+    date: '2026', // Confirmed by Lenny 2026-10-04. TODO(lenny): exact date
     location: 'Online',
-    team: ['Lenny Kidavi'], // TODO(lenny): confirm full team
+    team: ['Lenny Kidavi', 'Rachael', 'Shilla'], // Confirmed by Lenny 2026-10-04
     summary: 'Second place finish with SmartChama at the online Beorchild hackathon.',
     certificate: null,
     photos: [],

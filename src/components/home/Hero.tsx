@@ -12,7 +12,7 @@ export function Hero() {
   return (
     <section
       aria-labelledby="hero-title"
-      className="relative isolate w-full overflow-hidden border-b border-line flex flex-col md:block md:h-[calc(100svh-72px)] md:min-h-[640px] md:max-h-[1000px]"
+      className="relative isolate w-full overflow-hidden bg-bg border-b border-line flex flex-col md:block md:h-[calc(100svh-72px)] md:min-h-[640px] md:max-h-[1000px]"
     >
       {/* Location, top left */}
       <Container className="relative z-20 w-full pt-6 md:pt-8">
@@ -38,11 +38,11 @@ export function Hero() {
           />
         </div>
 
-        <HeroHaze className="absolute inset-x-0 bottom-[47%] md:bottom-[25%] z-10 pointer-events-none mix-blend-multiply dark:mix-blend-difference">
+        <HeroHaze className="absolute inset-x-0 bottom-[47%] md:bottom-[25%] z-10 pointer-events-none mix-blend-difference">
           <Container>
             <h1
               id="hero-title"
-              className="t-wordmark text-ink text-center whitespace-nowrap select-none"
+              className="t-wordmark text-wordmark text-center whitespace-nowrap select-none"
               style={{ fontSize: 'clamp(56px, 19vw, 280px)' }}
             >
               <span aria-hidden="true">{hero.wordmark}</span>

@@ -29,13 +29,13 @@ export function SiteFooter() {
             <div className="pt-2 flex flex-col gap-3">
               <TextLink
                 href={`mailto:${profile.contact.email}`}
-                className="t-h3 text-accent hover:opacity-85 break-all"
+                className="t-h3 text-accent hover:opacity-85 break-all inline-flex min-h-11 items-center"
               >
                 {profile.contact.email}
               </TextLink>
               <div>
-                <TextLink href={profile.contact.whatsapp} className="t-body font-medium">
-                  WhatsApp
+                <TextLink href={profile.contact.whatsapp} className="t-body font-medium inline-flex min-h-11 items-center">
+                  {ui.footer.whatsapp}
                 </TextLink>
               </div>
             </div>
