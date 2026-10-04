@@ -10,6 +10,7 @@
   --accent-ink: 255 255 255;
   --spice: 200 128 26;
   --mark: 30 69 200;
+  --wordmark: 182 174 156;
   --line: 35 29 20;
   --line-alpha: 0.18;
   color-scheme: light;
@@ -24,6 +25,7 @@
   --accent-ink: 0 0 0;
   --spice: 200 128 26;
   --mark: 127 151 255;
+  --wordmark: 242 242 242;
   --line: 255 255 255;
   --line-alpha: 0.14;
   color-scheme: dark;
@@ -39,6 +41,7 @@
     --accent-ink: 0 0 0;
     --spice: 200 128 26;
     --mark: 127 151 255;
+    --wordmark: 242 242 242;
     --line: 255 255 255;
     --line-alpha: 0.14;
     color-scheme: dark;

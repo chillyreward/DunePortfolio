@@ -40,7 +40,9 @@ export function HackathonTimeline({ variant = 'compact', className }: HackathonT
                     <dt className="t-meta">{ui.hackathon.project}</dt>
                     <dd className="t-small">
                       {h.projectSlug ? (
-                        <TextLink href={`/work/${h.projectSlug}`}>{h.project}</TextLink>
+                        <TextLink href={`/work/${h.projectSlug}`} className="relative after:absolute after:inset-x-0 after:-inset-y-[14px] after:content-['']">
+                          {h.project}
+                        </TextLink>
                       ) : (
                         <span className="text-ink">{h.project}</span>
                       )}

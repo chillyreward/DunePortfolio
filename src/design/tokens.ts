@@ -7,6 +7,7 @@ export interface ColorTokenValues {
   accentInk: string;
   spice: string;
   mark: string;
+  wordmark: string;
   line: string;
   lineAlpha: string;
   colorScheme: 'light' | 'dark';
@@ -29,6 +30,9 @@ export const baseModes: Record<'arrakis' | 'giedi', ColorTokenValues> = {
     accentInk: '255 255 255',
     spice: '200 128 26', // #C8801A
     mark: '30 69 200', // Matches accent in base arrakis
+    // Hero wordmark fill, drawn with mix-blend-difference: bg minus ink, so it lands
+    // exactly on ink over sand and turns light sand over the black blazer.
+    wordmark: '182 174 156',
     line: '35 29 20',
     lineAlpha: '0.18',
     colorScheme: 'light',
@@ -42,6 +46,7 @@ export const baseModes: Record<'arrakis' | 'giedi', ColorTokenValues> = {
     accentInk: '0 0 0',
     spice: '200 128 26', // #C8801A
     mark: '127 151 255',
+    wordmark: '242 242 242', // Difference on black gives the ink value
     line: '255 255 255',
     lineAlpha: '0.14',
     colorScheme: 'dark',

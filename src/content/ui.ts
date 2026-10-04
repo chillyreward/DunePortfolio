@@ -37,6 +37,7 @@ export const ui = {
   },
   footer: {
     contact: 'Get in touch',
+    whatsapp: 'WhatsApp',
     elsewhere: 'Elsewhere',
     site: 'Site',
     backToTop: 'Back to top',
