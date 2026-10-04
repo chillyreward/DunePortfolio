@@ -95,7 +95,10 @@ const rawProjects: Project[] = [
       'Consultation scheduling and quote request inquiry pipeline',
       'Mobile-responsive Italian-inspired design aesthetic',
     ],
-    story: null, // TODO(lenny): add case study story paragraphs
+    // Story approved by Lenny 2026-10-04.
+    story: [
+      'Oppolia Woodworths Kenya makes luxury fitted cabinetry, wardrobes and interiors. I built their website as a full-stack developer: a showcase for their kitchens and interior work, with clear ways to start a project. Visitors can request a free quote, talk to a designer, or message the team on WhatsApp.',
+    ],
     stack: ['Next.js', 'Tailwind CSS', 'TypeScript'], // Confirmed by Lenny 2026-09-27
     team: null,
     cover: img('/images/projects/oppolia/cover.webp', 'Oppolia Woodworths Kenya hero presentation'),
@@ -124,7 +127,10 @@ const rawProjects: Project[] = [
       'Direct WhatsApp inquiry basket for trip planning and gear rental',
       'Responsive wilderness-focused visual identity',
     ],
-    story: null, // TODO(lenny): add case study story paragraphs
+    // Story approved by Lenny 2026-10-04.
+    story: [
+      'Sucre Bushworks sells camping gear and runs guided trips to campsites around Kenya. I built their website as a full-stack developer. Visitors can browse gear, campsites and trips, add what they want to an inquiry basket, and send it to the team on WhatsApp.',
+    ],
     stack: ['Next.js', 'Tailwind CSS', 'TypeScript'], // Confirmed by Lenny 2026-10-04
     team: null,
     cover: img('/images/projects/sucre-bushworks/cover.webp', 'Sucre Bushworks outdoor adventure portal'),
