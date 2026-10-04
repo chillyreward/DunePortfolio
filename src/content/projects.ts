@@ -19,7 +19,11 @@ const rawProjects: Project[] = [
       'Merry-Go-Round rotation schedule coordination',
       'Solidity/Ethereum smart-contract security layer',
     ],
-    story: null, // TODO(lenny): add case study story paragraphs
+    // Story approved by Lenny 2026-10-04 (paragraph 2 pending his OK).
+    story: [
+      "Chamas run on trust, but most still track contributions, loans and Merry-Go-Round turns in notebooks and WhatsApp threads, so it's hard for members to see where the money is. My team and I built SmartChama to make that automatic and visible: M-Pesa contributions are tracked as they come in, internal loans and rotation schedules are managed in one place, and a Solidity smart-contract layer records the group's rules so no single person can quietly change them.",
+      "The hardest part was the M-Pesa integration. The API is difficult to work with, but we got it working: members now pay with an M-Pesa STK push, and their contributions show up in the group's records as they happen.",
+    ],
     stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Solidity', 'Ethereum'], // TODO(lenny): confirm full tech stack
     team: ['Lenny Kidavi', 'Rachael', 'Shilla', 'Nanjoli'],
     cover: img('/images/projects/smart-chama/cover.webp', 'SmartChama landing page and dashboard preview'),
