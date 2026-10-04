@@ -186,7 +186,7 @@ const rawProjects: Project[] = [
     role: 'Marketing Engineering', // Confirmed by Lenny 2026-10-04
     contributions: ['Led the full website upgrade'], // Confirmed by Lenny 2026-10-04
     year: 2026, // Confirmed by Lenny 2026-10-04
-    liveUrl: 'https://www.neurogrowthtech.com/', // Confirmed by Lenny 2026-09-27
+    liveUrl: 'https://www.neurogrowthtech.com', // Confirmed by Lenny 2026-09-27
     repoUrl: 'https://github.com/Neuro-growth/neurogrowthwebsite', // Lenny, PROMPT 13 reference facts
     summary:
       'AI engineering studio in Nairobi building automation, chatbots and prediction systems for African businesses.', // Lenny, PROMPT 13 reference facts
@@ -197,10 +197,10 @@ const rawProjects: Project[] = [
     ],
     stack: ['Next.js', 'TypeScript', 'Tailwind CSS'], // Confirmed by Lenny 2026-10-04
     team: null,
-    cover: img('/images/portrait/portrait.webp', 'NeuroGrowth placeholder'),
+    cover: null, // TODO(lenny): real screenshot (neurogrowthtech.com is blocked from the cloud environment)
     gallery: [],
     featured: true, // Confirmed by Lenny 2026-10-04
-    publish: false, // Approved 2026-10-04; Phase B flips to true once a real screenshot replaces the placeholder cover
+    publish: true, // Confirmed by Lenny 2026-10-04: show now, even before the screenshot
     permission: true, // Confirmed by Lenny 2026-10-04
   },
   {

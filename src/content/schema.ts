@@ -40,7 +40,8 @@ export const ProjectSchema = z.object({
   story: z.array(z.string().min(1)).nullable(),
   stack: z.array(z.string()),
   team: z.array(z.string()).nullable(),
-  cover: ImageRefSchema,
+  // null until a real screenshot exists; the UI shows an empty surface frame.
+  cover: ImageRefSchema.nullable(),
   gallery: z.array(ImageRefSchema),
   featured: z.boolean(),
   publish: z.boolean(),

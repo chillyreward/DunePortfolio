@@ -26,6 +26,7 @@ export const ui = {
     next: 'Next project',
     overview: 'Overview',
     features: 'Key features',
+    contributions: 'Role and contributions',
     story: 'Story',
     gallery: 'Screens',
   },

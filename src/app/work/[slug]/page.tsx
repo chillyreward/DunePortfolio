@@ -33,14 +33,18 @@ export function generateMetadata({ params }: CaseStudyPageProps): Metadata {
     openGraph: {
       title: `${project.title} — Lenny Kidavi`,
       description: project.tagline,
-      images: [
-        {
-          url: project.cover.src,
-          width: project.cover.width,
-          height: project.cover.height,
-          alt: project.cover.alt,
-        },
-      ],
+      ...(project.cover
+        ? {
+            images: [
+              {
+                url: project.cover.src,
+                width: project.cover.width,
+                height: project.cover.height,
+                alt: project.cover.alt,
+              },
+            ],
+          }
+        : {}),
     },
   };
 }
@@ -74,7 +78,7 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
       name: 'Lenny Kidavi',
       url: 'https://lennydev.vercel.app',
     },
-    image: project.cover.src,
+    ...(project.cover ? { image: project.cover.src } : {}),
     ...(project.liveUrl ? { url: project.liveUrl } : {}),
   };
 

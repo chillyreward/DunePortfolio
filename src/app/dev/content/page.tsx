@@ -157,13 +157,15 @@ export default function DevContentPage() {
               >
                 <div className="space-y-4">
                   <div className="relative aspect-[16/10] bg-surface rounded-sm overflow-hidden border border-line">
-                    <Image
-                      src={project.cover.src}
-                      alt={project.cover.alt}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-cover"
-                    />
+                    {project.cover && (
+                      <Image
+                        src={project.cover.src}
+                        alt={project.cover.alt}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        className="object-cover"
+                      />
+                    )}
                     <div className="absolute top-2 right-2 flex gap-1.5">
                       <span className="text-[10px] px-2 py-0.5 bg-bg/90 border border-line rounded-sm uppercase tracking-wider font-semibold">
                         {project.type}

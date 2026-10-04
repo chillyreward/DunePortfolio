@@ -13,7 +13,7 @@ export const rawHomePage: HomePage = {
   selectedWork: {
     heading: 'Selected work',
     lead: "Products I've built and sites I've shipped for clients.",
-    projectSlugs: ['smart-chama', 'saka', 'gikuyu-translator', 'oppolia'],
+    projectSlugs: ['smart-chama', 'saka', 'gikuyu-translator', 'neuro-growth', 'oppolia'],
     clientHeading: 'Client work',
     allLink: 'All work',
   },

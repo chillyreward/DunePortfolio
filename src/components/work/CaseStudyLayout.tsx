@@ -9,6 +9,7 @@ import { RealmMarker } from '@/components/realm/RealmMarker';
 import { ui } from '@/content/ui';
 import { realmFor } from '@/content/projects';
 import { ExternalLink } from 'lucide-react';
+import { ProjectCover } from './ProjectCover';
 
 export interface CaseStudyLayoutProps {
   project: Project;
@@ -36,10 +37,11 @@ export function CaseStudyLayout({ project, nextProject }: CaseStudyLayoutProps) 
                 {ui.projectTypes[project.type]}
                 {project.year && <> · {project.year}</>}
               </p>
-              <h1 className="t-h1 text-ink mb-4" style={{ fontSize: 'clamp(30px, 9.5vw, 104px)' }}>
+              <h1 className="t-h1 text-ink mb-4" style={{ fontSize: 'clamp(26px, 8.4vw, 104px)' }}>
                 {project.title}
               </h1>
               <p className="t-body text-ink-2">{project.tagline}</p>
+              {project.credit && <p className="t-small text-ink-2 mt-3">{project.credit}</p>}
             </div>
 
             <div className="lg:col-span-4 flex flex-wrap gap-3 lg:justify-end">
@@ -88,14 +90,7 @@ export function CaseStudyLayout({ project, nextProject }: CaseStudyLayoutProps) 
           )}
 
           <div className="relative w-full aspect-[16/10] overflow-hidden rounded bg-surface">
-            <Image
-              src={project.cover.src}
-              alt={project.cover.alt}
-              fill
-              priority
-              sizes="(max-width: 1440px) 100vw, 1440px"
-              className="object-cover object-top"
-            />
+            <ProjectCover project={project} priority sizes="(max-width: 1440px) 100vw, 1440px" />
           </div>
         </Container>
       </Realm>
@@ -108,6 +103,20 @@ export function CaseStudyLayout({ project, nextProject }: CaseStudyLayoutProps) 
               <h2 id="cs-overview" className="t-h3 text-ink mb-4">{ui.project.overview}</h2>
               <p className="t-body text-ink">{project.summary}</p>
             </section>
+
+            {project.contributions && project.contributions.length > 0 && (
+              <section aria-labelledby="cs-contributions">
+                <h2 id="cs-contributions" className="t-h3 text-ink mb-4">{ui.project.contributions}</h2>
+                {project.role && <p className="t-meta mb-2">{project.role}</p>}
+                <ul className="border-t border-line">
+                  {project.contributions.map((c) => (
+                    <li key={c} className="t-body text-ink border-b border-line py-4">
+                      {c}
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
 
             {project.highlights.length > 0 && (
               <section aria-labelledby="cs-features">
