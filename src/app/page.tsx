@@ -9,6 +9,8 @@ import { Hero } from '@/components/home/Hero';
 import { ProjectRow } from '@/components/work/ProjectRow';
 import { HackathonTimeline } from '@/components/hackathons/HackathonTimeline';
 import { ContactForm } from '@/components/contact/ContactForm';
+import { CopyEmailButton } from '@/components/interactions/CopyEmailButton';
+import { copyEmail } from '@/content/interactions';
 import { profile } from '@/content/profile';
 import { getProjectBySlug, isVisible, realmFor } from '@/content/projects';
 import { skillGroups } from '@/content/skills';
@@ -175,9 +177,17 @@ export default function HomePage() {
                 {profile.contact.email}
               </a>
 
-              <Button href={profile.contact.whatsapp} variant="ghost" className="mb-10">
-                {homePage.contact.whatsapp}
-              </Button>
+              <div className="flex flex-wrap gap-3 mb-10">
+                <CopyEmailButton
+                  email={profile.contact.email}
+                  label={copyEmail.button}
+                  done={copyEmail.done}
+                  failed={copyEmail.failed}
+                />
+                <Button href={profile.contact.whatsapp} variant="ghost">
+                  {homePage.contact.whatsapp}
+                </Button>
+              </div>
 
               <ul className="flex flex-wrap gap-x-8">
                 {socials.map((s) => (

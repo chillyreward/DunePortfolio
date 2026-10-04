@@ -7,6 +7,7 @@ import { isNavActive, type NavMatchMode } from '@/lib/nav';
 import { Container } from '@/components/ui/Container';
 import { TextLink } from '@/components/ui/TextLink';
 import { cn } from '@/lib/cn';
+import { SearchButton } from '@/components/interactions/SearchButton';
 
 export interface MobileNavItem {
   label: string;
@@ -24,9 +25,10 @@ export interface MobileMenuProps {
   email: string;
   whatsappHref: string;
   socials: readonly MobileSocialItem[] | MobileSocialItem[];
+  searchLabel: string;
 }
 
-export function MobileMenu({ items, email, whatsappHref, socials }: MobileMenuProps) {
+export function MobileMenu({ items, email, whatsappHref, socials, searchLabel }: MobileMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const dialogRef = useRef<HTMLDialogElement | null>(null);
   const triggerRef = useRef<HTMLButtonElement | null>(null);
@@ -164,6 +166,13 @@ export function MobileMenu({ items, email, whatsappHref, socials }: MobileMenuPr
                   </li>
                 );
               })}
+              <li>
+                <SearchButton
+                  label={searchLabel}
+                  className="t-h2"
+                  onBeforeOpen={() => setIsOpen(false)}
+                />
+              </li>
             </ul>
           </nav>
 

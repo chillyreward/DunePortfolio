@@ -10,6 +10,8 @@ import { ui } from '@/content/ui';
 import { realmFor } from '@/content/projects';
 import { ExternalLink } from 'lucide-react';
 import { ProjectCover } from './ProjectCover';
+import { CaseStudyToc } from './CaseStudyToc';
+import { caseStudyToc, gallery } from '@/content/interactions';
 
 export interface CaseStudyLayoutProps {
   project: Project;
@@ -18,6 +20,15 @@ export interface CaseStudyLayoutProps {
 
 export function CaseStudyLayout({ project, nextProject }: CaseStudyLayoutProps) {
   const realm = realmFor(project);
+  const hasContributions = !!project.contributions && project.contributions.length > 0;
+  const hasStory = !!project.story && project.story.length > 0;
+  const tocEntries = [
+    { id: 'overview', label: ui.project.overview },
+    ...(hasContributions ? [{ id: 'contributions', label: ui.project.contributions }] : []),
+    ...(project.highlights.length > 0 ? [{ id: 'features', label: ui.project.features }] : []),
+    ...(hasStory ? [{ id: 'story', label: ui.project.story }] : []),
+    ...(project.gallery.length > 0 ? [{ id: 'screens', label: ui.project.gallery }] : []),
+  ];
 
   return (
     <article className="flex flex-col w-full">
@@ -97,19 +108,22 @@ export function CaseStudyLayout({ project, nextProject }: CaseStudyLayoutProps) 
 
       {/* 2. Reading body */}
       <Realm name="arrakis" className="py-16 md:py-24 border-b border-line">
-        <Container>
-          <div className="max-w-3xl mx-auto space-y-16">
-            <section aria-labelledby="cs-overview">
+        <Container className="lg:grid lg:grid-cols-12 lg:gap-6">
+          <div className="lg:col-span-3">
+            <CaseStudyToc label={caseStudyToc.label} entries={tocEntries} />
+          </div>
+          <div className="lg:col-span-8 max-w-3xl space-y-16">
+            <section id="overview" aria-labelledby="cs-overview">
               <h2 id="cs-overview" className="t-h3 text-ink mb-4">{ui.project.overview}</h2>
               <p className="t-body text-ink">{project.summary}</p>
             </section>
 
-            {project.contributions && project.contributions.length > 0 && (
-              <section aria-labelledby="cs-contributions">
+            {hasContributions && (
+              <section id="contributions" aria-labelledby="cs-contributions">
                 <h2 id="cs-contributions" className="t-h3 text-ink mb-4">{ui.project.contributions}</h2>
                 {project.role && <p className="t-meta mb-2">{project.role}</p>}
                 <ul className="border-t border-line">
-                  {project.contributions.map((c) => (
+                  {project.contributions!.map((c) => (
                     <li key={c} className="t-body text-ink border-b border-line py-4">
                       {c}
                     </li>
@@ -119,7 +133,7 @@ export function CaseStudyLayout({ project, nextProject }: CaseStudyLayoutProps) 
             )}
 
             {project.highlights.length > 0 && (
-              <section aria-labelledby="cs-features">
+              <section id="features" aria-labelledby="cs-features">
                 <h2 id="cs-features" className="t-h3 text-ink mb-4">{ui.project.features}</h2>
                 <ul className="border-t border-line">
                   {project.highlights.map((h) => (
@@ -131,11 +145,11 @@ export function CaseStudyLayout({ project, nextProject }: CaseStudyLayoutProps) 
               </section>
             )}
 
-            {project.story && project.story.length > 0 && (
-              <section aria-labelledby="cs-story">
+            {hasStory && (
+              <section id="story" aria-labelledby="cs-story">
                 <h2 id="cs-story" className="t-h3 text-ink mb-4">{ui.project.story}</h2>
                 <div className="space-y-6">
-                  {project.story.map((para, i) => (
+                  {project.story!.map((para, i) => (
                     <p key={i} className="t-body text-ink-2">
                       {para}
                     </p>
@@ -145,11 +159,17 @@ export function CaseStudyLayout({ project, nextProject }: CaseStudyLayoutProps) 
             )}
 
             {project.gallery.length > 0 && (
-              <section aria-labelledby="cs-gallery">
+              <section id="screens" aria-labelledby="cs-gallery">
                 <h2 id="cs-gallery" className="t-h3 text-ink mb-8">{ui.project.gallery}</h2>
-                <div className="space-y-12">
-                  {project.gallery.map((imgItem) => (
-                    <figure key={imgItem.src}>
+                {/* Mobile: a horizontal scroll-snap strip. md+: stacked. */}
+                <div
+                  role="region"
+                  aria-labelledby="cs-gallery"
+                  tabIndex={0}
+                  className="flex gap-4 overflow-x-auto snap-x snap-mandatory -mx-gutter px-gutter scroll-px-gutter md:block md:overflow-visible md:mx-0 md:px-0 md:space-y-12"
+                >
+                  {project.gallery.map((imgItem, i) => (
+                    <figure key={imgItem.src} className="snap-start shrink-0 w-[85%] md:w-full">
                       <div className="relative w-full aspect-[16/10] overflow-hidden rounded bg-surface">
                         <Image
                           src={imgItem.src}
@@ -159,7 +179,9 @@ export function CaseStudyLayout({ project, nextProject }: CaseStudyLayoutProps) 
                           className="object-cover object-top"
                         />
                       </div>
-                      <figcaption className="t-meta mt-3">{imgItem.alt}</figcaption>
+                      <figcaption className="t-meta mt-3">
+                        {i + 1} {gallery.of} {project.gallery.length} · {imgItem.alt}
+                      </figcaption>
                     </figure>
                   ))}
                 </div>

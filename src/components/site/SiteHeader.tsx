@@ -7,6 +7,10 @@ import { NavLinks } from './NavLinks';
 import { MobileMenu } from './MobileMenu';
 import { profile } from '@/content/profile';
 import { primaryNav } from '@/content/navigation';
+import { search } from '@/content/interactions';
+import { ui } from '@/content/ui';
+import { SearchButton } from '@/components/interactions/SearchButton';
+import { RealmCompass } from '@/components/interactions/RealmCompass';
 
 export function SiteHeader() {
   const socials = [
@@ -16,7 +20,7 @@ export function SiteHeader() {
   ];
 
   return (
-    <header className="w-full h-[72px] print:hidden">
+    <header className="w-full h-[72px] bg-bg lg:sticky lg:top-0 lg:z-40 print:hidden">
       <Container className="h-full flex items-center justify-between">
         {/* Left: Brand / Home Link */}
         <Link
@@ -27,9 +31,13 @@ export function SiteHeader() {
           {profile.name}
         </Link>
 
-        {/* Right (Desktop md+): NavLinks, ThemeToggle, Download CV (if cvPath set) */}
+        {/* Desktop: realm compass (lg+) */}
+        <RealmCompass labels={ui.realms} />
+
+        {/* Right (Desktop md+): NavLinks, Search, ThemeToggle, Download CV (if cvPath set) */}
         <div className="hidden md:flex items-center gap-8">
           <NavLinks items={primaryNav} />
+          <SearchButton label={search.button} />
           <ThemeToggle />
           {profile.cvPath && (
             <Button
@@ -51,6 +59,7 @@ export function SiteHeader() {
             email={profile.contact.email}
             whatsappHref={profile.contact.whatsapp}
             socials={socials}
+            searchLabel={search.button}
           />
         </div>
       </Container>

@@ -4,6 +4,7 @@ import * as React from 'react';
 import { useTheme } from 'next-themes';
 import { RealmGlyph } from '@/components/realm/RealmGlyph';
 import { cn } from '@/lib/cn';
+import { switchThemeWithEclipse } from '@/lib/eclipse';
 
 export type ThemeToggleProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
 
@@ -39,7 +40,13 @@ export function ThemeToggle({ className, ...props }: ThemeToggleProps) {
   return (
     <button
       type="button"
-      onClick={() => setTheme(isDark ? 'light' : 'dark')}
+      onClick={(e) => {
+        const box = e.currentTarget.getBoundingClientRect();
+        switchThemeWithEclipse(() => setTheme(isDark ? 'light' : 'dark'), {
+          x: box.left + box.width / 2,
+          y: box.top + box.height / 2,
+        });
+      }}
       aria-label={label}
       className={cn(
         'w-[44px] h-[44px] inline-flex items-center justify-center rounded text-ink hover:bg-ink/5 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-[3px]',

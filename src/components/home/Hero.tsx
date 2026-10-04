@@ -12,7 +12,7 @@ export function Hero() {
   return (
     <section
       aria-labelledby="hero-title"
-      className="relative isolate w-full overflow-hidden bg-bg border-b border-line flex flex-col md:block md:h-[calc(100svh-72px)] md:min-h-[640px] md:max-h-[1000px]"
+      className="hero-depth relative isolate w-full overflow-hidden bg-bg border-b border-line flex flex-col md:block md:h-[calc(100svh-72px)] md:min-h-[640px] md:max-h-[1000px]"
     >
       {/* Location, top left */}
       <Container className="relative z-20 w-full pt-6 md:pt-8">
@@ -21,7 +21,7 @@ export function Hero() {
 
       {/* Stage: portrait bottom-anchored, KIDAVI crossing it at chest height */}
       <div className="relative h-[58svh] min-h-[360px] max-h-[560px] md:absolute md:inset-0 md:h-auto md:min-h-0 md:max-h-none">
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-full md:h-[78%] aspect-[843/1370] pointer-events-none">
+        <div className="hero-rise absolute bottom-0 left-1/2 -translate-x-1/2 h-full md:h-[78%] aspect-[843/1370] pointer-events-none">
           {/* Giedi only: soft rim light so the black blazer separates from the black page */}
           <div
             aria-hidden="true"
@@ -38,7 +38,7 @@ export function Hero() {
           />
         </div>
 
-        <HeroHaze className="absolute inset-x-0 bottom-[47%] md:bottom-[25%] z-10 pointer-events-none mix-blend-difference">
+        <HeroHaze className="hero-sink absolute inset-x-0 bottom-[47%] md:bottom-[25%] z-10 pointer-events-none mix-blend-difference">
           <Container>
             <h1
               id="hero-title"

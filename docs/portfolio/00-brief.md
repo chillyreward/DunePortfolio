@@ -31,7 +31,14 @@ Dune is expressed in the **visual language**, not in jargon:
 Rules that keep it disciplined:
 - **One memorable thing:** the hero wordmark. Everything else is quiet.
 - **One typeface:** Archivo (variable, with a width axis). Width does the expressive work. No second family, no monospace labels.
-- **One signature motion:** on first load the hero wordmark resolves out of a heat-haze distortion (~1.4s, once). Disabled under `prefers-reduced-motion` and on coarse pointers (simple opacity fade instead). Nothing else animates on its own; only user-triggered transitions (hover, focus, open/close).
+- **Motion, exhaustively** (updated in PROMPT 13). Everything else stays still apart from hover, focus and open/close states.
+  1. **Hero haze** (the signature): on first load the hero wordmark resolves out of a heat-haze distortion (~1.4s, once). Disabled under `prefers-reduced-motion` and on coarse pointers.
+  2. **Eclipse theme switch:** pressing the theme toggle reveals the new mode as a circle growing from the toggle (View Transitions API, 600ms, `cubic-bezier(.4,0,.2,1)`). Instant where unsupported or with reduced motion.
+  3. **Hero depth on scroll:** as the first screen scrolls away the portrait rises up to 40px and KIDAVI sinks up to 60px and fades to 0.4. CSS scroll-driven animation only; static where unsupported or with reduced motion.
+  4. **Realm compass:** on desktop the sticky header shows the realm currently under it (glyph + name), fading between labels in 150ms. Decorative (`aria-hidden`).
+  5. **Search palette:** `Ctrl+K` / `⌘K` or the Search button opens a native dialog (open/close only, no animation of its own).
+  6. **Shai-Hulud easter egg.**
+  Every item respects `prefers-reduced-motion`, works with keyboard and screen readers, and adds no npm dependencies.
 - No all-caps labels, no eyebrow text above every heading, no `01 / 02` numbering unless the content really is a sequence (the hackathon timeline is), no `→` glued onto link text, no gradients, no glow, no drop shadows. (One exception: in `giedi` only, a soft radial rim light sits behind the hero portrait cutout so the black blazer separates from the black page.)
 - Emptiness is a feature: generous section spacing, lots of sand.
 
