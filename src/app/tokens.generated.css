@@ -119,3 +119,62 @@
   --line-alpha: 0.14;
   color-scheme: dark;
 }
+
+/* Print (CV PDF): always the light palette, whatever mode the reader is in */
+@media print {
+  :root,
+  [data-theme] {
+    --bg: 217 203 176;
+    --surface: 239 231 216;
+    --ink: 35 29 20;
+    --ink-2: 87 78 64;
+    --accent: 30 69 200;
+    --accent-ink: 255 255 255;
+    --spice: 200 128 26;
+    --mark: 30 69 200;
+    --wordmark: 182 174 156;
+    --line: 35 29 20;
+    --line-alpha: 0.18;
+    color-scheme: light;
+  }
+
+  [data-realm="fremen"],
+  [data-theme] [data-realm="fremen"] {
+    --bg: 42 45 46;
+    --surface: 54 58 60;
+    --ink: 235 230 220;
+    --ink-2: 170 175 178;
+    --mark: 218 165 32;
+    --accent: 127 151 255;
+    --accent-ink: 0 0 0;
+    --line: 235 230 220;
+    --line-alpha: 0.15;
+    color-scheme: dark;
+  }
+
+  [data-realm="atreides"],
+  [data-theme] [data-realm="atreides"] {
+    --bg: 20 28 24;
+    --surface: 28 38 33;
+    --ink: 240 242 238;
+    --ink-2: 160 172 165;
+    --mark: 197 160 89;
+    --accent: 127 151 255;
+    --accent-ink: 0 0 0;
+    --line: 240 242 238;
+    --line-alpha: 0.15;
+    color-scheme: dark;
+  }
+
+  [data-realm="corrino"],
+  [data-theme] [data-realm="corrino"] {
+    --bg: 245 240 230;
+    --surface: 235 228 215;
+    --ink: 28 24 36;
+    --ink-2: 90 82 100;
+    --mark: 166 118 8;
+    --line: 28 24 36;
+    --line-alpha: 0.15;
+    color-scheme: light;
+  }
+}

@@ -147,18 +147,19 @@
   }
 
   .cv-name {
-    font-size: 18pt !important;
-    line-height: 1.15 !important;
-    color: #000000 !important;
+    font-size: 20pt !important;
+    line-height: 1.1 !important;
   }
 
   .cv-heading {
     font-size: 10.5pt !important;
     line-height: 1.2 !important;
-    color: #000000 !important;
     margin-bottom: 4pt !important;
-    border-bottom: 0.5pt solid #d1d5db !important;
     padding-bottom: 2pt !important;
+  }
+
+  .cv-portrait {
+    width: 24mm !important;
   }
 
   .cv-entry {
@@ -168,7 +169,6 @@
 
   a {
     text-decoration: none !important;
-    color: inherit !important;
   }
 }
 

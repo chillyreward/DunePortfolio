@@ -4,7 +4,9 @@ import crypto from 'node:crypto';
 import { spawn } from 'node:child_process';
 import { chromium } from 'playwright';
 
-const chromePath = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
+// Use the local Chrome on Windows when present; otherwise Playwright's bundled Chromium.
+const windowsChrome = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
+const chromePath = fs.existsSync(windowsChrome) ? windowsChrome : undefined;
 
 function computeContentHash(): string {
   const files = [
@@ -57,6 +59,8 @@ async function main() {
   const serverProcess = spawn(npmCmd, ['run', 'start', '--', '-p', String(serverPort)], {
     stdio: 'inherit',
     shell: true,
+    // Own process group on POSIX so the shell and next-server stop together.
+    detached: !isWin,
   });
 
   let browser;
@@ -96,7 +100,7 @@ async function main() {
     await page.pdf({
       path: pdfPath,
       format: 'A4',
-      printBackground: false,
+      printBackground: true,
       preferCSSPageSize: true,
     });
 
@@ -120,7 +124,7 @@ async function main() {
       if (isWin) {
         spawn('taskkill', ['/pid', String(serverProcess.pid), '/f', '/t']);
       } else {
-        serverProcess.kill('SIGTERM');
+        process.kill(-serverProcess.pid, 'SIGTERM');
       }
     }
   }
