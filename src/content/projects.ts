@@ -19,7 +19,7 @@ const rawProjects: Project[] = [
       'Merry-Go-Round rotation schedule coordination',
       'Solidity/Ethereum smart-contract security layer',
     ],
-    // Story approved by Lenny 2026-10-04 (paragraph 2 pending his OK).
+    // Story approved by Lenny 2026-10-04.
     story: [
       "Chamas run on trust, but most still track contributions, loans and Merry-Go-Round turns in notebooks and WhatsApp threads, so it's hard for members to see where the money is. My team and I built SmartChama to make that automatic and visible: M-Pesa contributions are tracked as they come in, internal loans and rotation schedules are managed in one place, and a Solidity smart-contract layer records the group's rules so no single person can quietly change them.",
       "The hardest part was the M-Pesa integration. The API is difficult to work with, but we got it working: members now pay with an M-Pesa STK push, and their contributions show up in the group's records as they happen.",
@@ -52,7 +52,11 @@ const rawProjects: Project[] = [
       'Inquiry-first flow with direct communication via WhatsApp and phone',
       'Zero-commission structure with direct peer-to-peer M-Pesa payouts',
     ],
-    story: null, // TODO(lenny): add case study story paragraphs
+    // Story: paragraph 1 approved by Lenny 2026-10-04; paragraph 2 drafted from his answer, pending OK.
+    story: [
+      "Finding a plumber, electrician or mechanic you can trust in Nairobi usually means asking around. Saka is a marketplace for finding verified local tradespeople near you, starting in Nairobi. It's inquiry-first: you message a pro directly, agree on the job, and pay them straight through M-Pesa. Saka takes no commission. I'm the main founder, and we're a team of five.",
+      "The hardest part is finding the right people: identifying skilled tradespeople and checking them before we approve them on Saka, because the marketplace is only as good as the pros listed on it.",
+    ],
     stack: [
       'Next.js 14',
       'Supabase',
