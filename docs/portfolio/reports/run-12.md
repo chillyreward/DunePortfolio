@@ -8,16 +8,18 @@ Driven by `docs/portfolio/prompts/PROMPT-12-corrections.md` and the design revie
 |---|---|
 | Open to full-time roles | No |
 | Beorchild year | 2026 |
-| Beorchild team | Lenny Kidavi, Rachael, Shilla, Nanjoli |
+| Beorchild team | Lenny Kidavi, Rachael, Shilla (corrected 2026-10-04) |
 | SmartChama stack includes TypeScript, Tailwind CSS, Next.js | Yes |
 | Oppolia stack is Next.js, Tailwind CSS, TypeScript | Yes |
 | Oppolia works "across East Africa" | No |
 | Oppolia permission to show | Yes |
 | Sucre Bushworks permission to show | Yes |
-| Show NeuroGrowth publicly now | Yes (live: https://www.neurogrowthtech.com/) |
+| Show NeuroGrowth publicly now | Yes (live: https://www.neurogrowthtech.com/); client work, placeholder description accepted (2026-10-04) |
 | Show Allenet Bakers publicly now | No |
 | Keep X (Twitter) link | Yes |
 | Availability wording | Freelance projects and internships |
+
+Re-confirmed one by one on 2026-10-04 (Claude Code session). Also on 2026-10-04: keep the unconfirmed skills; drop Saka's "48+ estates"; experience "Independent software developer, 2025–present"; new skills JavaScript, Node.js (shipped) and C++, FastAPI, Web3 (coursework); no soft-skills line; CV gets a portrait and project thumbnails.
 
 ## 1. Audit (before)
 
@@ -75,3 +77,49 @@ Audit after section 2 (excluding `src/app/dev` and OG images): monospace 0, stra
 - Corrino bands open with a 4px gold double rule (`border-double border-mark`) via `Realm`.
 - Oppolia and Sucre Bushworks: `permission: true` (confirmed by Lenny 2026-09-27); their case studies now build.
 - Homepage realm order: hero arrakis (no marker), selected work atreides + corrino, hackathons fremen, about arrakis, contact arrakis (no marker).
+
+### 4. Content (2026-10-04, `fix: content back to confirmed facts`)
+The confirmations above had been recorded but never applied; this section applies them.
+- Beorchild: year 2026, team Lenny Kidavi, Rachael, Shilla.
+- Oppolia: "across East Africa" removed. Saka: "48+ estates" removed (summary and highlight).
+- Sucre Bushworks: "Camping gear, Kenyan campsites and guided trips, with a WhatsApp inquiry basket." (no "seamless").
+- Red, White & Build summary limited to confirmed facts. Photo captions rewritten to describe what is visible (01 cheque, 02 certificate handover, 03 Credit Passport slide, 04 team in the audience, 05 ceremony, 06 after the event); lead image stays photo-01.
+- Copy: home work lead "Products I've built and sites I've shipped for clients."; hackathon leads (home and about) removed; `/work` H1 "Work" with the same lead, metadata read from content; about headings Background, Education, Skills, Hackathons, What's next; bio rewritten in first person from the facts register; closing text without "high-impact".
+- CV: phone shown as a WhatsApp link only; project type label from `ui.ts` (Gikuyu Translator was labelled "Client Work").
+- NeuroGrowth: client, live URL, permission, placeholder tagline/summary. **Still `publish: false`**: it has no real screenshot (the cloud environment's network policy blocks neurogrowthtech.com). TODO(lenny): add `public/images/projects/neuro-growth/cover.webp`, then publish. When it goes live, `cv:check`'s "NeuroGrowth" assertion must be removed.
+
+### 5. Visual fixes from the 2026-10-04 design review
+- Hero: KIDAVI disappeared into the black blazer in arrakis (multiply). The wordmark now uses `mix-blend-difference` in both modes with a new `--wordmark` token (arrakis: bg minus ink, so it is exactly ink on sand and light sand over the blazer). The hero section gets `bg-bg` so the blend has a backdrop.
+- Hackathon timeline: the header rule doubled the first row's rule; removed.
+- Tap targets: hackathon project links get a 44px hit area; footer email and WhatsApp are 44px tall.
+- Corrino mark `#A67608` → `#8D6407`: the House Corrino marker label failed axe AA (3.54:1). The contrast gate now requires 4.5:1 for every realm mark.
+
+### 6. CV
+- Merged the confirmed parts of Lenny's original resume: Experience (independent software developer, self-employed, Nairobi, 2025–present; bullets restate the facts register) and the new skills. Old-CV claims retired by the brief (2024 hackathon, Saka as an AI talent platform, old Vercel URLs, unverified impact lines, "Self-taught ML Engineer") stay out.
+- Design: parchment header band with the monochrome portrait, screenshot thumbnail per project, headings with realm glyphs (Atreides for products, Corrino for client work, Fremen for hackathons) on gold rules, Ibad-blue links. All three skill groups.
+- Print always uses the light palette (generated `@media print` token block), and the PDF prints backgrounds.
+- `build-cv-pdf` and `playwright.config` fall back to Playwright's Chromium off Windows; the PDF script stops its server's whole process group on POSIX.
+
+## Results (2026-10-04)
+
+| Check | Before | After |
+|---|---|---|
+| monospace in `src` | 73 | 0 |
+| uppercase / wide tracking | 61 | 3 (`.t-wordmark`, `.t-h1` in globals.css; dev page) — plus OG images |
+| pill radius | 16 | 0 |
+| glued arrows | 11 | 0 |
+| hex colours in `.tsx` (excl. OG, icons, dev) | 94 | 2 files: `ShaiHulud.tsx` worm illustration, `layout.tsx` `themeColor` meta (justified) |
+| green status dots | 2 | 0 |
+| buzzwords / retired claims (seamless, high velocity, typed architectures, 48+, East Africa…) | — | 0 |
+
+- `npx tsc --noEmit`: pass. `npm run lint`: no warnings or errors. `npm run build`: pass.
+- `npm run tokens:contrast`: 29/29 pass.
+- `npm run test:e2e`: 19/19 pass (axe AA on `/`, `/work`, `/about`, `/cv`, contact).
+- `npm run cv:pdf` + `npm run cv:check`: 2 pages, all assertions pass (new: no bare phone number, no "48+", no "seamless").
+- `npm run content:check`: passes; open TODO(lenny) items remain for roles, years, stacks, story paragraphs, NeuroGrowth cover, Allenet, epigraphs.
+
+Known, not changed: the realm marker is still an inline row at 1440 (the vertical rail isn't built); OG images keep uppercase labels; Gikuyu Translator's "built to support indigenous language preservation and learning" is not in the facts register (TODO(lenny) to confirm).
+
+## Screenshots
+
+`docs/portfolio/reports/screenshots/run-12/`: `home`, `work`, `work-oppolia`, `about`, `cv` × `arrakis`/`giedi` × `375`/`1440` (20 full-page JPEGs).
