@@ -28,6 +28,10 @@ export const ProjectSchema = z.object({
   tagline: z.string().min(1),
   type: ProjectTypeSchema,
   role: z.string().nullable(),
+  // What Lenny personally did on the project (case study 'Role and contributions').
+  contributions: z.array(z.string()).optional(),
+  // One plain line crediting a parent product line, shown on the case study.
+  credit: z.string().optional(),
   year: z.number().nullable(),
   liveUrl: z.string().url().nullable(),
   repoUrl: z.string().nullable(),
@@ -36,7 +40,8 @@ export const ProjectSchema = z.object({
   story: z.array(z.string().min(1)).nullable(),
   stack: z.array(z.string()),
   team: z.array(z.string()).nullable(),
-  cover: ImageRefSchema,
+  // null until a real screenshot exists; the UI shows an empty surface frame.
+  cover: ImageRefSchema.nullable(),
   gallery: z.array(ImageRefSchema),
   featured: z.boolean(),
   publish: z.boolean(),

@@ -4,6 +4,8 @@ import * as React from 'react';
 import { useTheme } from 'next-themes';
 import { RealmGlyph } from '@/components/realm/RealmGlyph';
 import { cn } from '@/lib/cn';
+import { ui } from '@/content/ui';
+import { switchThemeWithEclipse } from '@/lib/eclipse';
 
 export type ThemeToggleProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
 
@@ -34,12 +36,18 @@ export function ThemeToggle({ className, ...props }: ThemeToggleProps) {
   }
 
   const isDark = resolvedTheme === 'dark';
-  const label = isDark ? 'Switch to light mode (Arrakis)' : 'Switch to dark mode (Giedi Prime)';
+  const label = isDark ? ui.theme.toLight : ui.theme.toDark;
 
   return (
     <button
       type="button"
-      onClick={() => setTheme(isDark ? 'light' : 'dark')}
+      onClick={(e) => {
+        const box = e.currentTarget.getBoundingClientRect();
+        switchThemeWithEclipse(() => setTheme(isDark ? 'light' : 'dark'), {
+          x: box.left + box.width / 2,
+          y: box.top + box.height / 2,
+        });
+      }}
       aria-label={label}
       className={cn(
         'w-[44px] h-[44px] inline-flex items-center justify-center rounded text-ink hover:bg-ink/5 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-[3px]',

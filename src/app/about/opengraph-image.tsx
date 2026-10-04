@@ -1,7 +1,8 @@
 import React from 'react';
 import path from 'node:path';
 import sharp from 'sharp';
-import { ogSize, ogContentType, renderOgCard } from '@/lib/og';
+import { ogSize, ogContentType, renderOgCard, ogGlyph } from '@/lib/og';
+import { ui } from '@/content/ui';
 import { profile } from '@/content/profile';
 
 export const runtime = 'nodejs';
@@ -19,20 +20,10 @@ export default async function Image() {
 
   const portraitDataUrl = `data:image/jpeg;base64,${portraitBuffer.toString('base64')}`;
 
-  const arrakisGlyph = (
-    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#1E45C8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 12a8 8 0 0 1 16 0" />
-      <path d="M2 12h20" />
-      <path d="M7 16v4" />
-      <path d="M12 15v6" />
-      <path d="M17 16v4" />
-    </svg>
-  );
-
   return renderOgCard({
     realm: 'arrakis',
-    badge: 'About / Lenny Kidavi',
-    glyph: arrakisGlyph,
+    badge: ui.realms.arrakis,
+    glyph: ogGlyph('arrakis'),
     children: (
       <div
         style={{
@@ -43,17 +34,6 @@ export default async function Image() {
         }}
       >
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', flex: 1 }}>
-          <span
-            style={{
-              fontSize: '20px',
-              fontWeight: 600,
-              letterSpacing: '0.15em',
-              textTransform: 'uppercase',
-              color: '#1E45C8',
-            }}
-          >
-            About Me
-          </span>
           <h1
             style={{
               fontSize: '60px',

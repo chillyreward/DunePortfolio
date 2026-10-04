@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/Button';
 import { Realm } from '@/components/realm/Realm';
 import { RealmGlyph } from '@/components/realm/RealmGlyph';
 import { PrintButton } from '@/components/cv/PrintButton';
+import { ProjectCover } from '@/components/work/ProjectCover';
 import { profile } from '@/content/profile';
 import { getProjects, realmFor } from '@/content/projects';
 import { hackathons } from '@/content/hackathons';
@@ -165,14 +166,7 @@ export default function CvPage() {
                       className="cv-entry grid grid-cols-[96px_1fr] sm:grid-cols-[136px_1fr] print:grid-cols-[30mm_1fr] gap-4 print:gap-3 border-b border-line pb-5 print:pb-2 last:border-b-0 last:pb-0"
                     >
                       <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[2px] border border-line bg-surface">
-                        <Image
-                          src={p.cover.src}
-                          alt={p.cover.alt}
-                          fill
-                          sizes="136px"
-                          loading="eager"
-                          className="object-cover object-top"
-                        />
+                        <ProjectCover project={p} sizes="136px" loading="eager" />
                       </div>
                       <div className="min-w-0 space-y-1 print:space-y-0.5">
                         <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-x-3 gap-y-0.5">

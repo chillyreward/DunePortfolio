@@ -9,9 +9,12 @@ const PROJECTS = [
   { slug: 'oppolia', url: 'https://www.oppoliakenya.co.ke' },
   { slug: 'sucre-bushworks', url: 'https://sucre-bushworks.vercel.app' },
   { slug: 'gikuyu-translator', url: 'https://gikuyu-translate.vercel.app' },
+  { slug: 'neuro-growth', url: 'https://www.neurogrowthtech.com' },
 ];
 
-const chromePath = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
+// Use the local Chrome on Windows when present; otherwise Playwright's bundled Chromium.
+const windowsChrome = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
+const chromePath = fs.existsSync(windowsChrome) ? windowsChrome : undefined;
 
 async function captureProject(browser, project, extraWaitMs = 4000) {
   const { slug, url } = project;

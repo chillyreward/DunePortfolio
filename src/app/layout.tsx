@@ -7,6 +7,12 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import { SiteHeader } from '@/components/site/SiteHeader';
 import { SiteFooter } from '@/components/site/SiteFooter';
 import { getMetadataBase } from '@/lib/site-url';
+import { SearchPalette } from '@/components/interactions/SearchPalette';
+import { ToastHost } from '@/components/interactions/ToastHost';
+import { buildSearchItems } from '@/lib/search-items';
+import { search, copyEmail } from '@/content/interactions';
+import { profile } from '@/content/profile';
+import { cv } from '@/content/cv';
 import './globals.css';
 
 const ShaiHulud = dynamic(
@@ -63,6 +69,24 @@ export default function RootLayout({
             </main>
             <SiteFooter />
             <ShaiHulud />
+            <SearchPalette
+              items={buildSearchItems()}
+              labels={{
+                dialogLabel: search.dialogLabel,
+                placeholder: search.placeholder,
+                empty: search.empty,
+                groups: search.groups,
+                toDark: search.actions.toDark,
+                toLight: search.actions.toLight,
+              }}
+              email={profile.contact.email}
+              copyDone={copyEmail.done}
+              copyFailed={copyEmail.failed}
+              cvPath={profile.cvPath ?? null}
+              cvFileName={cv.downloadFileName}
+              whatsapp={profile.contact.whatsapp}
+            />
+            <ToastHost />
           </ThemeProvider>
           {process.env.VERCEL ? (
             <>

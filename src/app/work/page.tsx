@@ -29,7 +29,7 @@ export default function WorkPage() {
       </Realm>
 
       {bands.map((band) => (
-        <Realm key={band.realm} name={band.realm} className="py-24 md:py-36">
+        <Realm key={band.realm} name={band.realm} className="py-section">
           <Container>
             <div className="pb-4">
               <RealmMarker realm={band.realm} className="mb-4" />

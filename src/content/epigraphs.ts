@@ -6,17 +6,17 @@ import { Epigraph, EpigraphSchema, EpigraphSlot } from './schema';
 const rawEpigraphs: Epigraph[] = [
   {
     slot: 'home-about',
-    quote: '', // TODO(lenny): type Dune epigraph quote for home-about
+    quote: 'Fear is the mind-killer.', // Typed by Lenny 2026-10-04
     attribution: 'Frank Herbert, Dune',
   },
   {
     slot: 'about',
-    quote: '', // TODO(lenny): type Dune epigraph quote for about page
+    quote: "The mystery of life isn't a problem to solve, but a reality to experience.", // Typed by Lenny 2026-10-04
     attribution: 'Frank Herbert, Dune',
   },
   {
     slot: 'not-found',
-    quote: '', // TODO(lenny): type Dune epigraph quote for 404 page
+    quote: 'A person needs new experiences. They jar something deep inside, allowing him to grow.', // Typed by Lenny 2026-10-04
     attribution: 'Frank Herbert, Dune',
   },
 ];

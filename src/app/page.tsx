@@ -9,6 +9,8 @@ import { Hero } from '@/components/home/Hero';
 import { ProjectRow } from '@/components/work/ProjectRow';
 import { HackathonTimeline } from '@/components/hackathons/HackathonTimeline';
 import { ContactForm } from '@/components/contact/ContactForm';
+import { CopyEmailButton } from '@/components/interactions/CopyEmailButton';
+import { copyEmail } from '@/content/interactions';
 import { profile } from '@/content/profile';
 import { getProjectBySlug, isVisible, realmFor } from '@/content/projects';
 import { skillGroups } from '@/content/skills';
@@ -69,7 +71,7 @@ export default function HomePage() {
       </Realm>
 
       {/* 2. Selected work: own products (Atreides) */}
-      <Realm name="atreides" id="work" className="py-24 md:py-36">
+      <Realm name="atreides" id="work" className="py-section">
         <Container>
           <div className="pb-4">
             <RealmMarker realm="atreides" className="mb-4" />
@@ -84,7 +86,7 @@ export default function HomePage() {
 
       {/* 2b. Selected work: client work (Corrino) */}
       {clientProjects.length > 0 && (
-        <Realm name="corrino" className="py-24 md:py-36">
+        <Realm name="corrino" className="py-section">
           <Container>
             <div className="pb-4">
               <RealmMarker realm="corrino" className="mb-4" />
@@ -106,7 +108,7 @@ export default function HomePage() {
       </Realm>
 
       {/* 3. Hackathons Section (Fremen Realm Band) */}
-      <Realm name="fremen" id="hackathons" className="py-20 md:py-28 border-b border-line">
+      <Realm name="fremen" id="hackathons" className="py-section border-b border-line">
         <Container>
           {/* Section Header */}
           <div className="pb-12">
@@ -122,7 +124,7 @@ export default function HomePage() {
       </Realm>
 
       {/* 4. About Teaser (Arrakis) */}
-      <Realm name="arrakis" className="py-24 md:py-36 border-b border-line">
+      <Realm name="arrakis" className="py-section border-b border-line">
         <Container>
           {homeEpigraph && (
             <Epigraph
@@ -147,7 +149,7 @@ export default function HomePage() {
 
             <div className="lg:col-span-7">
               <h2 className="t-h2 text-ink mb-6">{homePage.aboutTeaser.heading}</h2>
-              <p className="t-body text-ink mb-4">{homePage.hero.tagline}</p>
+              <p className="t-body text-ink mb-4">{profile.bio[0]}</p>
               <p className="t-meta mb-8">
                 {profile.education.degree}, {profile.education.institution}, {profile.education.period}
               </p>
@@ -160,7 +162,7 @@ export default function HomePage() {
       </Realm>
 
       {/* 5. Contact (Arrakis) */}
-      <Realm name="arrakis" id="contact" className="py-24 md:py-36">
+      <Realm name="arrakis" id="contact" className="py-section">
         <Container>
           <Grid className="gap-16 lg:gap-16 items-start">
             <div className="col-span-4 md:col-span-6">
@@ -175,9 +177,17 @@ export default function HomePage() {
                 {profile.contact.email}
               </a>
 
-              <Button href={profile.contact.whatsapp} variant="ghost" className="mb-10">
-                {homePage.contact.whatsapp}
-              </Button>
+              <div className="flex flex-wrap gap-3 mb-10">
+                <CopyEmailButton
+                  email={profile.contact.email}
+                  label={copyEmail.button}
+                  done={copyEmail.done}
+                  failed={copyEmail.failed}
+                />
+                <Button href={profile.contact.whatsapp} variant="ghost">
+                  {homePage.contact.whatsapp}
+                </Button>
+              </div>
 
               <ul className="flex flex-wrap gap-x-8">
                 {socials.map((s) => (

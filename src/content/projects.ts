@@ -7,7 +7,8 @@ const rawProjects: Project[] = [
     title: 'SmartChama',
     tagline: 'Digital savings and loan management for African savings groups.',
     type: 'product',
-    role: null, // TODO(lenny): confirm exact role and NeuroGrowth relationship
+    role: null, // TODO(lenny): confirm exact role
+    credit: "Built by my team and me; now part of NeuroGrowth's product line.", // Confirmed by Lenny 2026-10-04
     year: 2026, // TODO(lenny): confirm project inception year if earlier
     liveUrl: 'https://www.smartchama.tech', // TODO(lenny): confirm canonical domain vs vercel domain
     repoUrl: 'https://github.com/chillyreward/SmartChama',
@@ -18,7 +19,11 @@ const rawProjects: Project[] = [
       'Merry-Go-Round rotation schedule coordination',
       'Solidity/Ethereum smart-contract security layer',
     ],
-    story: null, // TODO(lenny): add case study story paragraphs
+    // Story approved by Lenny 2026-10-04.
+    story: [
+      "Chamas run on trust, but most still track contributions, loans and Merry-Go-Round turns in notebooks and WhatsApp threads, so it's hard for members to see where the money is. My team and I built SmartChama to make that automatic and visible: M-Pesa contributions are tracked as they come in, internal loans and rotation schedules are managed in one place, and a Solidity smart-contract layer records the group's rules so no single person can quietly change them.",
+      "The hardest part was the M-Pesa integration. The API is difficult to work with, but we got it working: members now pay with an M-Pesa STK push, and their contributions show up in the group's records as they happen.",
+    ],
     stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Solidity', 'Ethereum'], // TODO(lenny): confirm full tech stack
     team: ['Lenny Kidavi', 'Rachael', 'Shilla', 'Nanjoli'],
     cover: img('/images/projects/smart-chama/cover.webp', 'SmartChama landing page and dashboard preview'),
@@ -36,7 +41,7 @@ const rawProjects: Project[] = [
     title: 'Saka',
     tagline: 'Local trades and service discovery marketplace in Nairobi.',
     type: 'product',
-    role: 'Lead Founder & Full-Stack Developer',
+    role: 'Main founder and full-stack developer', // Wording confirmed by Lenny 2026-10-04
     year: 2025, // TODO(lenny): confirm start year
     liveUrl: 'https://sakahapa.vercel.app',
     repoUrl: null, // Private repository
@@ -47,7 +52,11 @@ const rawProjects: Project[] = [
       'Inquiry-first flow with direct communication via WhatsApp and phone',
       'Zero-commission structure with direct peer-to-peer M-Pesa payouts',
     ],
-    story: null, // TODO(lenny): add case study story paragraphs
+    // Story approved by Lenny 2026-10-04.
+    story: [
+      "Finding a plumber, electrician or mechanic you can trust in Nairobi usually means asking around. Saka is a marketplace for finding verified local tradespeople near you, starting in Nairobi. It's inquiry-first: you message a pro directly, agree on the job, and pay them straight through M-Pesa. Saka takes no commission. I'm the main founder, and we're a team of five.",
+      "The hardest part is finding the right people: identifying skilled tradespeople and checking them before we approve them on Saka, because the marketplace is only as good as the pros listed on it.",
+    ],
     stack: [
       'Next.js 14',
       'Supabase',
@@ -75,8 +84,8 @@ const rawProjects: Project[] = [
     title: 'Oppolia Woodworths Kenya',
     tagline: 'Luxury fitted cabinetry and interior architecture website.',
     type: 'client',
-    role: null, // TODO(lenny): confirm role and contributions
-    year: null, // TODO(lenny): confirm launch year
+    role: 'Full-stack developer', // Confirmed by Lenny 2026-10-04
+    year: 2026, // Confirmed by Lenny 2026-10-04
     liveUrl: 'https://www.oppoliakenya.co.ke',
     repoUrl: null, // Client proprietary
     summary:
@@ -86,8 +95,11 @@ const rawProjects: Project[] = [
       'Consultation scheduling and quote request inquiry pipeline',
       'Mobile-responsive Italian-inspired design aesthetic',
     ],
-    story: null, // TODO(lenny): add case study story paragraphs
-    stack: ['Next.js', 'Tailwind CSS', 'TypeScript'], // TODO(lenny): confirm full client stack
+    // Story approved by Lenny 2026-10-04.
+    story: [
+      'Oppolia Woodworths Kenya makes luxury fitted cabinetry, wardrobes and interiors. I built their website as a full-stack developer: a showcase for their kitchens and interior work, with clear ways to start a project. Visitors can request a free quote, talk to a designer, or message the team on WhatsApp.',
+    ],
+    stack: ['Next.js', 'Tailwind CSS', 'TypeScript'], // Confirmed by Lenny 2026-09-27
     team: null,
     cover: img('/images/projects/oppolia/cover.webp', 'Oppolia Woodworths Kenya hero presentation'),
     gallery: [
@@ -104,8 +116,8 @@ const rawProjects: Project[] = [
     title: 'Sucre Bushworks',
     tagline: 'Kenyan camping gear, campsite directory, and wilderness expeditions.',
     type: 'client',
-    role: null, // TODO(lenny): confirm role and contributions
-    year: null, // TODO(lenny): confirm launch year
+    role: 'Full-stack developer', // Confirmed by Lenny 2026-10-04
+    year: 2026, // Confirmed by Lenny 2026-10-04
     liveUrl: 'https://sucre-bushworks.vercel.app',
     repoUrl: null, // Client repository
     summary:
@@ -115,8 +127,11 @@ const rawProjects: Project[] = [
       'Direct WhatsApp inquiry basket for trip planning and gear rental',
       'Responsive wilderness-focused visual identity',
     ],
-    story: null, // TODO(lenny): add case study story paragraphs
-    stack: ['Next.js', 'Tailwind CSS', 'TypeScript'], // TODO(lenny): confirm full client stack
+    // Story approved by Lenny 2026-10-04.
+    story: [
+      'Sucre Bushworks sells camping gear and runs guided trips to campsites around Kenya. I built their website as a full-stack developer. Visitors can browse gear, campsites and trips, add what they want to an inquiry basket, and send it to the team on WhatsApp.',
+    ],
+    stack: ['Next.js', 'Tailwind CSS', 'TypeScript'], // Confirmed by Lenny 2026-10-04
     team: null,
     cover: img('/images/projects/sucre-bushworks/cover.webp', 'Sucre Bushworks outdoor adventure portal'),
     gallery: [
@@ -133,8 +148,9 @@ const rawProjects: Project[] = [
     title: 'Gikuyu Translator',
     tagline: 'AI translation from English and Kiswahili into Gikuyu.',
     type: 'experiment',
-    role: null, // TODO(lenny): confirm role and NeuroGrowth credit
-    year: null, // TODO(lenny): confirm launch year
+    role: 'Full-stack developer', // Confirmed by Lenny 2026-10-04
+    credit: "Built by my team and me; now part of NeuroGrowth's product line.", // Confirmed by Lenny 2026-10-04
+    year: 2026, // Confirmed by Lenny 2026-10-04
     liveUrl: 'https://gikuyu-translate.vercel.app',
     repoUrl: 'https://github.com/chillyreward/New-translator',
     summary:
@@ -143,9 +159,14 @@ const rawProjects: Project[] = [
     highlights: [
       'Bilingual source translation into Gikuyu',
       'Phrasebook and translation history',
+      'Spoken Gikuyu output (text-to-speech)', // Live: confirmed by Lenny 2026-10-04
     ],
-    story: null, // TODO(lenny): add case study story paragraphs
-    stack: ['Next.js', 'TypeScript', 'Tailwind CSS'], // TODO(lenny): confirm underlying model/API and TTS status
+    // Story approved by Lenny 2026-10-04.
+    story: [
+      "Gikuyu Translator translates English and Kiswahili into Gikuyu, and it's designed for learners, families and communities preserving the language. Translation runs on the Gemini API, and ElevenLabs reads the result aloud so you can hear how it sounds. A phrasebook and history keep useful translations close at hand. My team and I built it, and it's now part of NeuroGrowth's product line.",
+      "The hardest part was finding the right API: one that could actually handle Gikuyu well enough to be useful.",
+    ],
+    stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Gemini API', 'ElevenLabs API'], // Engine and live TTS confirmed by Lenny 2026-10-04
     team: null,
     cover: img('/images/projects/gikuyu-translator/cover.webp', 'Gikuyu Translator AI translation interface'),
     gallery: [
@@ -160,21 +181,26 @@ const rawProjects: Project[] = [
   {
     slug: 'neuro-growth',
     title: 'NeuroGrowth',
-    tagline: 'AI and software engineering initiative.',
+    tagline: 'AI engineering studio in Nairobi.', // Lenny, PROMPT 13 reference facts
     type: 'client', // Confirmed by Lenny 2026-10-04
-    role: null, // TODO(lenny): role and contributions
-    year: null, // TODO(lenny): project year
-    liveUrl: 'https://www.neurogrowthtech.com/', // Confirmed by Lenny 2026-09-27
-    repoUrl: null, // TODO(lenny): repository link
-    summary: 'AI and software engineering initiative.', // Confirmed by Lenny 2026-10-04
+    role: 'Marketing Engineering', // Confirmed by Lenny 2026-10-04
+    contributions: ['Led the full website upgrade'], // Confirmed by Lenny 2026-10-04
+    year: 2026, // Confirmed by Lenny 2026-10-04
+    liveUrl: 'https://www.neurogrowthtech.com', // Confirmed by Lenny 2026-09-27
+    repoUrl: 'https://github.com/Neuro-growth/neurogrowthwebsite', // Lenny, PROMPT 13 reference facts
+    summary:
+      'AI engineering studio in Nairobi building automation, chatbots and prediction systems for African businesses.', // Lenny, PROMPT 13 reference facts
     highlights: [],
-    story: null, // TODO(lenny): add case study story paragraphs
-    stack: [], // TODO(lenny): tech stack
+    // Story approved by Lenny 2026-10-04.
+    story: [
+      "NeuroGrowth Tech is an AI engineering studio in Nairobi that builds automation, chatbots and prediction systems for African businesses. I'm on the team in Marketing Engineering, and I led the full upgrade of the company website.",
+    ],
+    stack: ['Next.js', 'TypeScript', 'Tailwind CSS'], // Confirmed by Lenny 2026-10-04
     team: null,
-    cover: img('/images/portrait/portrait.webp', 'NeuroGrowth placeholder'),
+    cover: null, // TODO(lenny): real screenshot (neurogrowthtech.com is blocked from the cloud environment)
     gallery: [],
-    featured: false,
-    publish: false, // TODO(lenny): approved to show 2026-10-04; publish once a real screenshot replaces the placeholder cover
+    featured: true, // Confirmed by Lenny 2026-10-04
+    publish: true, // Confirmed by Lenny 2026-10-04: show now, even before the screenshot
     permission: true, // Confirmed by Lenny 2026-10-04
   },
   {

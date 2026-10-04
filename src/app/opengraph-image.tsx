@@ -1,5 +1,6 @@
 import React from 'react';
-import { ogSize, ogContentType, renderOgCard } from '@/lib/og';
+import { ogSize, ogContentType, renderOgCard, ogGlyph } from '@/lib/og';
+import { ui } from '@/content/ui';
 import { profile } from '@/content/profile';
 
 export const runtime = 'nodejs';
@@ -8,18 +9,10 @@ export const contentType = ogContentType;
 export const alt = `${profile.name} — ${profile.title}`;
 
 export default function Image() {
-  const fremenEye = (
-    <svg width="40" height="40" viewBox="0 0 32 32" fill="none">
-      <circle cx="16" cy="16" r="14" stroke="#1E45C8" strokeWidth="2.5" />
-      <circle cx="16" cy="16" r="9" stroke="#1E45C8" strokeWidth="2.5" />
-      <circle cx="16" cy="16" r="4" fill="#1E45C8" />
-    </svg>
-  );
-
   return renderOgCard({
     realm: 'arrakis',
-    badge: 'Arrakis',
-    glyph: fremenEye,
+    badge: ui.realms.arrakis,
+    glyph: ogGlyph('arrakis'),
     children: (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
         <h1

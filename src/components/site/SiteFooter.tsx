@@ -12,10 +12,10 @@ export function SiteFooter() {
   const currentYear = new Date().getFullYear();
 
   const socials = [
-    { label: 'GitHub', href: profile.contact.github },
-    { label: 'LinkedIn', href: profile.contact.linkedin },
-    { label: 'Fiverr', href: profile.contact.fiverr },
-    ...(profile.contact.x ? [{ label: 'X (Twitter)', href: profile.contact.x }] : []),
+    { label: ui.site.socials.github, href: profile.contact.github },
+    { label: ui.site.socials.linkedin, href: profile.contact.linkedin },
+    { label: ui.site.socials.fiverr, href: profile.contact.fiverr },
+    ...(profile.contact.x ? [{ label: ui.site.socials.x, href: profile.contact.x }] : []),
   ];
 
   return (

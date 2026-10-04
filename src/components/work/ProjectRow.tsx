@@ -1,8 +1,8 @@
 import React from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { Project } from '@/content/schema';
 import { TextLink } from '@/components/ui/TextLink';
+import { ProjectCover } from './ProjectCover';
 import { ui } from '@/content/ui';
 import { cn } from '@/lib/cn';
 import { ExternalLink } from 'lucide-react';
@@ -16,15 +16,7 @@ export interface ProjectRowProps {
 export function ProjectRow({ project, index }: ProjectRowProps) {
   const isEven = index % 2 === 0;
   const hasCaseStudy = project.permission && project.publish;
-  const cover = (
-    <Image
-      src={project.cover.src}
-      alt={project.cover.alt}
-      fill
-      sizes="(max-width: 1024px) 100vw, 58vw"
-      className="object-cover object-top"
-    />
-  );
+  const cover = <ProjectCover project={project} sizes="(max-width: 1024px) 100vw, 58vw" />;
 
   return (
     <article

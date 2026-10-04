@@ -35,7 +35,8 @@ test.describe('Content Accuracy & Invariant Assertions', () => {
     await expect(body).toContainText('SmartChama');
     await expect(body).toContainText('Saka');
     await expect(body).not.toContainText('Allenet');
-    await expect(body).not.toContainText('NeuroGrowth');
+    // NeuroGrowth: published with Lenny's approval 2026-10-04.
+    await expect(body).toContainText('NeuroGrowth');
   });
 });
 
