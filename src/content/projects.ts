@@ -76,8 +76,8 @@ const rawProjects: Project[] = [
     title: 'Oppolia Woodworths Kenya',
     tagline: 'Luxury fitted cabinetry and interior architecture website.',
     type: 'client',
-    role: null, // TODO(lenny): confirm role and contributions
-    year: null, // TODO(lenny): confirm launch year
+    role: 'Full-stack developer', // Confirmed by Lenny 2026-10-04
+    year: 2026, // Confirmed by Lenny 2026-10-04
     liveUrl: 'https://www.oppoliakenya.co.ke',
     repoUrl: null, // Client proprietary
     summary:
@@ -88,7 +88,7 @@ const rawProjects: Project[] = [
       'Mobile-responsive Italian-inspired design aesthetic',
     ],
     story: null, // TODO(lenny): add case study story paragraphs
-    stack: ['Next.js', 'Tailwind CSS', 'TypeScript'], // TODO(lenny): confirm full client stack
+    stack: ['Next.js', 'Tailwind CSS', 'TypeScript'], // Confirmed by Lenny 2026-09-27
     team: null,
     cover: img('/images/projects/oppolia/cover.webp', 'Oppolia Woodworths Kenya hero presentation'),
     gallery: [
@@ -105,8 +105,8 @@ const rawProjects: Project[] = [
     title: 'Sucre Bushworks',
     tagline: 'Kenyan camping gear, campsite directory, and wilderness expeditions.',
     type: 'client',
-    role: null, // TODO(lenny): confirm role and contributions
-    year: null, // TODO(lenny): confirm launch year
+    role: 'Full-stack developer', // Confirmed by Lenny 2026-10-04
+    year: 2026, // Confirmed by Lenny 2026-10-04
     liveUrl: 'https://sucre-bushworks.vercel.app',
     repoUrl: null, // Client repository
     summary:
@@ -117,7 +117,7 @@ const rawProjects: Project[] = [
       'Responsive wilderness-focused visual identity',
     ],
     story: null, // TODO(lenny): add case study story paragraphs
-    stack: ['Next.js', 'Tailwind CSS', 'TypeScript'], // TODO(lenny): confirm full client stack
+    stack: ['Next.js', 'Tailwind CSS', 'TypeScript'], // Confirmed by Lenny 2026-10-04
     team: null,
     cover: img('/images/projects/sucre-bushworks/cover.webp', 'Sucre Bushworks outdoor adventure portal'),
     gallery: [
@@ -134,9 +134,9 @@ const rawProjects: Project[] = [
     title: 'Gikuyu Translator',
     tagline: 'AI translation from English and Kiswahili into Gikuyu.',
     type: 'experiment',
-    role: null, // TODO(lenny): confirm role
+    role: 'Full-stack developer', // Confirmed by Lenny 2026-10-04
     credit: "Built by my team and me; now part of NeuroGrowth's product line.", // Confirmed by Lenny 2026-10-04
-    year: null, // TODO(lenny): confirm launch year
+    year: 2026, // Confirmed by Lenny 2026-10-04
     liveUrl: 'https://gikuyu-translate.vercel.app',
     repoUrl: 'https://github.com/chillyreward/New-translator',
     summary:
@@ -145,9 +145,10 @@ const rawProjects: Project[] = [
     highlights: [
       'Bilingual source translation into Gikuyu',
       'Phrasebook and translation history',
+      'Spoken Gikuyu output (text-to-speech)', // Live: confirmed by Lenny 2026-10-04
     ],
     story: null, // TODO(lenny): add case study story paragraphs
-    stack: ['Next.js', 'TypeScript', 'Tailwind CSS'], // TODO(lenny): confirm underlying model/API and TTS status
+    stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Gemini API', 'ElevenLabs API'], // Engine and live TTS confirmed by Lenny 2026-10-04
     team: null,
     cover: img('/images/projects/gikuyu-translator/cover.webp', 'Gikuyu Translator AI translation interface'),
     gallery: [
