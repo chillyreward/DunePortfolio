@@ -105,7 +105,7 @@ The confirmations above had been recorded but never applied; this section applie
 | Check | Before | After |
 |---|---|---|
 | monospace in `src` | 73 | 0 |
-| uppercase / wide tracking | 61 | 3 (`.t-wordmark`, `.t-h1` in globals.css; dev page) — plus OG images |
+| uppercase / wide tracking | 61 | 2 (`.t-wordmark`, `.t-h1` in globals.css), plus OG image code (`og.tsx`, `opengraph-image.tsx`) |
 | pill radius | 16 | 0 |
 | glued arrows | 11 | 0 |
 | hex colours in `.tsx` (excl. OG, icons, dev) | 94 | 2 files: `ShaiHulud.tsx` worm illustration, `layout.tsx` `themeColor` meta (justified) |
