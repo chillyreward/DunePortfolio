@@ -138,10 +138,11 @@ const rawProjects: Project[] = [
     liveUrl: 'https://gikuyu-translate.vercel.app',
     repoUrl: 'https://github.com/chillyreward/New-translator',
     summary:
-      'Language technology experiment translating English and Kiswahili phrases into Gikuyu, built to support indigenous language preservation and learning.',
+      // From the live site (gikuyu-translate.vercel.app), checked 2026-10-04.
+      'AI translation from English and Kiswahili into Gikuyu, designed for learners, families and communities preserving the language.',
     highlights: [
       'Bilingual source translation into Gikuyu',
-      'Interactive dictionary and phrase translation interface',
+      'Phrasebook and translation history',
     ],
     story: null, // TODO(lenny): add case study story paragraphs
     stack: ['Next.js', 'TypeScript', 'Tailwind CSS'], // TODO(lenny): confirm underlying model/API and TTS status

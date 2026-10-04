@@ -118,7 +118,7 @@ The confirmations above had been recorded but never applied; this section applie
 - `npm run cv:pdf` + `npm run cv:check`: 2 pages, all assertions pass (new: no bare phone number, no "48+", no "seamless").
 - `npm run content:check`: passes; open TODO(lenny) items remain for roles, years, stacks, story paragraphs, NeuroGrowth cover, Allenet, epigraphs.
 
-Known, not changed: the realm marker is still an inline row at 1440 (the vertical rail isn't built); OG images keep uppercase labels; Gikuyu Translator's "built to support indigenous language preservation and learning" is not in the facts register (TODO(lenny) to confirm).
+Known, not changed: the realm marker is still an inline row at 1440 (the vertical rail isn't built); OG images keep uppercase labels. Gikuyu Translator's description now quotes its live site (2026-10-04).
 
 ## Screenshots
 
