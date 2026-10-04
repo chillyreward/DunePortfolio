@@ -52,7 +52,7 @@ const rawProjects: Project[] = [
       'Inquiry-first flow with direct communication via WhatsApp and phone',
       'Zero-commission structure with direct peer-to-peer M-Pesa payouts',
     ],
-    // Story: paragraph 1 approved by Lenny 2026-10-04; paragraph 2 drafted from his answer, pending OK.
+    // Story approved by Lenny 2026-10-04.
     story: [
       "Finding a plumber, electrician or mechanic you can trust in Nairobi usually means asking around. Saka is a marketplace for finding verified local tradespeople near you, starting in Nairobi. It's inquiry-first: you message a pro directly, agree on the job, and pay them straight through M-Pesa. Saka takes no commission. I'm the main founder, and we're a team of five.",
       "The hardest part is finding the right people: identifying skilled tradespeople and checking them before we approve them on Saka, because the marketplace is only as good as the pros listed on it.",
@@ -155,7 +155,7 @@ const rawProjects: Project[] = [
       'Phrasebook and translation history',
       'Spoken Gikuyu output (text-to-speech)', // Live: confirmed by Lenny 2026-10-04
     ],
-    // Story drafted from Lenny's answers 2026-10-04, pending his OK.
+    // Story approved by Lenny 2026-10-04.
     story: [
       "Gikuyu Translator translates English and Kiswahili into Gikuyu, and it's designed for learners, families and communities preserving the language. Translation runs on the Gemini API, and ElevenLabs reads the result aloud so you can hear how it sounds. A phrasebook and history keep useful translations close at hand. My team and I built it, and it's now part of NeuroGrowth's product line.",
       "The hardest part was finding the right API: one that could actually handle Gikuyu well enough to be useful.",
@@ -185,7 +185,10 @@ const rawProjects: Project[] = [
     summary:
       'AI engineering studio in Nairobi building automation, chatbots and prediction systems for African businesses.', // Lenny, PROMPT 13 reference facts
     highlights: [],
-    story: null, // TODO(lenny): add case study story paragraphs
+    // Story approved by Lenny 2026-10-04.
+    story: [
+      "NeuroGrowth Tech is an AI engineering studio in Nairobi that builds automation, chatbots and prediction systems for African businesses. I'm on the team in Marketing Engineering, and I led the full upgrade of the company website.",
+    ],
     stack: ['Next.js', 'TypeScript', 'Tailwind CSS'], // Confirmed by Lenny 2026-10-04
     team: null,
     cover: img('/images/portrait/portrait.webp', 'NeuroGrowth placeholder'),
