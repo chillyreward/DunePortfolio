@@ -155,7 +155,11 @@ const rawProjects: Project[] = [
       'Phrasebook and translation history',
       'Spoken Gikuyu output (text-to-speech)', // Live: confirmed by Lenny 2026-10-04
     ],
-    story: null, // TODO(lenny): add case study story paragraphs
+    // Story drafted from Lenny's answers 2026-10-04, pending his OK.
+    story: [
+      "Gikuyu Translator translates English and Kiswahili into Gikuyu, and it's designed for learners, families and communities preserving the language. Translation runs on the Gemini API, and ElevenLabs reads the result aloud so you can hear how it sounds. A phrasebook and history keep useful translations close at hand. My team and I built it, and it's now part of NeuroGrowth's product line.",
+      "The hardest part was finding the right API: one that could actually handle Gikuyu well enough to be useful.",
+    ],
     stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Gemini API', 'ElevenLabs API'], // Engine and live TTS confirmed by Lenny 2026-10-04
     team: null,
     cover: img('/images/projects/gikuyu-translator/cover.webp', 'Gikuyu Translator AI translation interface'),
