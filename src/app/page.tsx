@@ -149,7 +149,7 @@ export default function HomePage() {
 
             <div className="lg:col-span-7">
               <h2 className="t-h2 text-ink mb-6">{homePage.aboutTeaser.heading}</h2>
-              <p className="t-body text-ink mb-4">{homePage.hero.tagline}</p>
+              <p className="t-body text-ink mb-4">{profile.bio[0]}</p>
               <p className="t-meta mb-8">
                 {profile.education.degree}, {profile.education.institution}, {profile.education.period}
               </p>

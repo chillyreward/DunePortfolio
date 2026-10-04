@@ -41,7 +41,7 @@ const rawProjects: Project[] = [
     title: 'Saka',
     tagline: 'Local trades and service discovery marketplace in Nairobi.',
     type: 'product',
-    role: 'Lead Founder & Full-Stack Developer',
+    role: 'Main founder and full-stack developer', // Wording confirmed by Lenny 2026-10-04
     year: 2025, // TODO(lenny): confirm start year
     liveUrl: 'https://sakahapa.vercel.app',
     repoUrl: null, // Private repository
