@@ -41,9 +41,9 @@ const rawProjects: Project[] = [
     liveUrl: 'https://sakahapa.vercel.app',
     repoUrl: null, // Private repository
     summary:
-      'Inquiry-first marketplace connecting Nairobi households with verified local plumbers, electricians, and mechanics across 48+ estates, with zero commission and direct M-Pesa payments.',
+      'Inquiry-first marketplace connecting Nairobi households with verified local plumbers, electricians, and mechanics, with zero commission and direct M-Pesa payments.',
     highlights: [
-      'Directory of vetted trades across 48+ Nairobi estates',
+      'Directory of verified local trades in Nairobi',
       'Inquiry-first flow with direct communication via WhatsApp and phone',
       'Zero-commission structure with direct peer-to-peer M-Pesa payouts',
     ],
@@ -80,7 +80,7 @@ const rawProjects: Project[] = [
     liveUrl: 'https://www.oppoliakenya.co.ke',
     repoUrl: null, // Client proprietary
     summary:
-      'High-end brand and showcase website for Oppolia Woodworths Kenya, displaying custom luxury cabinetry, wardrobes, and architectural interior fittings across East Africa.',
+      'High-end brand and showcase website for Oppolia Woodworths Kenya, displaying custom luxury cabinetry, wardrobes, and architectural interior fittings.',
     highlights: [
       'Luxury architectural showcase with high-resolution interior galleries',
       'Consultation scheduling and quote request inquiry pipeline',
@@ -109,7 +109,7 @@ const rawProjects: Project[] = [
     liveUrl: 'https://sucre-bushworks.vercel.app',
     repoUrl: null, // Client repository
     summary:
-      'Outdoor expedition platform featuring premium safari camping equipment, curated Kenyan campsite directories, and seamless guided booking through WhatsApp.',
+      'Camping gear, Kenyan campsites and guided trips, with a WhatsApp inquiry basket.',
     highlights: [
       'Campsite exploration and camping gear catalogue',
       'Direct WhatsApp inquiry basket for trip planning and gear rental',
@@ -160,12 +160,12 @@ const rawProjects: Project[] = [
     slug: 'neuro-growth',
     title: 'NeuroGrowth',
     tagline: 'AI and software engineering initiative.',
-    type: 'product',
+    type: 'client', // Confirmed by Lenny 2026-10-04
     role: null, // TODO(lenny): role and contributions
     year: null, // TODO(lenny): project year
-    liveUrl: null, // TODO(lenny): live URL
+    liveUrl: 'https://www.neurogrowthtech.com/', // Confirmed by Lenny 2026-09-27
     repoUrl: null, // TODO(lenny): repository link
-    summary: 'Collaborative engineering and artificial intelligence venture.',
+    summary: 'AI and software engineering initiative.', // Confirmed by Lenny 2026-10-04
     highlights: [],
     story: null, // TODO(lenny): add case study story paragraphs
     stack: [], // TODO(lenny): tech stack
@@ -173,8 +173,8 @@ const rawProjects: Project[] = [
     cover: img('/images/portrait/portrait.webp', 'NeuroGrowth placeholder'),
     gallery: [],
     featured: false,
-    publish: false, // TODO(lenny): publish once live URL and details confirmed
-    permission: false,
+    publish: false, // TODO(lenny): approved to show 2026-10-04; publish once a real screenshot replaces the placeholder cover
+    permission: true, // Confirmed by Lenny 2026-10-04
   },
   {
     slug: 'allenet-bakers',

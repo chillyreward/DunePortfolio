@@ -10,6 +10,7 @@ import { getProjects } from '@/content/projects';
 import { hackathons } from '@/content/hackathons';
 import { skillGroups } from '@/content/skills';
 import { cv } from '@/content/cv';
+import { ui } from '@/content/ui';
 import { Download } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -78,7 +79,9 @@ export default function CvPage() {
                 {profile.contact.email}
               </a>
               <span aria-hidden="true">·</span>
-              <span>{cv.phoneDisplay}</span>
+              <a href={profile.contact.whatsapp} className="text-ink hover:underline">
+                {cv.whatsapp}
+              </a>
               <span aria-hidden="true">·</span>
               <a href={profile.contact.github} className="text-ink hover:underline">
                 {githubHost}
@@ -138,7 +141,7 @@ export default function CvPage() {
             <div className="space-y-6 print:space-y-2">
               {visibleProjects.map((p) => {
                 const liveHost = p.liveUrl ? p.liveUrl.replace(/^https?:\/\//, '') : null;
-                const typeLabel = p.type === 'product' ? 'Product' : 'Client Work';
+                const typeLabel = ui.projectTypes[p.type];
 
                 return (
                   <div key={p.slug} className="cv-entry space-y-1.5 print:space-y-0.5 border-b border-line/40 pb-5 print:pb-2 last:border-b-0 last:pb-0">

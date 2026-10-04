@@ -112,9 +112,6 @@ export default function HomePage() {
           <div className="pb-12 border-b border-line">
             <RealmMarker realm="fremen" className="mb-4" />
             <h2 className="t-h2 text-ink">{homePage.hackathons.heading}</h2>
-            <p className="t-body text-ink-2 max-w-xl mt-2">
-              {homePage.hackathons.lead}
-            </p>
           </div>
 
           {/* Hackathon Timeline */}

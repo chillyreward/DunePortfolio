@@ -10,7 +10,7 @@ export const cv = {
     links: 'Links',
   },
   skillLabels: { shipped: 'Shipped with', learning: 'Currently learning' },
-  phoneDisplay: '+254 714 301 086',
+  whatsapp: 'WhatsApp',
   download: 'Download CV',
   downloadFileName: 'Lenny-Kidavi-CV.pdf',
   print: 'Print',

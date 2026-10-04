@@ -12,14 +12,13 @@ export const rawHomePage: HomePage = {
   },
   selectedWork: {
     heading: 'Selected work',
-    lead: 'A selection of web products, client platforms, and hackathon prototypes built for production.',
+    lead: "Products I've built and sites I've shipped for clients.",
     projectSlugs: ['smart-chama', 'saka', 'gikuyu-translator', 'oppolia'],
     clientHeading: 'Client work',
     allLink: 'All work',
   },
   hackathons: {
     heading: 'Hackathons',
-    lead: 'Building under high velocity, rapid iteration, and intense pressure.',
   },
   aboutTeaser: {
     heading: 'About',
