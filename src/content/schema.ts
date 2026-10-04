@@ -28,6 +28,10 @@ export const ProjectSchema = z.object({
   tagline: z.string().min(1),
   type: ProjectTypeSchema,
   role: z.string().nullable(),
+  // What Lenny personally did on the project (case study 'Role and contributions').
+  contributions: z.array(z.string()).optional(),
+  // One plain line crediting a parent product line, shown on the case study.
+  credit: z.string().optional(),
   year: z.number().nullable(),
   liveUrl: z.string().url().nullable(),
   repoUrl: z.string().nullable(),

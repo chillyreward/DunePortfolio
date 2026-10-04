@@ -7,7 +7,8 @@ const rawProjects: Project[] = [
     title: 'SmartChama',
     tagline: 'Digital savings and loan management for African savings groups.',
     type: 'product',
-    role: null, // TODO(lenny): confirm exact role and NeuroGrowth relationship
+    role: null, // TODO(lenny): confirm exact role
+    credit: "Built by my team and me; now part of NeuroGrowth's product line.", // Confirmed by Lenny 2026-10-04
     year: 2026, // TODO(lenny): confirm project inception year if earlier
     liveUrl: 'https://www.smartchama.tech', // TODO(lenny): confirm canonical domain vs vercel domain
     repoUrl: 'https://github.com/chillyreward/SmartChama',
@@ -133,7 +134,8 @@ const rawProjects: Project[] = [
     title: 'Gikuyu Translator',
     tagline: 'AI translation from English and Kiswahili into Gikuyu.',
     type: 'experiment',
-    role: null, // TODO(lenny): confirm role and NeuroGrowth credit
+    role: null, // TODO(lenny): confirm role
+    credit: "Built by my team and me; now part of NeuroGrowth's product line.", // Confirmed by Lenny 2026-10-04
     year: null, // TODO(lenny): confirm launch year
     liveUrl: 'https://gikuyu-translate.vercel.app',
     repoUrl: 'https://github.com/chillyreward/New-translator',
@@ -160,21 +162,23 @@ const rawProjects: Project[] = [
   {
     slug: 'neuro-growth',
     title: 'NeuroGrowth',
-    tagline: 'AI and software engineering initiative.',
+    tagline: 'AI engineering studio in Nairobi.', // Lenny, PROMPT 13 reference facts
     type: 'client', // Confirmed by Lenny 2026-10-04
-    role: null, // TODO(lenny): role and contributions
-    year: null, // TODO(lenny): project year
+    role: 'Marketing Engineering', // Confirmed by Lenny 2026-10-04
+    contributions: ['Led the full website upgrade'], // Confirmed by Lenny 2026-10-04
+    year: 2026, // Confirmed by Lenny 2026-10-04
     liveUrl: 'https://www.neurogrowthtech.com/', // Confirmed by Lenny 2026-09-27
-    repoUrl: null, // TODO(lenny): repository link
-    summary: 'AI and software engineering initiative.', // Confirmed by Lenny 2026-10-04
+    repoUrl: 'https://github.com/Neuro-growth/neurogrowthwebsite', // Lenny, PROMPT 13 reference facts
+    summary:
+      'AI engineering studio in Nairobi building automation, chatbots and prediction systems for African businesses.', // Lenny, PROMPT 13 reference facts
     highlights: [],
     story: null, // TODO(lenny): add case study story paragraphs
-    stack: [], // TODO(lenny): tech stack
+    stack: ['Next.js', 'TypeScript', 'Tailwind CSS'], // Confirmed by Lenny 2026-10-04
     team: null,
     cover: img('/images/portrait/portrait.webp', 'NeuroGrowth placeholder'),
     gallery: [],
-    featured: false,
-    publish: false, // TODO(lenny): approved to show 2026-10-04; publish once a real screenshot replaces the placeholder cover
+    featured: true, // Confirmed by Lenny 2026-10-04
+    publish: false, // Approved 2026-10-04; Phase B flips to true once a real screenshot replaces the placeholder cover
     permission: true, // Confirmed by Lenny 2026-10-04
   },
   {
