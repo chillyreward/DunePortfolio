@@ -4,6 +4,7 @@ import * as React from 'react';
 import { useTheme } from 'next-themes';
 import { RealmGlyph } from '@/components/realm/RealmGlyph';
 import { cn } from '@/lib/cn';
+import { ui } from '@/content/ui';
 import { switchThemeWithEclipse } from '@/lib/eclipse';
 
 export type ThemeToggleProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
@@ -35,7 +36,7 @@ export function ThemeToggle({ className, ...props }: ThemeToggleProps) {
   }
 
   const isDark = resolvedTheme === 'dark';
-  const label = isDark ? 'Switch to light mode (Arrakis)' : 'Switch to dark mode (Giedi Prime)';
+  const label = isDark ? ui.theme.toLight : ui.theme.toDark;
 
   return (
     <button

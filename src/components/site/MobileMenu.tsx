@@ -26,9 +26,18 @@ export interface MobileMenuProps {
   whatsappHref: string;
   socials: readonly MobileSocialItem[] | MobileSocialItem[];
   searchLabel: string;
+  name: string;
+  labels: {
+    menu: string;
+    close: string;
+    openMenu: string;
+    closeMenu: string;
+    mobileNav: string;
+    whatsapp: string;
+  };
 }
 
-export function MobileMenu({ items, email, whatsappHref, socials, searchLabel }: MobileMenuProps) {
+export function MobileMenu({ items, email, whatsappHref, socials, searchLabel, name, labels }: MobileMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const dialogRef = useRef<HTMLDialogElement | null>(null);
   const triggerRef = useRef<HTMLButtonElement | null>(null);
@@ -106,10 +115,10 @@ export function MobileMenu({ items, email, whatsappHref, socials, searchLabel }:
         aria-haspopup="dialog"
         aria-expanded={isOpen}
         aria-controls="mobile-nav-dialog"
-        aria-label="Open menu"
+        aria-label={labels.openMenu}
         className="min-w-[44px] min-h-[44px] inline-flex items-center justify-center text-[15px] font-semibold text-ink px-2 rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-[3px]"
       >
-        Menu
+        {labels.menu}
       </button>
 
       <dialog
@@ -132,21 +141,21 @@ export function MobileMenu({ items, email, whatsappHref, socials, searchLabel }:
           {/* Top row matching 72px header */}
           <div className="h-[72px] flex items-center justify-between border-b border-line">
             <span className="text-base font-bold text-ink" style={{ fontStretch: '125%' }}>
-              Lenny Kidavi
+              {name}
             </span>
             <button
               ref={closeButtonRef}
               type="button"
               onClick={closeMenu}
-              aria-label="Close menu"
+              aria-label={labels.closeMenu}
               className="min-w-[44px] min-h-[44px] inline-flex items-center justify-center text-[15px] font-semibold text-ink px-2 rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-[3px]"
             >
-              Close
+              {labels.close}
             </button>
           </div>
 
           {/* Navigation Links */}
-          <nav aria-label="Mobile Navigation" className="py-12">
+          <nav aria-label={labels.mobileNav} className="py-12">
             <ul className="flex flex-col gap-6">
               {items.map((item) => {
                 const active = isNavActive(pathname, item.href, item.match);
@@ -179,14 +188,13 @@ export function MobileMenu({ items, email, whatsappHref, socials, searchLabel }:
           {/* Footer push area */}
           <div className="mt-auto border-t border-line py-8 flex flex-col gap-4">
             <div>
-              <p className="t-meta mb-1 text-ink-2">Direct Contact</p>
               <TextLink href={`mailto:${email}`} className="text-base font-medium">
                 {email}
               </TextLink>
             </div>
             <div>
               <TextLink href={whatsappHref} className="text-base font-medium">
-                WhatsApp
+                {labels.whatsapp}
               </TextLink>
             </div>
             <div className="flex flex-wrap gap-4 pt-2">

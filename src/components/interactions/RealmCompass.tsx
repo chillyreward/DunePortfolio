@@ -38,7 +38,7 @@ export function RealmCompass({ labels }: RealmCompassProps) {
   }, [pathname]);
 
   return (
-    <div aria-hidden="true" className="hidden lg:flex items-center min-w-[9.5rem] t-meta text-ink-2">
+    <div aria-hidden="true" className="hidden xl:flex items-center min-w-[9.5rem] t-meta text-ink-2">
       <span key={realm} className="compass-fade inline-flex items-center gap-2">
         <RealmGlyph realm={realm} size={14} />
         {labels[realm]}

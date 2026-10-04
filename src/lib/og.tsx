@@ -21,7 +21,7 @@ export const realmColors: Record<
     ink: '#231D14',
     ink2: '#574E40',
     accent: '#1E45C8',
-    mark: '#8C7D6B',
+    mark: '#1E45C8',
     border: '#B8A88A',
   },
   atreides: {
@@ -37,7 +37,7 @@ export const realmColors: Record<
     ink: '#1C1824',
     ink2: '#5A5264',
     accent: '#7B52A8',
-    mark: '#A67608',
+    mark: '#8D6407',
     border: '#DDD4C2',
   },
   fremen: {
@@ -49,6 +49,47 @@ export const realmColors: Record<
     border: '#454A4D',
   },
 };
+
+// The site's realm glyphs (RealmGlyph paths), drawn in the realm's mark colour.
+export function ogGlyph(realm: OgRealm, size = 36) {
+  const stroke = realmColors[realm].mark;
+  const common = {
+    width: size,
+    height: size,
+    viewBox: '0 0 24 24',
+    fill: 'none',
+    stroke,
+    strokeWidth: 1.75,
+    strokeLinecap: 'round' as const,
+    strokeLinejoin: 'round' as const,
+  };
+  if (realm === 'arrakis') {
+    return (
+      <svg {...common}>
+        <circle cx="9" cy="15" r="6.5" />
+        <circle cx="19" cy="5" r="2.5" />
+      </svg>
+    );
+  }
+  if (realm === 'atreides') {
+    return (
+      <svg {...common}>
+        <path d="M2 7c2.5-2 5-2 7.5 0s5 2 7.5 0 3.5-1.5 5 0" />
+        <path d="M2 12c2.5-2 5-2 7.5 0s5 2 7.5 0 3.5-1.5 5 0" />
+        <path d="M2 17c2.5-2 5-2 7.5 0s5 2 7.5 0 3.5-1.5 5 0" />
+      </svg>
+    );
+  }
+  if (realm === 'corrino') {
+    return (
+      <svg {...common}>
+        <path d="M12 2 22 12 12 22 2 12z" />
+        <path d="M12 8 16 12 12 16 8 12z" fill={stroke} stroke="none" />
+      </svg>
+    );
+  }
+  return null;
+}
 
 export function loadOgFonts() {
   const fontExpanded800 = fs.readFileSync(
@@ -128,10 +169,8 @@ export function renderOgCard({
             {badge && (
               <span
                 style={{
-                  fontSize: '18px',
+                  fontSize: '20px',
                   fontWeight: 600,
-                  letterSpacing: '0.15em',
-                  textTransform: 'uppercase',
                   color: c.mark,
                 }}
               >
@@ -143,12 +182,11 @@ export function renderOgCard({
           <span
             style={{
               fontSize: '18px',
-              fontWeight: 600,
-              letterSpacing: '0.12em',
+              fontWeight: 400,
               color: c.ink2,
             }}
           >
-            LENNYDEV.VERCEL.APP
+            lennydev.vercel.app
           </span>
         </div>
 
@@ -183,16 +221,7 @@ export function renderOgCard({
               color: c.ink2,
             }}
           >
-            Lenny Kidavi · Independent Developer & CS Student · Nairobi, Kenya
-          </span>
-          <span
-            style={{
-              fontSize: '16px',
-              fontWeight: 600,
-              color: c.accent,
-            }}
-          >
-            Dune-Crafted Portfolio
+            Lenny Kidavi · Nairobi, Kenya
           </span>
         </div>
       </div>

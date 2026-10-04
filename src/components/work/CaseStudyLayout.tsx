@@ -107,7 +107,7 @@ export function CaseStudyLayout({ project, nextProject }: CaseStudyLayoutProps) 
       </Realm>
 
       {/* 2. Reading body */}
-      <Realm name="arrakis" className="py-16 md:py-24 border-b border-line">
+      <Realm name="arrakis" className="py-section border-b border-line">
         <Container className="lg:grid lg:grid-cols-12 lg:gap-6">
           <div className="lg:col-span-3">
             <CaseStudyToc label={caseStudyToc.label} entries={tocEntries} />
@@ -124,7 +124,7 @@ export function CaseStudyLayout({ project, nextProject }: CaseStudyLayoutProps) 
                 {project.role && <p className="t-meta mb-2">{project.role}</p>}
                 <ul className="border-t border-line">
                   {project.contributions!.map((c) => (
-                    <li key={c} className="t-body text-ink border-b border-line py-4">
+                    <li key={c} className="t-body max-w-none text-ink border-b border-line py-4">
                       {c}
                     </li>
                   ))}
@@ -137,7 +137,7 @@ export function CaseStudyLayout({ project, nextProject }: CaseStudyLayoutProps) 
                 <h2 id="cs-features" className="t-h3 text-ink mb-4">{ui.project.features}</h2>
                 <ul className="border-t border-line">
                   {project.highlights.map((h) => (
-                    <li key={h} className="t-body text-ink border-b border-line py-4">
+                    <li key={h} className="t-body max-w-none text-ink border-b border-line py-4">
                       {h}
                     </li>
                   ))}
@@ -176,7 +176,13 @@ export function CaseStudyLayout({ project, nextProject }: CaseStudyLayoutProps) 
                           alt={imgItem.alt}
                           fill
                           sizes="(max-width: 1024px) 100vw, 768px"
-                          className="object-cover object-top"
+                          // Phone-shaped captures are shown whole inside the same frame;
+                          // very tall full-page captures crop to their top like the rest.
+                          className={
+                            imgItem.height > imgItem.width && imgItem.height < imgItem.width * 3
+                              ? 'object-contain'
+                              : 'object-cover object-top'
+                          }
                         />
                       </div>
                       <figcaption className="t-meta mt-3">

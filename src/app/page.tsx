@@ -71,7 +71,7 @@ export default function HomePage() {
       </Realm>
 
       {/* 2. Selected work: own products (Atreides) */}
-      <Realm name="atreides" id="work" className="py-24 md:py-36">
+      <Realm name="atreides" id="work" className="py-section">
         <Container>
           <div className="pb-4">
             <RealmMarker realm="atreides" className="mb-4" />
@@ -86,7 +86,7 @@ export default function HomePage() {
 
       {/* 2b. Selected work: client work (Corrino) */}
       {clientProjects.length > 0 && (
-        <Realm name="corrino" className="py-24 md:py-36">
+        <Realm name="corrino" className="py-section">
           <Container>
             <div className="pb-4">
               <RealmMarker realm="corrino" className="mb-4" />
@@ -108,7 +108,7 @@ export default function HomePage() {
       </Realm>
 
       {/* 3. Hackathons Section (Fremen Realm Band) */}
-      <Realm name="fremen" id="hackathons" className="py-20 md:py-28 border-b border-line">
+      <Realm name="fremen" id="hackathons" className="py-section border-b border-line">
         <Container>
           {/* Section Header */}
           <div className="pb-12">
@@ -124,7 +124,7 @@ export default function HomePage() {
       </Realm>
 
       {/* 4. About Teaser (Arrakis) */}
-      <Realm name="arrakis" className="py-24 md:py-36 border-b border-line">
+      <Realm name="arrakis" className="py-section border-b border-line">
         <Container>
           {homeEpigraph && (
             <Epigraph
@@ -162,7 +162,7 @@ export default function HomePage() {
       </Realm>
 
       {/* 5. Contact (Arrakis) */}
-      <Realm name="arrakis" id="contact" className="py-24 md:py-36">
+      <Realm name="arrakis" id="contact" className="py-section">
         <Container>
           <Grid className="gap-16 lg:gap-16 items-start">
             <div className="col-span-4 md:col-span-6">

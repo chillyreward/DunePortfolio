@@ -36,6 +36,20 @@ export const ui = {
     team: 'Team',
     organiser: 'Organised by',
   },
+  site: {
+    downloadCv: 'Download CV',
+    menu: 'Menu',
+    close: 'Close',
+    openMenu: 'Open menu',
+    closeMenu: 'Close menu',
+    mobileNav: 'Mobile navigation',
+    whatsapp: 'WhatsApp',
+    socials: { github: 'GitHub', linkedin: 'LinkedIn', fiverr: 'Fiverr', x: 'X (Twitter)' },
+  },
+  theme: {
+    toLight: 'Switch to light mode (Arrakis)',
+    toDark: 'Switch to dark mode (Giedi Prime)',
+  },
   footer: {
     contact: 'Get in touch',
     whatsapp: 'WhatsApp',

@@ -9,6 +9,7 @@ import { RealmMarker } from '@/components/realm/RealmMarker';
 import { SkillGroups } from '@/components/about/SkillGroups';
 import { HackathonTimeline } from '@/components/hackathons/HackathonTimeline';
 import { PhotoGallery } from '@/components/hackathons/PhotoGallery';
+import { cv } from '@/content/cv';
 import { profile } from '@/content/profile';
 import { hackathons } from '@/content/hackathons';
 import { aboutContent } from '@/content/about';
@@ -113,7 +114,7 @@ export default function AboutPage() {
       </Realm>
 
       {/* 2. Hackathons & Competitions (Fremen Realm Band) */}
-      <Realm name="fremen" id="hackathons" className="py-20 md:py-28 border-b border-line">
+      <Realm name="fremen" id="hackathons" className="py-section border-b border-line">
         <Container>
           {/* Section Header */}
           <div className="pb-12">
@@ -139,7 +140,7 @@ export default function AboutPage() {
       </Realm>
 
       {/* 3. Epigraph & Closing CTA (Arrakis Realm) */}
-      <Realm name="arrakis" className="py-20 md:py-28">
+      <Realm name="arrakis" className="py-section">
         <Container>
           {/* Epigraph slot if populated */}
           {aboutEpigraph && (
@@ -165,7 +166,7 @@ export default function AboutPage() {
                 {aboutContent.contactCta}
               </Button>
               {profile.cvPath && (
-                <Button href={profile.cvPath} download variant="ghost">
+                <Button href={profile.cvPath} download={cv.downloadFileName} variant="ghost">
                   {aboutContent.cvCta}
                 </Button>
               )}
