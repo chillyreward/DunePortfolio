@@ -11,8 +11,9 @@ const rawProfile: Profile = {
     "I study Computer Science at CUEA in Nairobi. I design and build products end to end, and I'm working toward machine learning engineering.",
     'In February 2026 my team won the Red, White & Build US–Kenya Hackathon with SmartChama.',
     "I'm the main founder of Saka, a marketplace for finding local tradespeople in Nairobi, and I build websites for clients.",
+    "I'm also on the team at NeuroGrowth Tech, an AI engineering studio in Nairobi, where I led the full website upgrade.",
   ],
-  bioStatus: 'draft',
+  bioStatus: 'approved', // Approved by Lenny 2026-10-04
   education: {
     institution: 'Catholic University of Eastern Africa (CUEA)',
     degree: 'BSc Computer Science',
